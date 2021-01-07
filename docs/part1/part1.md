@@ -53,11 +53,11 @@ Although you don't have to [install ABPx](https://marketplace.visualstudio.com/i
 - Select *ApiDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.HttpApi.Host* project.
 - Navigate to the *applicationUrl* specified in the *launchSettings.json* file of the *IssueTracking.HttpApi.Host* project. You should get the **SwaggerUI** window.
 
-![SwaggerUI window](docs/part1/../../SwaggerUI.jpg)
+![SwaggerUI window](docs/part1/images/SwaggerUI.jpg)
 
 - Open a command prompt in the *IssueTracking.Blazor* folder and enter `dotnet watch run` below to run the Blazor UI project.
 - Navigate to the *applicationUrl* specified in the *launchSettings.json* file of the *IssueTracking.Blazor* project. You should get the **ABP.IO Welcome window**.
 
-![Abp Welcome window](docs/part1/../../AbpIoWelcomeWindow.jpg)
+![Abp Welcome window](docs/part1/images/AbpIoWelcomeWindow.jpg)
 
 - Stop both the API (by pressing SHIFT+F5) and the Blazor project (by pressing `CTRL+C`).
