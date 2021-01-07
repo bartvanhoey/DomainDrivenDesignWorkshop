@@ -64,9 +64,9 @@ Although you don't have to [install ABPx](https://marketplace.visualstudio.com/i
 
 - Click on the **Restore** button to restore the *unresolved dependencies*.
 
-- Replace the content of *launch.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/gh-pages/IssueTracking/.vscode/launch.json) file or hit **xLaunchJson** (ABPx code snippet that inserts launch configurations needed).
+- Replace the content of *launch.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/main/.vscode/launch.json) file or hit **xLaunchJson** (ABPx code snippet that inserts launch configurations needed).
 
-- Replace the content of *tasks.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/gh-pages/IssueTracking/.vscode/tasks.json) file or hit **xTasksJson** (ABPx code snippet that inserts dotnet tasks needed).
+- Replace the content of *tasks.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/main/.vscode/tasks.json) file or hit **xTasksJson** (ABPx code snippet that inserts dotnet tasks needed).
 
 ### Apply migrations and seed initial data
 
