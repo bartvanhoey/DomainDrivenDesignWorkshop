@@ -20,10 +20,10 @@ When you finish this workshop you will have **a good understanding of Domain Dri
 
 **Developers, architects, teachers, professors and students** who want to learn more about DDD concepts.
 
+### Start Domain Driven Design Workshop
+
+[Click here](docs/part1/part1.md) to start DDD Workshop. Enjoy and have fun!
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).
-
-[Start DDD Workshop](docs/part1/part1.md)
-
-Enjoy and have fun!
