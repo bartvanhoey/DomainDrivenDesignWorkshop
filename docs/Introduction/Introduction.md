@@ -12,10 +12,10 @@ The goals of this document are to
 * Show what **ABP Framework provides** you as the infrastructure for implementing DDD in a proper way.
 * And finally, provide **suggestions** based on software development **best practices** and our experiences to create a **maintainable codebase**.
 
-### Simple Code!
+### Simple Code
 
 > **Playing football** is very **simple**, but **playing simple football** is the **hardest thing** there is.
-> &mdash; <cite>Johan Cruyff</cite>
+> &mdash; <cite cite>Johan Cruyff</cite>
 
 If we take this famous quote for programming, we can say;
 
@@ -28,4 +28,4 @@ Once your **application grows**, it will be **hard to follow** these rules. Some
 
 If you **follow the rules and best practices**, your code base will be simpler and easier to maintain. Your application **reacts to changes** faster.
 
-[Home](../../README.md) | [Part 1: What Is Domain Driven Design](../part1/part1-Requirements-And%20Initia-Workshop-Setup.md)
+[Home](../../README.md) | [Part 1: What Is Domain Driven Design](../part1/part1-Requirements-And-Initial-Workshop-Setup.md)

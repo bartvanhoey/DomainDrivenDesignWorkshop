@@ -14,15 +14,25 @@ The **sample application** that comes with this workshop is developed with the *
 
 While the workshop makes use of the ABP Framework infrastructure, all the DDD core concepts, principles and patterns are applicable in any kind of solution, even if it is not a .NET solution.
 
-When you finish this workshop you will have **a good understanding of Domain Driven Design** together with a **solid knowledge of the ABP Framework**.
+When you have finished this workshop you will have **a good understanding of Domain Driven Design** together with a **solid knowledge of the ABP Framework**.
 
 ### Target audience
 
 **Developers, software architects, teachers, professors and students** who want to learn more about DDD concepts.
 
+### Goals
+
+The goals of this Workshop are to
+
+* **Introduce and explain** the DDD architecture, concepts, principles, patterns and building blocks.
+* Explain the **layered architecture** & solution structure offered by the ABP Framework.
+* Introduce **explicit rules** to implement DDD patterns and best practices by giving **concrete examples**.
+* Show what **ABP Framework provides** you as the infrastructure for implementing DDD in a proper way.
+* And finally, provide **suggestions** based on software development **best practices** and experiences to create a **maintainable codebase**.
+
 ### Start Domain Driven Design Workshop
 
-[Click here](docs/Introduction/Introduction.md) to **start the free DDD Workshop**. Enjoy and have fun!
+[Click here](docs/part1/part1-Requirements-And-Initial-Workshop-Setup.md) to **start the free DDD Workshop**. Enjoy and have fun!
 
 ### Source Code
 
