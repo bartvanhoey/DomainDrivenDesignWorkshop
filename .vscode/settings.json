@@ -1,9 +1,19 @@
 {
     "cSpell.words": [
+        "ABP's",
+        "abp",
         "aspnetcore",
         "blazor",
+        "consts",
+        "dtos",
+        "i",
+        "linq",
+        "object",
         "omni",
+        "queryable",
         "sharp",
+        "user",
+        "validatable",
         "volo"
     ]
 }
