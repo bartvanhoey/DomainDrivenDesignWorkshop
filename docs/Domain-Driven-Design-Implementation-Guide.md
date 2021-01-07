@@ -30,7 +30,7 @@ Once your **application grows**, it will be **hard to follow** these rules. Some
 
 If you **follow the rules and best practices**, your code base will be simpler and easier to maintain. Your application **reacts to changes** faster.
 
-## What is the Domain Driven Design?
+## What is Domain Driven Design
 
 Domain-driven design (DDD) is an approach to software development for **complex** needs by connecting the implementation to an **evolving** model;
 
