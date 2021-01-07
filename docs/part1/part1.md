@@ -14,19 +14,19 @@ The following tools are needed to follow along.
 
 ### Creating a new Application
 
-- Install or update the ABP CLI:
+- Open a command prompt and install or update the **ABP CLI**
 
 ```bash
 dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
 ```
 
-- Use the following ABP CLI command to create a new Blazor ABP application:
+- Use the following ABP CLI command to create a **new Blazor ABP application**
 
 ```bash
 abp new IssueTracking -u blazor
 ```
 
-### Open Application in Visual Studio Code and install ABPx VsCode extension
+### Open the Application in Visual Studio Code and install ABPx VsCode extension
 
 Although you don't have to [install ABPx](https://marketplace.visualstudio.com/items?itemName=BartVanHoey.abpx), it will help you to write code faster in an ABP Blazor application as it provides you with a lot of useful code snippets.
 
