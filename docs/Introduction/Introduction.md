@@ -28,4 +28,4 @@ Once your **application grows**, it will be **hard to follow** these rules. Some
 
 If you **follow the rules and best practices**, your code base will be simpler and easier to maintain. Your application **reacts to changes** faster.
 
-[Next part: What is Domain Driven Design](WhatIsDomainDrivenDesign.md)
+[Home](../../README.md) | [Part 1: What Is Domain Driven Design](../part1/part1-Requirements-And%20Initia-Workshop-Setup.md)

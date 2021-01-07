@@ -22,7 +22,7 @@ When you finish this workshop you will have **a good understanding of Domain Dri
 
 ### Start Domain Driven Design Workshop
 
-[Click here](docs/part1/part1.md) to **start the free DDD Workshop**. Enjoy and have fun!
+[Click here](docs/Introduction/Introduction.md) to **start the free DDD Workshop**. Enjoy and have fun!
 
 ### Source Code
 

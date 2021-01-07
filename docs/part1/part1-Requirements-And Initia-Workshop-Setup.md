@@ -62,4 +62,4 @@ Although you don't have to [install ABPx](https://marketplace.visualstudio.com/i
 
 - Stop both the API (by pressing SHIFT+F5) and the Blazor project (by pressing `CTRL+C`).
 
-[Home](./../../README.md) | [Next part](../part2/part2-What-Is-Domain-Driven-Design.md)
+[Home](../Introduction/Introduction.md) | [Part 2: What Is Domain Driven Design](../part2/part2-What-Is-Domain-Driven-Design.md)
