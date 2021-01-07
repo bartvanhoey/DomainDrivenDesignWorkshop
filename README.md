@@ -1,10 +1,10 @@
-# Free Domain Driven Design Workshop
+# Domain Driven Design Workshop
 
 ![.NET](https://github.com/bartvanhoey/WorkshopDDD/workflows/.NET/badge.svg)
 
 ## Introduction
 
-This is a **free hands-on DDD workshop** wherein the **main concepts of Domain Driven Design** are explained.
+This is a **free hands-on DDD workshop** wherein the **main concepts of Domain Driven Design** will be explained.
 
 The **main goal** of this workshop is to provide students/teachers/developers/architects with **a free practical guide to study/teach DDD concepts**. It is based upon the [Implementing Domain Driven Design](https://docs.abp.io/en/abp/latest/Domain-Driven-Design-Implementation-Guide) guide you can find in the **ABP Framework Documents**.
 
