@@ -10,7 +10,7 @@ The **main goal** of this workshop is to provide students/teachers/developers/ar
 
 During this **step-by-step workshop** you will create an **IssueTracking application** following Domain Driven Design techniques.
 
-The **sample application** that comes with this workshop is developed with the **ABP framework**, as this framework already has been written following Domain Driven Design principles. It uses **Blazor** as UI framework and **SQL Server** as database provider, but you could also choose **Angular** in combination with **MongoDb**, if that suits your needs better. 
+The **sample application** that comes with this workshop is developed with the **ABP framework**, as this framework already has been written following Domain Driven Design principles. It uses **Blazor** as UI framework and **SQL Server** as database provider, but you could also choose **Angular** in combination with **MongoDb**, if that suits your needs better.
 
 While the workshop makes use of the ABP Framework infrastructure, core concepts, principles and DDD patterns are applicable in any kind of solution, even if it is not a .NET solution.
 
@@ -64,9 +64,9 @@ Although you don't have to [install ABPx](https://marketplace.visualstudio.com/i
 
 - Click on the **Restore** button to restore the *unresolved dependencies*.
 
-- Replace the content of *launch.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/main/.vscode/launch.json) file or hit **xLaunchJson** (ABPx code snippet that inserts launch configurations needed).
+- Replace the content of *launch.json* by copying [this](hhttps://raw.githubusercontent.com/bartvanhoey/WorkshopDDD/main/.vscode/launch.json) file or hit **xLaunchJson** (ABPx code snippet that inserts launch configurations needed).
 
-- Replace the content of *tasks.json* by copying [this](https://github.com/bartvanhoey/WorkshopDDD/blob/main/.vscode/tasks.json) file or hit **xTasksJson** (ABPx code snippet that inserts dotnet tasks needed).
+- Replace the content of *tasks.json* by copying [this](https://raw.githubusercontent.com/bartvanhoey/WorkshopDDD/main/.vscode/tasks.json) file or hit **xTasksJson** (ABPx code snippet that inserts dotnet tasks needed).
 
 ### Apply migrations and seed initial data
 
