@@ -10,7 +10,7 @@ The **main goal** of this workshop is to provide students/teachers/developers/ar
 
 During this **step-by-step workshop** you will create an **IssueTracking application** following Domain Driven Design techniques.
 
-The **sample application** that comes with this workshop is developed with the **ABP Framework**, as this framework already has been written following Domain Driven Design principles. It uses **Blazor** as UI framework and **SQL Server** as database provider, but you could also choose **Angular** in combination with **MongoDb**, if that suits your needs better.
+The **sample application** that comes with this workshop is developed with the **ABP Framework**, as this framework already has been written with Domain Driven Design principles in mind. It uses **Blazor** as UI framework and **SQL Server** as database provider, but you could also choose **Angular** in combination with **MongoDb**, if that suits your needs better.
 
 While the workshop makes use of the ABP Framework infrastructure, core concepts, principles and DDD patterns are applicable in any kind of solution, even if it is not a .NET solution.
 
