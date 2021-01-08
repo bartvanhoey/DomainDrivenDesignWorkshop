@@ -849,3 +849,285 @@
 2021-01-08 07:41:18.221 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","AllowedRedirectUris":["https://localhost:44307/authentication/login-callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile IssueTracking role email phone","State":"df576b414a55473fbbc8b7ffd1cc8f43","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"IssueTracking_Blazor","redirect_uri":"https://localhost:44307/authentication/login-callback","response_type":"code","scope":"openid profile IssueTracking role email phone","state":"df576b414a55473fbbc8b7ffd1cc8f43","code_challenge":"CxFyh96q_kqtuhi7snjkR7W75buPklkErhO-38xVhrA","code_challenge_method":"S256","prompt":"none","response_mode":"query"},"$type":"AuthorizeRequestValidationLog"}
 2021-01-08 07:41:18.222 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile IssueTracking role email phone","GrantType":"authorization_code","Error":"login_required","ErrorDescription":null,"Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HM5JK0N4KP75:00000015","TimeStamp":"2021-01-08T06:41:18.0000000Z","ProcessId":17184,"LocalIpAddress":"::1:44349","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
 2021-01-08 07:41:18.224 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/connect/authorize?client_id=IssueTracking_Blazor&redirect_uri=https%3A%2F%2Flocalhost%3A44307%2Fauthentication%2Flogin-callback&response_type=code&scope=openid%20profile%20IssueTracking%20role%20email%20phone&state=df576b414a55473fbbc8b7ffd1cc8f43&code_challenge=CxFyh96q_kqtuhi7snjkR7W75buPklkErhO-38xVhrA&code_challenge_method=S256&prompt=none&response_mode=query - - - 302 0 - 64.9571ms
+2021-01-08 07:50:04.441 +01:00 [INF] Starting IssueTracking.HttpApi.Host.
+2021-01-08 07:50:10.174 +01:00 [INF] User profile is available. Using 'C:\Users\bartv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-01-08 07:50:10.295 +01:00 [INF] Loaded ABP modules:
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Data.AbpDataModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - IssueTracking.IssueTrackingDomainSharedModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - IssueTracking.IssueTrackingApplicationContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.UI.AbpUiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - IssueTracking.IssueTrackingHttpApiModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Users.AbpUsersDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Emailing.AbpEmailingModule
+2021-01-08 07:50:10.295 +01:00 [INF] - IssueTracking.IssueTrackingDomainModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Account.AbpAccountApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - IssueTracking.IssueTrackingApplicationModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-01-08 07:50:10.295 +01:00 [INF] - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - IssueTracking.EntityFrameworkCore.IssueTrackingEntityFrameworkCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - IssueTracking.EntityFrameworkCore.IssueTrackingEntityFrameworkCoreDbMigrationsModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebIdentityServerModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-01-08 07:50:10.296 +01:00 [INF] - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-01-08 07:50:10.296 +01:00 [INF] - IssueTracking.IssueTrackingHttpApiHostModule
+2021-01-08 07:50:10.788 +01:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-01-08 07:50:10.793 +01:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-01-08 07:50:10.854 +01:00 [INF] Starting IdentityServer4 version 4.1.1+cebd52f5bc61bdefc262fd20739d4d087c6f961f
+2021-01-08 07:50:11.661 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2021-01-08 07:50:11.661 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2021-01-08 07:50:11.661 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2021-01-08 07:50:11.661 +01:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2021-01-08 07:50:11.661 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2021-01-08 07:50:11.661 +01:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2021-01-08 07:50:12.113 +01:00 [INF] Initialized all ABP modules.
+2021-01-08 07:50:12.508 +01:00 [INF] Now listening on: https://localhost:44349
+2021-01-08 07:50:12.508 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-01-08 07:50:12.508 +01:00 [INF] Hosting environment: Development
+2021-01-08 07:50:12.508 +01:00 [INF] Content root path: C:\_Data\_AbpBlazor\IssueTracking\IssueTracking\src\IssueTracking.HttpApi.Host
+2021-01-08 07:50:13.873 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/ - -
+2021-01-08 07:50:22.309 +01:00 [DBG] Login Url: /Account/Login
+2021-01-08 07:50:22.309 +01:00 [DBG] Login Return Url Parameter: ReturnUrl
+2021-01-08 07:50:22.309 +01:00 [DBG] Logout Url: /Account/Logout
+2021-01-08 07:50:22.309 +01:00 [DBG] ConsentUrl Url: /Consent
+2021-01-08 07:50:22.309 +01:00 [DBG] Consent Return Url Parameter: returnUrl
+2021-01-08 07:50:22.309 +01:00 [DBG] Error Url: /Account/Error
+2021-01-08 07:50:22.309 +01:00 [DBG] Error Id Parameter: errorId
+2021-01-08 07:50:22.855 +01:00 [INF] Executing endpoint 'IssueTracking.Controllers.HomeController.Index (IssueTracking.HttpApi.Host)'
+2021-01-08 07:50:23.001 +01:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller IssueTracking.Controllers.HomeController (IssueTracking.HttpApi.Host).
+2021-01-08 07:50:23.056 +01:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2021-01-08 07:50:23.073 +01:00 [INF] Executed action IssueTracking.Controllers.HomeController.Index (IssueTracking.HttpApi.Host) in 56.0647ms
+2021-01-08 07:50:23.074 +01:00 [INF] Executed endpoint 'IssueTracking.Controllers.HomeController.Index (IssueTracking.HttpApi.Host)'
+2021-01-08 07:50:23.105 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/ - - - 302 0 - 9237.2482ms
+2021-01-08 07:50:23.122 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger - -
+2021-01-08 07:50:23.136 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger - - - 301 0 - 14.1874ms
+2021-01-08 07:50:23.152 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/index.html - -
+2021-01-08 07:50:23.236 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/index.html - - - 200 - text/html;charset=utf-8 84.2545ms
+2021-01-08 07:50:23.301 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/swagger-ui.css - -
+2021-01-08 07:50:23.304 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/ui/abp.swagger.js - -
+2021-01-08 07:50:23.304 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/ui/abp.js - -
+2021-01-08 07:50:23.309 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/swagger-ui-bundle.js - -
+2021-01-08 07:50:23.335 +01:00 [INF] Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'N/A'
+2021-01-08 07:50:23.335 +01:00 [INF] Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'N/A'
+2021-01-08 07:50:23.358 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/swagger-ui-standalone-preset.js - -
+2021-01-08 07:50:23.411 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/ui/abp.js - - - 200 3025 application/javascript 106.9623ms
+2021-01-08 07:50:23.412 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/ui/abp.swagger.js - - - 200 1026 application/javascript 108.0713ms
+2021-01-08 07:50:23.432 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2021-01-08 07:50:23.432 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2021-01-08 07:50:23.449 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/swagger-ui.css - - - 200 142933 text/css 147.6347ms
+2021-01-08 07:50:23.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/swagger-ui-standalone-preset.js - - - 200 311804 application/javascript 109.4804ms
+2021-01-08 07:50:23.483 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2021-01-08 07:50:23.484 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/swagger-ui-bundle.js - - - 200 986342 application/javascript 174.9888ms
+2021-01-08 07:50:24.165 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/swagger/v1/swagger.json - -
+2021-01-08 07:50:24.574 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 408.9931ms
+2021-01-08 07:51:02.298 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/api/abp/api-definition - -
+2021-01-08 07:51:02.308 +01:00 [INF] CORS policy execution successful.
+2021-01-08 07:51:02.316 +01:00 [DBG] CORS request made for path: /api/abp/api-definition from origin: https://localhost:44307 but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2021-01-08 07:51:02.316 +01:00 [INF] No CORS policy found for the specified request.
+2021-01-08 07:51:02.323 +01:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController.Get (Volo.Abp.AspNetCore.Mvc)'
+2021-01-08 07:51:02.340 +01:00 [INF] Route matched with {area = "abp", action = "Get", controller = "AbpApiDefinition", page = ""}. Executing controller action with signature Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel Get(Volo.Abp.Http.Modeling.ApplicationApiDescriptionModelRequestDto) on controller Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController (Volo.Abp.AspNetCore.Mvc).
+2021-01-08 07:51:02.508 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.LoginByLogin
+2021-01-08 07:51:02.518 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.Logout
+2021-01-08 07:51:02.519 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.CheckPasswordByLogin
+2021-01-08 07:51:02.520 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.RegisterAsyncByInput
+2021-01-08 07:51:02.522 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.SendPasswordResetCodeAsyncByInput
+2021-01-08 07:51:02.523 +01:00 [DBG] ActionApiDescriptionModel.Create: Account.ResetPasswordAsyncByInput
+2021-01-08 07:51:02.523 +01:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByNameAsyncByName
+2021-01-08 07:51:02.524 +01:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByIdAsyncById
+2021-01-08 07:51:02.524 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.GetAllListAsync
+2021-01-08 07:51:02.524 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.GetListAsyncByInput
+2021-01-08 07:51:02.524 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.GetAsyncById
+2021-01-08 07:51:02.525 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.CreateAsyncByInput
+2021-01-08 07:51:02.525 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.UpdateAsyncByIdAndInput
+2021-01-08 07:51:02.525 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityRole.DeleteAsyncById
+2021-01-08 07:51:02.525 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.GetAsyncById
+2021-01-08 07:51:02.526 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.GetListAsyncByInput
+2021-01-08 07:51:02.526 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.CreateAsyncByInput
+2021-01-08 07:51:02.526 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.UpdateAsyncByIdAndInput
+2021-01-08 07:51:02.527 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.DeleteAsyncById
+2021-01-08 07:51:02.527 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.GetRolesAsyncById
+2021-01-08 07:51:02.527 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.GetAssignableRolesAsync
+2021-01-08 07:51:02.527 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.UpdateRolesAsyncByIdAndInput
+2021-01-08 07:51:02.528 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.FindByUsernameAsyncByUserName
+2021-01-08 07:51:02.528 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUser.FindByEmailAsyncByEmail
+2021-01-08 07:51:02.528 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUserLookup.FindByIdAsyncById
+2021-01-08 07:51:02.528 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUserLookup.FindByUserNameAsyncByUserName
+2021-01-08 07:51:02.528 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUserLookup.SearchAsyncByInput
+2021-01-08 07:51:02.529 +01:00 [DBG] ActionApiDescriptionModel.Create: IdentityUserLookup.GetCountAsyncByInput
+2021-01-08 07:51:02.529 +01:00 [DBG] ActionApiDescriptionModel.Create: Profile.GetAsync
+2021-01-08 07:51:02.529 +01:00 [DBG] ActionApiDescriptionModel.Create: Profile.UpdateAsyncByInput
+2021-01-08 07:51:02.529 +01:00 [DBG] ActionApiDescriptionModel.Create: Profile.ChangePasswordAsyncByInput
+2021-01-08 07:51:02.530 +01:00 [DBG] ActionApiDescriptionModel.Create: Permissions.GetAsyncByProviderNameAndProviderKey
+2021-01-08 07:51:02.530 +01:00 [DBG] ActionApiDescriptionModel.Create: Permissions.UpdateAsyncByProviderNameAndProviderKeyAndInput
+2021-01-08 07:51:02.530 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.GetAsyncById
+2021-01-08 07:51:02.530 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.GetListAsyncByInput
+2021-01-08 07:51:02.531 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.CreateAsyncByInput
+2021-01-08 07:51:02.531 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.UpdateAsyncByIdAndInput
+2021-01-08 07:51:02.531 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.DeleteAsyncById
+2021-01-08 07:51:02.531 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.GetDefaultConnectionStringAsyncById
+2021-01-08 07:51:02.532 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.UpdateDefaultConnectionStringAsyncByIdAndDefaultConnectionString
+2021-01-08 07:51:02.532 +01:00 [DBG] ActionApiDescriptionModel.Create: Tenant.DeleteDefaultConnectionStringAsyncById
+2021-01-08 07:51:02.532 +01:00 [DBG] ActionApiDescriptionModel.Create: Features.GetAsyncByProviderNameAndProviderKey
+2021-01-08 07:51:02.533 +01:00 [DBG] ActionApiDescriptionModel.Create: Features.UpdateAsyncByProviderNameAndProviderKeyAndInput
+2021-01-08 07:51:02.533 +01:00 [DBG] ActionApiDescriptionModel.Create: AbpApplicationConfiguration.GetAsync
+2021-01-08 07:51:02.533 +01:00 [DBG] ActionApiDescriptionModel.Create: AbpApiDefinition.GetByModel
+2021-01-08 07:51:02.542 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.Modeling.ApplicationApiDescriptionModel'.
+2021-01-08 07:51:02.579 +01:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController.Get (Volo.Abp.AspNetCore.Mvc) in 238.1214ms
+2021-01-08 07:51:02.579 +01:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApiExploring.AbpApiDefinitionController.Get (Volo.Abp.AspNetCore.Mvc)'
+2021-01-08 07:51:02.579 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/api/abp/api-definition - - - 200 - application/json;+charset=utf-8 281.3653ms
+2021-01-08 07:51:02.871 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/.well-known/openid-configuration - -
+2021-01-08 07:51:02.872 +01:00 [INF] CORS policy execution successful.
+2021-01-08 07:51:02.876 +01:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:44307
+2021-01-08 07:51:03.341 +01:00 [DBG] CorsPolicyService allowed origin: https://localhost:44307
+2021-01-08 07:51:03.342 +01:00 [INF] CORS policy execution successful.
+2021-01-08 07:51:03.343 +01:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2021-01-08 07:51:04.511 +01:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2021-01-08 07:51:04.512 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2021-01-08 07:51:04.514 +01:00 [DBG] Start discovery request
+2021-01-08 07:51:05.262 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/.well-known/openid-configuration - - - 200 - application/json;+charset=UTF-8 2390.8027ms
+2021-01-08 07:51:05.273 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/connect/authorize?client_id=IssueTracking_Blazor&redirect_uri=https%3A%2F%2Flocalhost%3A44307%2Fauthentication%2Flogin-callback&response_type=code&scope=openid%20profile%20IssueTracking%20role%20email%20phone&state=2ee6c7987f9e47a2a851ff78b434f1be&code_challenge=AVN4zVYqyRqGJtiuTIgzjWeu4irIZASdYpqqYyb8DUk&code_challenge_method=S256&prompt=none&response_mode=query - -
+2021-01-08 07:51:05.279 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2021-01-08 07:51:05.292 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2021-01-08 07:51:05.292 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2021-01-08 07:51:05.294 +01:00 [DBG] Start authorize request
+2021-01-08 07:51:05.299 +01:00 [DBG] No user present in authorize request
+2021-01-08 07:51:05.314 +01:00 [DBG] Start authorize request protocol validation
+2021-01-08 07:51:05.820 +01:00 [DBG] client configuration validation for client IssueTracking_Blazor succeeded.
+2021-01-08 07:51:05.833 +01:00 [DBG] Checking for PKCE parameters
+2021-01-08 07:51:06.094 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2021-01-08 07:51:06.109 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","AllowedRedirectUris":["https://localhost:44307/authentication/login-callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile IssueTracking role email phone","State":"2ee6c7987f9e47a2a851ff78b434f1be","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"IssueTracking_Blazor","redirect_uri":"https://localhost:44307/authentication/login-callback","response_type":"code","scope":"openid profile IssueTracking role email phone","state":"2ee6c7987f9e47a2a851ff78b434f1be","code_challenge":"AVN4zVYqyRqGJtiuTIgzjWeu4irIZASdYpqqYyb8DUk","code_challenge_method":"S256","prompt":"none","response_mode":"query"},"$type":"AuthorizeRequestValidationLog"}
+2021-01-08 07:51:06.114 +01:00 [INF] Showing login: User is not authenticated
+2021-01-08 07:51:06.114 +01:00 [INF] Changing response to LoginRequired: prompt=none was requested
+2021-01-08 07:51:06.116 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","AllowedRedirectUris":["https://localhost:44307/authentication/login-callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile IssueTracking role email phone","State":"2ee6c7987f9e47a2a851ff78b434f1be","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"IssueTracking_Blazor","redirect_uri":"https://localhost:44307/authentication/login-callback","response_type":"code","scope":"openid profile IssueTracking role email phone","state":"2ee6c7987f9e47a2a851ff78b434f1be","code_challenge":"AVN4zVYqyRqGJtiuTIgzjWeu4irIZASdYpqqYyb8DUk","code_challenge_method":"S256","prompt":"none","response_mode":"query"},"$type":"AuthorizeRequestValidationLog"}
+2021-01-08 07:51:06.123 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile IssueTracking role email phone","GrantType":"authorization_code","Error":"login_required","ErrorDescription":null,"Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HM5JK6J6C7OM:00000013","TimeStamp":"2021-01-08T06:51:06.0000000Z","ProcessId":5676,"LocalIpAddress":"::1:44349","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2021-01-08 07:51:06.134 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/connect/authorize?client_id=IssueTracking_Blazor&redirect_uri=https%3A%2F%2Flocalhost%3A44307%2Fauthentication%2Flogin-callback&response_type=code&scope=openid%20profile%20IssueTracking%20role%20email%20phone&state=2ee6c7987f9e47a2a851ff78b434f1be&code_challenge=AVN4zVYqyRqGJtiuTIgzjWeu4irIZASdYpqqYyb8DUk&code_challenge_method=S256&prompt=none&response_mode=query - - - 302 0 - 860.9776ms
+2021-01-08 07:51:06.537 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44349/api/abp/application-configuration?api-version=1.0 - -
+2021-01-08 07:51:06.543 +01:00 [INF] CORS policy execution successful.
+2021-01-08 07:51:06.543 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44349/api/abp/application-configuration?api-version=1.0 - - - 204 - - 6.4104ms
+2021-01-08 07:51:06.546 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/api/abp/application-configuration?api-version=1.0 - -
+2021-01-08 07:51:06.547 +01:00 [INF] CORS policy execution successful.
+2021-01-08 07:51:06.549 +01:00 [DBG] CORS request made for path: /api/abp/application-configuration from origin: https://localhost:44307 but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2021-01-08 07:51:06.549 +01:00 [INF] No CORS policy found for the specified request.
+2021-01-08 07:51:06.552 +01:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController.GetAsync (Volo.Abp.AspNetCore.Mvc)'
+2021-01-08 07:51:06.561 +01:00 [INF] Route matched with {area = "abp", action = "Get", controller = "AbpApplicationConfiguration", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto] GetAsync() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController (Volo.Abp.AspNetCore.Mvc).
+2021-01-08 07:51:06.642 +01:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2021-01-08 07:51:07.677 +01:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2021-01-08 07:51:07.687 +01:00 [DBG] Added 0 entity changes to the current audit log
+2021-01-08 07:51:07.695 +01:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.ApplicationConfigurationDto'.
+2021-01-08 07:51:07.723 +01:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController.GetAsync (Volo.Abp.AspNetCore.Mvc) in 1162.5986ms
+2021-01-08 07:51:07.724 +01:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationController.GetAsync (Volo.Abp.AspNetCore.Mvc)'
+2021-01-08 07:51:07.726 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/api/abp/application-configuration?api-version=1.0 - - - 200 - application/json;+charset=utf-8 1180.0167ms
+2021-01-08 07:51:08.066 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44349/connect/authorize?client_id=IssueTracking_Blazor&redirect_uri=https%3A%2F%2Flocalhost%3A44307%2Fauthentication%2Flogin-callback&response_type=code&scope=openid%20profile%20IssueTracking%20role%20email%20phone&state=d241a0e000a24e7690b3a0e0699090eb&code_challenge=Ha6Buu4g1Vjp4rvU619pcKR_XiAWk57UKshZ5iikVUE&code_challenge_method=S256&prompt=none&response_mode=query - -
+2021-01-08 07:51:08.070 +01:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2021-01-08 07:51:08.079 +01:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2021-01-08 07:51:08.079 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2021-01-08 07:51:08.079 +01:00 [DBG] Start authorize request
+2021-01-08 07:51:08.079 +01:00 [DBG] No user present in authorize request
+2021-01-08 07:51:08.079 +01:00 [DBG] Start authorize request protocol validation
+2021-01-08 07:51:08.106 +01:00 [DBG] client configuration validation for client IssueTracking_Blazor succeeded.
+2021-01-08 07:51:08.106 +01:00 [DBG] Checking for PKCE parameters
+2021-01-08 07:51:08.136 +01:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2021-01-08 07:51:08.136 +01:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","AllowedRedirectUris":["https://localhost:44307/authentication/login-callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile IssueTracking role email phone","State":"d241a0e000a24e7690b3a0e0699090eb","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"IssueTracking_Blazor","redirect_uri":"https://localhost:44307/authentication/login-callback","response_type":"code","scope":"openid profile IssueTracking role email phone","state":"d241a0e000a24e7690b3a0e0699090eb","code_challenge":"Ha6Buu4g1Vjp4rvU619pcKR_XiAWk57UKshZ5iikVUE","code_challenge_method":"S256","prompt":"none","response_mode":"query"},"$type":"AuthorizeRequestValidationLog"}
+2021-01-08 07:51:08.137 +01:00 [INF] Showing login: User is not authenticated
+2021-01-08 07:51:08.137 +01:00 [INF] Changing response to LoginRequired: prompt=none was requested
+2021-01-08 07:51:08.137 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","AllowedRedirectUris":["https://localhost:44307/authentication/login-callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile IssueTracking role email phone","State":"d241a0e000a24e7690b3a0e0699090eb","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"none","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"IssueTracking_Blazor","redirect_uri":"https://localhost:44307/authentication/login-callback","response_type":"code","scope":"openid profile IssueTracking role email phone","state":"d241a0e000a24e7690b3a0e0699090eb","code_challenge":"Ha6Buu4g1Vjp4rvU619pcKR_XiAWk57UKshZ5iikVUE","code_challenge_method":"S256","prompt":"none","response_mode":"query"},"$type":"AuthorizeRequestValidationLog"}
+2021-01-08 07:51:08.137 +01:00 [INF] {"ClientId":"IssueTracking_Blazor","ClientName":"IssueTracking_Blazor","RedirectUri":"https://localhost:44307/authentication/login-callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile IssueTracking role email phone","GrantType":"authorization_code","Error":"login_required","ErrorDescription":null,"Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HM5JK6J6C7OM:00000015","TimeStamp":"2021-01-08T06:51:08.0000000Z","ProcessId":5676,"LocalIpAddress":"::1:44349","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2021-01-08 07:51:08.139 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44349/connect/authorize?client_id=IssueTracking_Blazor&redirect_uri=https%3A%2F%2Flocalhost%3A44307%2Fauthentication%2Flogin-callback&response_type=code&scope=openid%20profile%20IssueTracking%20role%20email%20phone&state=d241a0e000a24e7690b3a0e0699090eb&code_challenge=Ha6Buu4g1Vjp4rvU619pcKR_XiAWk57UKshZ5iikVUE&code_challenge_method=S256&prompt=none&response_mode=query - - - 302 0 - 72.9856ms
