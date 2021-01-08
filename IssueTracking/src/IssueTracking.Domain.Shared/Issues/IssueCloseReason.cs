@@ -3,7 +3,9 @@ namespace IssueTracking.Domain.Shared.Issues
      public enum IssueCloseReason
     {
         DueDatePassed,
-        NotRelevant,
-        SomeOtherReason
+        Irrelevant,
+        Solved,
+        OutOfScope,
+        NoBandWith
     }
 }

@@ -7,7 +7,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace IssueTracking.Domain
 {
-    public class IssueDataSeederContributor : IDataSeedContributor, ITransientDependency
+    public class IssueDataSeederContributor : IssueDataSeederContributorBase, IDataSeedContributor, ITransientDependency
     {
         private readonly IRepository<Issue, Guid> _issueRepository;
 
@@ -19,25 +19,20 @@ namespace IssueTracking.Domain
         {
             if (await _issueRepository.GetCountAsync() <= 0)
             {
-                await _issueRepository.InsertAsync(
-                    new Issue
-                    {
-                        Title = "Issue1 Title",
-                        Text = "Issue1 Text",
-                        RepositoryId = Guid.NewGuid()
-                    },
-                    autoSave: true
-                );
-
-                await _issueRepository.InsertAsync(
+                foreach (var issue in DataSeederIssues)
+                {
+                     await _issueRepository.InsertAsync(
                      new Issue
                      {
-                         Title = "Issue2 Title",
-                         Text = "Issue2 Text",
-                         RepositoryId = Guid.NewGuid()
+                         Title = issue.Title,
+                         Text = issue.Text,
+                         RepositoryId = Guid.NewGuid(),
+                         IsClosed = issue.IsClosed,
+                         CloseReason = issue.CloseReason
                      },
                      autoSave: true
-                 );
+                 ); 
+                }
             }
         }
     }
