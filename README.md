@@ -6,7 +6,7 @@
 
 This is a **free hands-on DDD workshop** wherein the **main concepts of Domain Driven Design** will be explained.
 
-The **main goal** of this workshop is to provide students/teachers/developers/architects with **a free practical guide to study/teach DDD concepts**. It is based upon the [Implementing Domain Driven Design](https://docs.abp.io/en/abp/latest/Domain-Driven-Design-Implementation-Guide) guide you can find in the **ABP Framework Documents**.
+The **main goal** of this workshop is to provide students/teachers/developers/architects with **a free practical guide to study/teach DDD concepts**. It is based on the [Implementing Domain Driven Design](https://docs.abp.io/en/abp/latest/Domain-Driven-Design-Implementation-Guide) guide you can find in the **ABP Framework Documents**.
 
 In this **step-by-step workshop** you will create an **IssueTracking application** following Domain Driven Design techniques.
 
