@@ -1,66 +1,34 @@
 # Get Started
 
-The easiest way to get started is to [clone this repository](#clone-this-repository) into your computer, another way is to [start from scratch](#start-from-scratch). It's up to you!
+The easiest way to get started is to [clone this repository](#clone-this-repository) into your computer, another way is to [start from scratch](start-from-scratch.md#start-from-scratch). It's up to you!
 
 ## Clone this repository
 
+### Requirements
 
-## Start from scratch
-
-
-
-
-
-
-## Requirements
-
-The following tools are needed to follow along.
-
-- ABP CLI
 - .NET 5.0 SDK
 - Microsoft SQL Server Express
 - Visual Studio Code (Visual Studio 2019 16.8.0+ or another compatible IDE)
-- [ABPx](https://marketplace.visualstudio.com/items?itemName=BartVanHoey.abpx) - VsCode Extension with code snippets to speed up ABP Blazor development
-
-## Initial Workshop Setup
-
-### Creating a new Application
-
-- Open a command prompt and install or update the **ABP CLI**
-
-```bash
-dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
-```
-
-- Use the following ABP CLI command to create a **new Blazor ABP application**
-
-```bash
-abp new IssueTracking -u blazor
-```
-
-### Open the Application in Visual Studio Code and install ABPx VsCode extension
-
-Although you don't have to [install ABPx](https://marketplace.visualstudio.com/items?itemName=BartVanHoey.abpx), it will help you to write code faster in an ABP Blazor application as it provides you with a lot of useful code snippets.
-
-- Open the solution in VsCode. Goto the Extensions tab and install the **ABPx extension** first.
   
-- When opening an ABP application, VsCode will show 2 notifications (if not, hit CTRL+SHIFT+P to Restart OmniSharp).
+### Clone this repository into your computer
 
-    ![Unresolved dependencies and Required assets](docs/part1/../../images/UnResolvedDependenciesAndRequiredAssets.jpg)
+- Open a command prompt and run the command below to clone the repo into your computer
 
-- Click **Yes** to add the *required assets to build and debug* your application. Select the *IssueTracking.HttpApi.Host* project in the *Select the project to launch* dropdown.
+```bash
+    git clone https://github.com/bartvanhoey/DomainDrivenDesignWorkshop.git
+```
 
-- Click on the **Restore** button to restore the *unresolved dependencies*.
+### Restore Unresolved dependencies
 
-- Replace the content of *launch.json* by copying [this](https://raw.githubusercontent.com/bartvanhoey/WorkshopDDD/main/.vscode/launch.json) file or hit **xLaunchJson** (ABPx code snippet that inserts launch configurations needed).
+Open the cloned repository in VsCode and click on the **Restore** button to restore the *unresolved dependencies* when a _notification_ pops up in VsCode.
 
-- Replace the content of *tasks.json* by copying [this](https://raw.githubusercontent.com/bartvanhoey/WorkshopDDD/main/.vscode/tasks.json) file or hit **xTasksJson** (ABPx code snippet that inserts dotnet tasks needed).
+ ![Unresolved dependencies](images/UnResolvedDependencies.jpg)
 
 ### Apply migrations and seed initial data
 
-- Open a *Command Prompt* in the *IssueTracking.DbMigrator* project and hit `dotnet run` to apply the migrations and seed the initial data.
+- Select *DbMigratorDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.DbMigrator* project. Running this project will apply the migrations and seed the initial data.
   
-### Run and Stop the ABP application
+#### Run and Stop the ABP application
 
 - Select *ApiDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.HttpApi.Host* project.
 - Navigate to the *applicationUrl* specified in the *launchSettings.json* file of the *IssueTracking.HttpApi.Host* project. You should get the **SwaggerUI** window.
@@ -68,10 +36,10 @@ Although you don't have to [install ABPx](https://marketplace.visualstudio.com/i
     ![SwaggerUI window](images/SwaggerUI.jpg)
 
 - Open a command prompt in the *IssueTracking.Blazor* folder and enter `dotnet watch run` below to run the Blazor UI project.
-- Navigate to the *applicationUrl* specified in the *launchSettings.json* file of the *IssueTracking.Blazor* project. You should get the **ABP.IO Welcome window**.
+- Navigate to the *applicationUrl* specified in the *launchSettings.json* file of the *IssueTracking.Blazor* project. You should get the **Domain Driven Design Workshop** window.
 
-    ![Abp Welcome window](images/AbpIoWelcomeWindow.jpg)
+    ![Abp Welcome window](images/DomainDrivenDesignWelcomeWindow.jpg)
 
 - Stop both the API (by pressing SHIFT+F5) and the Blazor project (by pressing `CTRL+C`).
 
-[Home](../../README.md) | [Part 2: What Is Domain Driven Design](../part2/part2-What-Is-Domain-Driven-Design.md)
+[Home](../../README.md) | [Part 1: What Is Domain Driven Design](../part1/part1-What-Is-Domain-Driven-Design.md)
