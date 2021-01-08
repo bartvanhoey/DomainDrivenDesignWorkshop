@@ -1,6 +1,6 @@
 # Domain Driven Design Workshop
 
-![.NET](https://github.com/bartvanhoey/WorkshopDDD/workflows/.NET/badge.svg)
+![.NET](https://github.com/bartvanhoey/DomainDrivenDesignWorkshop/workflows/.NET/badge.svg?branch=main)
 
 ## Introduction
 
