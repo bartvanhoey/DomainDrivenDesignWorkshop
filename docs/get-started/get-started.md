@@ -1,4 +1,16 @@
-# Part 1: Requirements and Initial Workshop Setup
+# Get Started
+
+The easiest way to get started is to [clone this repository](#clone-this-repository) into your computer, another way is to [start from scratch](#start-from-scratch). It's up to you!
+
+## Clone this repository
+
+
+## Start from scratch
+
+
+
+
+
 
 ## Requirements
 

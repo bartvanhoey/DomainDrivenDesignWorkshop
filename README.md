@@ -33,7 +33,7 @@ The goals of this Workshop are to
 
 ### Start Domain Driven Design Workshop
 
-[Click here](docs/part1/part1-Requirements-And-Initial-Workshop-Setup.md) to **start the free DDD Workshop**. Enjoy and have fun!
+[Click here](docs/get-started/get-started.md) to **start the free DDD Workshop**. Enjoy and have fun!
 
 ### Source Code
 
