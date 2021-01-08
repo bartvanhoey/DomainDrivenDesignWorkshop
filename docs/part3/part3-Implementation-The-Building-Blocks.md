@@ -142,7 +142,7 @@ In practical;
 
 ##### Primary Keys of the Aggregate Roots / Entities
 
-* An aggregate root typically has a single `Id` property for its identifier (Primark Key: PK). We prefer `Guid` as the PK of an aggregate root entity (see the [Guid Genertation document](Guid-Generation.md) to learn why).
+* An aggregate root typically has a single `Id` property for its identifier (Primary Key: PK). We prefer `Guid` as the PK of an aggregate root entity (see the [Guid Generation document](Guid-Generation.md) to learn why).
 * An entity (that's not the aggregate root) in an aggregate can use a composite primary key.
 
 For example, see the Aggregate root and the Entity below:
@@ -212,7 +212,7 @@ namespace IssueTracking.Issues
 * The constructor **validates** the inputs (`Check.NotNullOrWhiteSpace(...)` throws `ArgumentException` if the given value is empty).
 * It **initializes the sub-collections**, so you don't get a null reference exception when you try to use the `Labels` collection after creating the `Issue`.
 * The constructor also **takes the `id`** and passes to the `base` class. We don't generate `Guid`s inside the constructor to be able to delegate this responsibility to another service (see [Guid Generation](Guid-Generation.md)).
-* Private **empty constructor** is necessary for ORMs. We made it `private` to prevent accidently using it in our own code.
+* Private **empty constructor** is necessary for ORMs. We made it `private` to prevent accidentally using it in our own code.
 
 > See the [Entities](Entities.md) document to learn more about creating entities with the ABP Framework.
 
@@ -969,7 +969,7 @@ A [DTO](Data-Transfer-Objects.md) is a simple object that is used to transfer st
 * Should not contain any **business logic**.
 * **Never** inherit from or reference to **entities**.
 
-**Input DTOs** (those are passed to the Application Service methods) have different natures than **Output DTOs** (those are returned from the Application Service methods). So, they will be treated differently. 
+**Input DTOs** (those are passed to the Application Service methods) have different natures than **Output DTOs** (those are returned from the Application Service methods). So, they will be treated differently.
 
 #### Input DTO Best Practices
 
@@ -1090,7 +1090,7 @@ namespace IssueTracking.Users
 ABP Framework automatically validates input DTOs, throws `AbpValidationException` and returns HTTP Status `400` to the client in case of an invalid input.
 
 > Some developers think it is better to separate the validation rules and DTO classes. We think the declarative (Data Annotation) approach is practical and useful and doesn't cause any design problem. However, ABP also supports [FluentValidation integration](FluentValidation.md) if you prefer the other approach.
-
+>
 > See the [Validation document](Validation.md) for all validation options.
 
 #### Output DTO Best Practices
