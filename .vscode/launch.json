@@ -8,7 +8,7 @@
           "name": "Blazor",
           "type": "blazorwasm",
           "request": "launch",
-          "cwd": "${workspaceFolder}/application/src/IssueTracking.Blazor",
+          "cwd": "${workspaceFolder}/IssueTracking/src/IssueTracking.Blazor",
           "url": "https://localhost:44307"
       },
       {
@@ -17,9 +17,9 @@
           "request": "launch",
           "preLaunchTask": "buildApi",
           // If you have changed target frameworks, make sure to update the program path.
-          "program": "${workspaceFolder}/application/src/IssueTracking.HttpApi.Host/bin/Debug/net5.0/IssueTracking.HttpApi.Host.dll",
+          "program": "${workspaceFolder}/IssueTracking/src/IssueTracking.HttpApi.Host/bin/Debug/net5.0/IssueTracking.HttpApi.Host.dll",
           "args": [],
-          "cwd": "${workspaceFolder}/application/src/IssueTracking.HttpApi.Host",
+          "cwd": "${workspaceFolder}/IssueTracking/src/IssueTracking.HttpApi.Host",
           "stopAtEntry": false,
           // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
           "serverReadyAction": {
@@ -39,9 +39,9 @@
           "request": "launch",
           "preLaunchTask": "buildApi",
           // If you have changed target frameworks, make sure to update the program path.
-          "program": "${workspaceFolder}/application/src/IssueTracking.HttpApi.Host/bin/Debug/net5.0/IssueTracking.HttpApi.Host.dll",
+          "program": "${workspaceFolder}/IssueTracking/src/IssueTracking.HttpApi.Host/bin/Debug/net5.0/IssueTracking.HttpApi.Host.dll",
           "args": [],
-          "cwd": "${workspaceFolder}/application/src/IssueTracking.HttpApi.Host",
+          "cwd": "${workspaceFolder}/IssueTracking/src/IssueTracking.HttpApi.Host",
           "stopAtEntry": false,
           // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
           "serverReadyAction": {
@@ -61,9 +61,9 @@
           "request": "launch",
           "preLaunchTask": "buildDbMigrator",
           // If you have changed target frameworks, make sure to update the program path.
-          "program": "${workspaceFolder}/application/src/IssueTracking.DbMigrator/bin/Debug/net5.0/IssueTracking.DbMigrator.dll",
+          "program": "${workspaceFolder}/IssueTracking/src/IssueTracking.DbMigrator/bin/Debug/net5.0/IssueTracking.DbMigrator.dll",
           "args": [],
-          "cwd": "${workspaceFolder}/application/src/IssueTracking.DbMigrator",
+          "cwd": "${workspaceFolder}/IssueTracking/src/IssueTracking.DbMigrator",
           "stopAtEntry": false,
           // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
           "serverReadyAction": {
@@ -83,9 +83,9 @@
           "request": "launch",
           "preLaunchTask": "buildDbMigrator",
           // If you have changed target frameworks, make sure to update the program path.
-          "program": "${workspaceFolder}/application/src/IssueTracking.DbMigrator/bin/Debug/net5.0/IssueTracking.DbMigrator.dll",
+          "program": "${workspaceFolder}/IssueTracking/src/IssueTracking.DbMigrator/bin/Debug/net5.0/IssueTracking.DbMigrator.dll",
           "args": [],
-          "cwd": "${workspaceFolder}/application/src/IssueTracking.DbMigrator",
+          "cwd": "${workspaceFolder}/IssueTracking/src/IssueTracking.DbMigrator",
           "stopAtEntry": false,
           "env": {
               "ASPNETCORE_ENVIRONMENT": "Staging"
