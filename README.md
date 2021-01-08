@@ -22,13 +22,13 @@ When you have finished this workshop you will have **a good understanding of Dom
 
 ### Goals
 
-The goals of this Workshop are to
+<!-- The goals of this Workshop are to
 
 * **Introduce and explain** the DDD architecture, concepts, principles, patterns and building blocks.
 * Explain the **layered architecture** & solution structure offered by the ABP Framework.
 * Introduce **explicit rules** to implement DDD patterns and best practices by giving **concrete examples**.
 * Show what **ABP Framework provides** you as the infrastructure for implementing DDD in a proper way.
-* And finally, provide **suggestions** based on software development **best practices** and experiences to create a **maintainable codebase**.
+* And finally, provide **suggestions** based on software development **best practices** and experiences to create a **maintainable codebase**. -->
 
 ### Start Domain Driven Design Workshop
 
