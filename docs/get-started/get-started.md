@@ -1,6 +1,6 @@
 # Get Started
 
-The easiest way to get started is to [clone this repository](#clone-this-repository) into your computer, another way is to [start from scratch](start-from-scratch.md#start-from-scratch). It's up to you!
+The easiest way to get started is to [clone this repository](#clone-this-repository) into your computer.
 
 ## Clone this repository
 

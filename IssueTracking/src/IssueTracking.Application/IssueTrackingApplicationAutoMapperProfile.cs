@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using IssueTracking.Application.Contracts.Issues;
+using IssueTracking.Domain.Issues;
 
 namespace IssueTracking
 {
@@ -9,6 +11,8 @@ namespace IssueTracking
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+
+             CreateMap<Issue,IssueDto>();
         }
     }
 }

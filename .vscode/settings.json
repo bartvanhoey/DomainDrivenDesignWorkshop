@@ -22,6 +22,7 @@
         "queryable",
         "serializability",
         "serializable",
+        "serilog",
         "sharp",
         "user",
         "validatable",
