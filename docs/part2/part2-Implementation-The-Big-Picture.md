@@ -26,13 +26,15 @@ The Application Layer is also split into two projects;
 
 #### The Presentation Layer
 
-* `IssueTracking.Web` is an ASP.NET Core MVC / Razor Pages application for this example. This is the only executable application that serves the application and the APIs.
+* `IssueTracking.Blazor` is a Blazor application for this example. This is the only executable application that serves the application and the APIs.
 
-> ABP Framework also supports different kind of UI frameworks including [Angular](UI/Angular/Quick-Start.md) and [Blazor](UI/Blazor/Overall.md). In these cases, the `IssueTracking.Web` doesn't exist in the solution. Instead, an `IssueTracking.HttpApi.Host` application will be in the solution to serve the HTTP APIs as a standalone endpoint to be consumed by the UI applications via HTTP API calls.
+> ABP Framework also supports different kind of UI frameworks including [Angular](UI/Angular/Quick-Start.md) and [ASP.NET Core MVC / Razor Pages](UI/Blazor/Overall.md). In these cases, the `IssueTracking.Blazor` doesn't exist in the solution.
 
 #### The Remote Service Layer
 
 * `IssueTracking.HttpApi` project contains HTTP APIs defined by the solution. It typically contains MVC `Controller`s and related models, if available. So, you write your HTTP APIs in this project.
+
+* `IssueTracking.HttpApi.Host` project will serve the HTTP APIs as a standalone endpoint to be consumed by the Blazor UI application via HTTP API calls.
 
 > Most of the time, API Controllers are just wrappers around the Application Services to expose them to the remote clients. Since ABP Framework's [Automatic API Controller System](API/Auto-API-Controllers.md) **automatically configures and exposes your Application Services as API Controllers**, you typically don't create Controllers in this project. However, the startup solution includes it for the cases you need to manually create API controllers.
 
@@ -70,32 +72,9 @@ The projects have been explained before. Now, we can explain the reasons of the 
 * `Application.Contracts` depends on the `Domain.Shared`. In this way, you can reuse these types in the DTOs. For example, the same `IssueType` enum in the `Domain.Shared` can be used by a `CreateIssueDto` as a property.
 * `Application` depends on the `Application.Contracts` since it implements the Application Service interfaces and uses the DTOs inside it. It also depends on the `Domain` since the Application Services are implemented using the Domain Objects defined inside it.
 * `EntityFrameworkCore` depends on the `Domain` since it maps the Domain Objects (entities and value types) to database tables (as it is an ORM) and implements the repository interfaces defined in the `Domain`.
-* `HttpApi` depends on the `Application.Contacts` since the Controllers inside it inject and use the Application Service interfaces as explained before.
-* `HttpApi.Client` depends on the `Application.Contacts` since it can consume the Application Services as explained before.
-* `Web` depends on the `HttpApi` since it serves the HTTP APIs defined inside it. Also, in this way, it indirectly depends on the `Application.Contacts` project to consume the Application Services in the Pages/Components.
-
-#### Dashed Dependencies
-
-When you investigate the solution, you will see two more dependencies shown with the dashed lines in the figure above. `Web` project depends on the `Application` and `EntityFrameworkCore` projects which *theoretically* should not be like that but actually it is.
-
-This is because the `Web` is the final project that runs and hosts the application and the **application needs the implementations of the Application Services and the Repositories** while running.
-
-This design decision potentially allows you to use Entities and EF Core objects in the Presentation Layer which **should be strictly avoided**. However, we find the alternative designs over complicated. Here, two of the alternatives if you want to remove this dependency;
-
-* Convert `Web` project to a razor class library and create a new project, like `Web.Host`, that depends on the `Web`, `Application` and `EntityFrameworkCore` projects and hosts the application. You don't write any UI code here, but use **only for hosting**.
-* Remove `Application` and `EntityFrameworkCore` dependencies from the `Web` project and load their assemblies on application initialization. You can use ABP's [Plug-In Modules](PlugIn-Modules.md) system for that purpose.
-
-### Execution Flow a DDD Based Application
-
-The figure below shows a typical request flow for a web application that has been developed based on DDD patterns.
-
-![](images/domain-driven-design-web-request-flow.png)
-
-* The request typically begins with a user interaction on the UI (a *use case*) that causes an HTTP request to the server.
-* An MVC Controller or a Razor Page Handler in the Presentation Layer (or in the Distributed Services Layer) handles the request and can perform some cross cutting concerns in this stage ([Authorization](Authorization.md), [Validation](Validation.md), [Exception Handling](Exception-Handling.md), etc.). A Controller/Page injects the related Application Service interface and calls its method(s) by sending and receiving DTOs.
-* The Application Service uses the Domain Objects (Entities, Repository interfaces, Domain Services, etc.) to implement the *use case*. Application Layer implements some cross cutting concerns (Authorization, Validation, etc.). An Application Service method should be a [Unit Of Work](Unit-Of-Work.md). That means it should be atomic.
-
-Most of the cross cutting concerns are **automatically and conventionally implemented by the ABP Framework** and you typically don't need to write code for them.
+* `HttpApi` depends on the `Application.Contracts` since the Controllers inside it inject and use the Application Service interfaces as explained before.
+* `HttpApi.Client` depends on the `Application.Contracts` since it can consume the Application Services as explained before.
+* `HttpApi.Host` depends on the `HttpApi` since it serves the HTTP APIs defined inside it. Also, in this way, it indirectly depends on the `Application.Contracts` project to consume the Application Services in the Pages/Components.
 
 ### Common Principles
 
@@ -134,4 +113,4 @@ DDD focuses on how the domain objects **changes and interactions**; How to creat
 
 DDD **ignores reporting** and mass querying. That doesn't mean they are not important. If your application doesn't have fancy dashboards and reports, who would use it? However, reporting is another topic. You typically want to use the full power of the SQL Server or even use a separate data source (like ElasticSearch) for reporting purpose. You will write optimized queries, create indexes and even stored procedures(!). You are free to do all these things as long as you don't infect them into your business logic.
 
-[Previous](../part2/part2-What-Is-Domain-Driven-Design.md) | [Part 4: Implementation - The Building Blocks](../part4/part4-Implementation-The-Building-Blocks.md)
+[Previous](../part2/part2-What-Is-Domain-Driven-Design.md) | [Part 3: Implementation - The Building Blocks](../part3/part3-Implementation-The-Building-Blocks.md)

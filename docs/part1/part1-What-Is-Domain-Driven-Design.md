@@ -51,4 +51,4 @@ This section introduces the essential building blocks of the Domain & Applicatio
 * **Data Transfer Object (DTO)**: A [DTO](Data-Transfer-Objects.md) is a simple object without any business logic that is used to transfer state (data) between the Application and Presentation Layers.
 * **Unit of Work (UOW)**: A [Unit of Work](Unit-Of-Work.md) is an atomic work that should be done as a transaction unit. All the operations inside a UOW should be committed on success or rolled back on a failure.
 
-[Home](../../README.md) | [Get Started](../get-started/get-started.md) | [Part 3: Implementation - The Big Picture](../part3/part3-Implementation-The-Big-Picture.md)
+[Home](../../README.md) | [Get Started](../get-started/get-started.md) | [Part 2: Implementation - The Big Picture](../part2/part2-Implementation-The-Big-Picture.md)
