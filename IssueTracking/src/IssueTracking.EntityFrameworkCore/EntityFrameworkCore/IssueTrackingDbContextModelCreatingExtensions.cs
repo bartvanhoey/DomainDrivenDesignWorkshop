@@ -16,6 +16,8 @@ namespace IssueTracking.EntityFrameworkCore
                 b.ToTable(IssueTrackingConsts.DbTablePrefix + "Issues", IssueTrackingConsts.DbSchema);
                 b.ConfigureByConvention();
 
+              
+
             });
 
             builder.Entity<IssueLabel>(b =>
@@ -23,7 +25,13 @@ namespace IssueTracking.EntityFrameworkCore
                 b.HasKey(e => new { e.LabelId, e.IssueId }).IsClustered(false);
                 b.ToTable(IssueTrackingConsts.DbTablePrefix + "IssueLabels", IssueTrackingConsts.DbSchema);
                 b.ConfigureByConvention();
+            });
 
+            builder.Entity<Comment>(b =>
+            {
+                b.ToTable(IssueTrackingConsts.DbTablePrefix + "Comments", IssueTrackingConsts.DbSchema);
+                b.ConfigureByConvention();
+                  b.HasOne<Issue>().WithMany().HasForeignKey(x => x.IssueId).IsRequired();
             });
         }
     }

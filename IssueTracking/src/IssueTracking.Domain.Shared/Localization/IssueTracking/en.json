@@ -9,7 +9,15 @@
         "NewIssue": "New issue",
         "IssueDeletionConfirmationMessage": "Are you sure to delete the issue '{0}'?",
         "IssueTitle": "Title",
+        "IssueText": "Description",
         "IssueCloseReason": "Reason closed",
-        "IssueIsClosed": "Is closed?"
+        "IssueIsClosed": "Is closed?",  "Enum:BookType:0": "Undefined",
+        "Enum:IssueCloseReason:0": "Due date passed",
+        "Enum:IssueCloseReason:1": "Irrelevant",
+        "Enum:IssueCloseReason:2": "Solved",
+        "Enum:IssueCloseReason:3": "Out of scope",
+        "Enum:IssueCloseReason:4": "No bandwith",
+        "AddComment":"Add comment",
+        "IssueComment": "Comment"
     }
 }

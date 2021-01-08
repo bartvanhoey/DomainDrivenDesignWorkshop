@@ -27,6 +27,8 @@ namespace IssueTracking.EntityFrameworkCore
          * Also map them inside IssueTrackingDbContextModelCreatingExtensions.ConfigureIssueTracking
          */
         public DbSet<Issue> Issues { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        
         public IssueTrackingDbContext(DbContextOptions<IssueTrackingDbContext> options)
             : base(options)
         {

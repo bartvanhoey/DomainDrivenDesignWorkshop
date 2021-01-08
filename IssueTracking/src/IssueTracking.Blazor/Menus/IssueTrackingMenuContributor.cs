@@ -34,16 +34,6 @@ namespace IssueTracking.Blazor.Menus
         {
             var l = context.GetLocalizer<IssueTrackingResource>();
 
-            // context.Menu.Items.Insert(
-            //     0,
-            //     new ApplicationMenuItem(
-            //         IssueTrackingMenus.Home,
-            //         l["Menu:Home"],
-            //         "/",
-            //         icon: "fas fa-home"
-            //     )
-            // );
-
             var issueTrackingMenu = new ApplicationMenuItem("IssueTrackingMenu", l["Menu:IssueTracking"], icon: "fas fa-tasks");
             var issuesMenu = new ApplicationMenuItem("IssuesMenu", l["Menu:Issues"], url: "/issues");
             issueTrackingMenu.AddItem(issuesMenu);

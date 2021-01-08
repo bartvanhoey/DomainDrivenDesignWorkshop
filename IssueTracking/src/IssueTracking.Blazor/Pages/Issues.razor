@@ -50,17 +50,24 @@
                                     <DropdownItem Clicked="() => DeleteIssueAsync(context)">
                                         @L["Delete"]
                                     </DropdownItem>
+                                } 
+                                @if (CanUpdateIssue)
+                                {
+                                    <DropdownItem Clicked="() => OpenAddCommentModalAsync(context)">
+                                        @L["AddComment"]
+                                    </DropdownItem>
                                 }
                             </DropdownMenu>
                         </Dropdown>
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Title)" Caption="@L["IssueTitle"]"></DataGridColumn>
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]"></DataGridColumn>
                 <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]">
                     <DisplayTemplate>
                         @if (context.CloseReason != null)
                         {
-                            @L[$"Enum:EnumName:{(int)context.CloseReason}"]
+                            @L[$"Enum:IssueCloseReason:{(int)context.CloseReason}"]
                         }
                     </DisplayTemplate>
                 </DataGridColumn>
@@ -120,6 +127,30 @@
   </ModalContent>
 </Modal>
 
+<Modal @ref="AddCommentModal">
+  <ModalBackdrop />
+  <ModalContent IsCentered="true" Size="ModalSize.Default">
+      <ModalHeader>
+          <ModalTitle>@L["AddComment"]</ModalTitle>
+          <CloseButton Clicked="CloseAddCommentModalAsync" />
+      </ModalHeader>
+      <ModalBody>
+       <Row>
+         <Column ColumnSize="ColumnSize.Is12">
+            <Field>
+                <FieldLabel>@L["IssueComment"]</FieldLabel>
+                <MemoEdit @bind-text="@AddCommentEntity.Text" />
+            </Field>
+         </Column>
+       </Row>
+      </ModalBody>
+      <ModalFooter>
+          <Button Color="Color.Secondary" Clicked="CloseAddCommentModalAsync">@L["Cancel"]</Button>
+          <Button Color="Color.Primary" Clicked="AddCommentAsync">@L["Save"]</Button>
+      </ModalFooter>
+  </ModalContent>
+</Modal>
+
 @code
 {
   protected IReadOnlyList<IssueDto> IssueList { get; set; }
@@ -135,9 +166,11 @@
 
   protected Guid EditingIssueId { get; set; }
   protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
+  protected CreateCommentDto AddCommentEntity { get; set; } = new CreateCommentDto();
 
   protected Modal CreateModal { get; set; }
   protected Modal EditModal { get; set; }
+  protected Modal AddCommentModal { get; set; }
 
   protected override async Task OnInitializedAsync()
   {
@@ -186,6 +219,18 @@
       await GetIssuesAsync();
    }
 
+   protected async Task AddCommentAsync()
+   {
+     await Task.CompletedTask;
+   }
+
+    protected void OpenAddCommentModalAsync(IssueDto issue)
+   {
+      EditingIssueId = issue.Id;
+      AddCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
+      AddCommentModal.Show();
+   }
+
    protected async Task GetIssuesAsync()
    {
        var result = await IssueAppService.GetListAsync(
@@ -217,6 +262,11 @@
       protected void CloseEditModalAsync()
       {
          EditModal.Hide();
+      }
+
+        protected void CloseAddCommentModalAsync()
+      {
+         AddCommentModal.Hide();
       }
 
       protected async Task CreateEntityAsync()
