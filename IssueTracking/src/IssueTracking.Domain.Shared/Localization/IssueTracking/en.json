@@ -1,0 +1,15 @@
+{
+    "culture": "en",
+    "texts": {
+        "Menu:Home": "Home",
+        "Welcome": "Welcome",
+        "LongWelcomeMessage": "Welcome to the free domain driven design workshop. This project is based on the ABP framework. For more information, ",
+        "Menu:IssueTracking": "Start Tracking",
+        "Menu:Issues": "Issues",
+        "NewIssue": "New issue",
+        "IssueDeletionConfirmationMessage": "Are you sure to delete the issue '{0}'?",
+        "IssueTitle": "Title",
+        "IssueCloseReason": "Reason closed",
+        "IssueIsClosed": "Is closed?"
+    }
+}
