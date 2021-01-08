@@ -8,7 +8,7 @@ This is a **free hands-on DDD workshop** wherein the **main concepts of Domain D
 
 The **main goal** of this workshop is to provide students/teachers/developers/architects with **a free practical guide to study/teach DDD concepts**. It is based upon the [Implementing Domain Driven Design](https://docs.abp.io/en/abp/latest/Domain-Driven-Design-Implementation-Guide) guide you can find in the **ABP Framework Documents**.
 
-During this **step-by-step workshop** you will create an **IssueTracking application** following Domain Driven Design techniques.
+In this **step-by-step workshop** you will create an **IssueTracking application** following Domain Driven Design techniques.
 
 The **sample application** that comes with this workshop is developed with the **ABP Framework**, as this framework already has been written with Domain Driven Design principles in mind. It uses **Blazor** as UI framework and **SQL Server** as database provider, but you could also choose **Angular** in combination with **MongoDb**, if that suits your needs better.
 
