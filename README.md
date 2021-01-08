@@ -20,9 +20,10 @@ When you have finished this workshop you will have **a good understanding of Dom
 
 **Developers, software architects, teachers, professors and students** who want to learn more about DDD concepts.
 
+<!-- 
 ### Goals
 
-<!-- The goals of this Workshop are to
+The goals of this Workshop are to
 
 * **Introduce and explain** the DDD architecture, concepts, principles, patterns and building blocks.
 * Explain the **layered architecture** & solution structure offered by the ABP Framework.
