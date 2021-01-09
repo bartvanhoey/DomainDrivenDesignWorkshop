@@ -113,4 +113,4 @@ DDD focuses on how the domain objects **changes and interactions**; How to creat
 
 DDD **ignores reporting** and mass querying. That doesn't mean they are not important. If your application doesn't have fancy dashboards and reports, who would use it? However, reporting is another topic. You typically want to use the full power of the SQL Server or even use a separate data source (like ElasticSearch) for reporting purpose. You will write optimized queries, create indexes and even stored procedures(!). You are free to do all these things as long as you don't infect them into your business logic.
 
-[Previous](../part2/part2-What-Is-Domain-Driven-Design.md) | [Part 3: Implementation - The Building Blocks](../part3/part3-Implementation-The-Building-Blocks.md)
+[Home](../../README.md) | [Part 3: Implementation - The Building Blocks](../part3/part3-Implementation-The-Building-Blocks.md)
