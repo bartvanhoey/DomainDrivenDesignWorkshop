@@ -43,6 +43,7 @@ On the other hand, **MongoDB** developers will find this rule very natural. In M
 ABP Framework helps to implement this principle in your applications.
 
 **Example: Add a comment to an issue**
+[Exercise 001](../../exercises/exercise-001-add-a-comment-to-an-issue.md)
 
 ````csharp
 public class IssueAppService : ApplicationService, IIssueAppService

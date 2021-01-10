@@ -27,6 +27,7 @@ namespace IssueTracking.Blazor.Pages
     protected CreateCommentDto CreateCommentEntity { get; set; } = new CreateCommentDto();
 
     protected Guid EditingIssueId { get; set; }
+    protected Guid CreateCommentIssueId { get; set; }
 
     protected Modal CreateModal { get; set; }
     protected Modal EditModal { get; set; }
@@ -81,15 +82,12 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task AddCommentAsync()
     {
-  
-
-
       await Task.CompletedTask;
     }
 
     protected void OpenAddCommentModalAsync(IssueDto issue)
     {
-      EditingIssueId = issue.Id;
+      CreateCommentIssueId = issue.Id;
       CreateCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
       AddCommentModal.Show();
     }
