@@ -46,7 +46,14 @@ namespace IssueTracking.Application.Issues
 
             var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
 
-            return new PagedResultDto<IssueDto>(totalCount, ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues));
+      List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);
+
+    foreach (var item in items)
+    {
+        item.Comments.Add(new CommentDto {Text = "hello"});
+    }
+
+      return new PagedResultDto<IssueDto>(totalCount, items);
         }
 
         public async Task DeleteAsync(Guid id)

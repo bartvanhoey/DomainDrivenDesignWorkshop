@@ -5,7 +5,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace IssueTracking.Application.Contracts.Issues
 {
-  public class IssueDto  : EntityDto<Guid>
+  public class IssueDto : EntityDto<Guid>
   {
     public Guid RepositoryId { get; set; }
     public string Title { get; set; }
@@ -17,5 +17,7 @@ namespace IssueTracking.Application.Contracts.Issues
     public DateTime CreationTime { get; set; }
     public DateTime? LastCommentTime { get; set; }
     public Guid MileStoneId { get; set; }
+    public ICollection<CommentDto> Comments { get; set; } = new List<CommentDto>();
+
   }
 }
