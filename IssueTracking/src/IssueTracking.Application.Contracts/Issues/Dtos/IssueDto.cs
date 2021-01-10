@@ -17,7 +17,7 @@ namespace IssueTracking.Application.Contracts.Issues
     public DateTime CreationTime { get; set; }
     public DateTime? LastCommentTime { get; set; }
     public Guid MileStoneId { get; set; }
-    public ICollection<CommentDto> Comments { get; set; } = new List<CommentDto>();
+    public ICollection<CommentDto> Comments { get; set; }
 
   }
 }

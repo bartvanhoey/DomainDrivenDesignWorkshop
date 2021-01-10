@@ -15,8 +15,7 @@ namespace IssueTracking.EntityFrameworkCore
             {
                 b.ToTable(IssueTrackingConsts.DbTablePrefix + "Issues", IssueTrackingConsts.DbSchema);
                 b.ConfigureByConvention();
-
-              
+                b.HasMany(x => x.Comments).WithOne(x => x.Issue).HasForeignKey(x => x.IssueId).IsRequired();
 
             });
 
@@ -30,8 +29,8 @@ namespace IssueTracking.EntityFrameworkCore
             builder.Entity<Comment>(b =>
             {
                 b.ToTable(IssueTrackingConsts.DbTablePrefix + "Comments", IssueTrackingConsts.DbSchema);
-                b.ConfigureByConvention();
-                  b.HasOne<Issue>().WithMany().HasForeignKey(x => x.IssueId).IsRequired();
+                // b.ConfigureByConvention();
+                //   b.HasOne<Issue>().WithMany().HasForeignKey(x => x.IssueId).IsRequired();
             });
         }
     }
