@@ -11,7 +11,6 @@ namespace IssueTracking.Blazor.Pages
 {
   public partial class Issues
   {
-
     protected IReadOnlyList<IssueDto> IssueList { get; set; }
     protected int PageSize { get; } = LimitedResultRequestDto.DefaultMaxResultCount;
     protected int CurrentPage { get; set; }
@@ -24,10 +23,10 @@ namespace IssueTracking.Blazor.Pages
     protected bool ShowComments = true;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
-
-    protected Guid EditingIssueId { get; set; }
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
     protected CreateCommentDto AddCommentEntity { get; set; } = new CreateCommentDto();
+
+    protected Guid EditingIssueId { get; set; }
 
     protected Modal CreateModal { get; set; }
     protected Modal EditModal { get; set; }
@@ -82,6 +81,9 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task AddCommentAsync()
     {
+      
+      
+
       await Task.CompletedTask;
     }
 
