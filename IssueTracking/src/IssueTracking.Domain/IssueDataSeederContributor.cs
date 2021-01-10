@@ -36,7 +36,7 @@ namespace IssueTracking.Domain
              autoSave: true
          );
 
-          var numberOfComments = random.Next(11);
+          var numberOfComments = random.Next(4);
           for (int i = 1; i <= numberOfComments; i++)
           {
             await _commentRepository.InsertAsync(
