@@ -27,6 +27,7 @@
         "serilog",
         "sharp",
         "user",
+        "usings",
         "validatable",
         "volo"
     ]

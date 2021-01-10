@@ -19,6 +19,10 @@ An aggregate should maintain its self **integrity** and **validity** by implemen
 2. Implement interface **IIssueAppService** by adding the **CreateCommentAsync** to the **IssueAppService** in the **Issues** folder of the  **Application** project
 
     ```csharp
+    // import usings
+    // using Microsoft.AspNetCore.Authorization;
+    // using Volo.Abp.Users;
+
     public class IssueAppService : ApplicationService, IIssueAppService
     {
         private readonly IssueRepository _issueRepository;
@@ -49,7 +53,7 @@ An aggregate should maintain its self **integrity** and **validity** by implemen
     } 
     ```
 
-4. In Issues.razor.cs update method AddCommentAsync in the Pages folder of the Blazor project
+4. Update **AddCommentAsync** method of file **Issues.razor.cs** in the **Pages** folder of the **Blazor** project
 
     ```csharp
     protected async Task AddCommentAsync()
@@ -60,6 +64,3 @@ An aggregate should maintain its self **integrity** and **validity** by implemen
       AddCommentModal.Hide();
     }
     ```
-
-
-  
