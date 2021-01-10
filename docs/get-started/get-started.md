@@ -32,7 +32,7 @@ Open the cloned repository in VsCode and click on the **Restore** button to rest
 
 - Select *ApiDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.HttpApi.Host* project.
 
-    ![SwaggerUI window](images/SwaggerUI.jpg)
+    ![SwaggerUI window](images/Swagger.jpg)
 
 ### Blazor UI
 
