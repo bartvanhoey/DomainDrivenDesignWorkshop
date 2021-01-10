@@ -2,13 +2,13 @@
 
 ### Layering of a .NET Solution
 
-The picture below shows a Visual Studio Solution created using the ABP's [application startup template](Startup-Templates/Application.md):
+The picture below shows a Visual Studio Solution created using the ABP's [application startup template](https://docs.abp.io/en/abp/latest/Startup-Templates/Application):
 
 ![domain-driven-design-vs-solution](images/domain-driven-design-vs-solution.png)
 
 The solution name is `IssueTracking` and it consists of multiple projects. The solution is layered by considering **DDD principles** as well as **development** and **deployment** practicals. The sub sections below explains the projects in the solution;
 
-> Your solution structure may be slightly different if you choose a different UI or Database provider. However, the Domain and Application layers will be same and this is the essential point for the DDD perspective. See the [Application Startup Template](Startup-Templates/Application.md) document if you want to know more about the solution structure.
+> Your solution structure may be slightly different if you choose a different UI or Database provider. However, the Domain and Application layers will be same and this is the essential point for the DDD perspective. See the [Application Startup Template](https://docs.abp.io/en/abp/latest/Startup-Templates/Application) document if you want to know more about the solution structure.
 
 #### The Domain Layer
 
@@ -28,7 +28,7 @@ The Application Layer is also split into two projects;
 
 * `IssueTracking.Blazor` is a Blazor application for this example. This is the only executable application that serves the application and the APIs.
 
-> ABP Framework also supports different kind of UI frameworks including [Angular](UI/Angular/Quick-Start.md) and [ASP.NET Core MVC / Razor Pages](UI/Blazor/Overall.md). In these cases, the `IssueTracking.Blazor` doesn't exist in the solution.
+> ABP Framework also supports different kind of UI frameworks including [Angular](https://docs.abp.io/en/abp/latest/UI/Angular/Quick-Start) and [ASP.NET Core MVC / Razor Pages](https://docs.abp.io/en/abp/latest/UI/AspNetCore/Overall). In these cases, the `IssueTracking.Blazor` doesn't exist in the solution.
 
 #### The Remote Service Layer
 
@@ -36,9 +36,9 @@ The Application Layer is also split into two projects;
 
 * `IssueTracking.HttpApi.Host` project will serve the HTTP APIs as a standalone endpoint to be consumed by the Blazor UI application via HTTP API calls.
 
-> Most of the time, API Controllers are just wrappers around the Application Services to expose them to the remote clients. Since ABP Framework's [Automatic API Controller System](API/Auto-API-Controllers.md) **automatically configures and exposes your Application Services as API Controllers**, you typically don't create Controllers in this project. However, the startup solution includes it for the cases you need to manually create API controllers.
+> Most of the time, API Controllers are just wrappers around the Application Services to expose them to the remote clients. Since ABP Framework's [Automatic API Controller System](https://docs.abp.io/en/abp/latest/API/Auto-API-Controllers) **automatically configures and exposes your Application Services as API Controllers**, you typically don't create Controllers in this project. However, the startup solution includes it for the cases you need to manually create API controllers.
 
-* `IssueTracking.HttpApi.Client` project is useful when you have a C# application that needs to consume your HTTP APIs. Once the client application references this project, it can directly [inject](Dependency-Injection.md) & use the Application Services. This is possible by the help of the ABP Framework's [Dynamic C# Client API Proxies System](API/Dynamic-CSharp-API-Clients.md).
+* `IssueTracking.HttpApi.Client` project is useful when you have a C# application that needs to consume your HTTP APIs. Once the client application references this project, it can directly [inject](https://docs.abp.io/en/abp/latest/Dependency-Injection) & use the Application Services. This is possible by the help of the ABP Framework's [Dynamic C# Client API Proxies System](https://docs.abp.io/en/abp/latest/API/Dynamic-CSharp-API-Clients).
 
 > There is a Console Application in the `test` folder of the solution, named `IssueTracking.HttpApi.Client.ConsoleTestApp`. It simply uses the `IssueTracking.HttpApi.Client` project to consume the APIs exposed by the application. It is just a demo application and you can safely delete it. You can even delete the `IssueTracking.HttpApi.Client` project if you think that you don't need to them.
 
@@ -51,13 +51,13 @@ We suggest a balanced approach; Create separate projects for main infrastructure
 ABP's startup solution has two projects for the Entity Framework Core integration;
 
 * `IssueTracking.EntityFrameworkCore` is the essential integration package for the EF Core. Your application's `DbContext`, database mappings, implementations of the repositories and other EF Core related stuff are located here.
-* `IssueTracking.EntityFrameworkCore.DbMigrations` is a special project to manage the Code First database migrations. There is a separate `DbContext` in this project to track the migrations. You typically don't touch this project much except you need to create a new database migration or add an [application module](Modules/Index.md) that has some database tables and naturally requires to create a new database migration.
+* `IssueTracking.EntityFrameworkCore.DbMigrations` is a special project to manage the Code First database migrations. There is a separate `DbContext` in this project to track the migrations. You typically don't touch this project much except you need to create a new database migration or add an [application module](https://docs.abp.io/en/abp/latest/Modules/Index) that has some database tables and naturally requires to create a new database migration.
 
-> You may wonder why there are two projects for the EF Core. It is mostly related to [modularity](Module-Development-Basics.md). Each module has its own independent `DbContext` and your application has also one `DbContext`. `DbMigrations` project contains a **union** of the modules to track and apply a **single migration path**. While most of the time you don't need to know it, you can see the [EF Core migrations](Entity-Framework-Core-Migrations.md) document for more information.
+> You may wonder why there are two projects for the EF Core. It is mostly related to [modularity](https://docs.abp.io/en/abp/latest/Module-Development-Basics). Each module has its own independent `DbContext` and your application has also one `DbContext`. `DbMigrations` project contains a **union** of the modules to track and apply a **single migration path**. While most of the time you don't need to know it, you can see the [EF Core migrations](https://docs.abp.io/en/abp/latest/Entity-Framework-Core-Migrations) document for more information.
 
 #### Other Projects
 
-There is one more project, `IssueTracking.DbMigrator`, that is a simple Console Application that **migrates** the database schema and **[seeds](Data-Seeding.md) the initial** data when you execute it. It is a useful **utility application** that you can use it in development as well as in production environment.
+There is one more project, `IssueTracking.DbMigrator`, that is a simple Console Application that **migrates** the database schema and **[seeds](https://docs.abp.io/en/abp/latest/Data-Seeding) the initial** data when you execute it. It is a useful **utility application** that you can use it in development as well as in production environment.
 
 ### Dependencies of the Projects in the Solution
 
@@ -94,12 +94,12 @@ Here, the main reasons of this principle;
 
 ##### Discussion About the Database Independence Principle
 
-Especially, the **reason 1** deeply effects your domain **object design** (especially, the entity relations) and **application code**. Assume that you are using [Entity Framework Core](Entity-Framework-Core.md) with a relational database. If you are willing to make your application switchable to [MongoDB](MongoDB.md) later, you can't use some very **useful EF Core features**. Examples;
+Especially, the **reason 1** deeply effects your domain **object design** (especially, the entity relations) and **application code**. Assume that you are using [Entity Framework Core](https://docs.abp.io/en/abp/latest/Entity-Framework-Core) with a relational database. If you are willing to make your application switchable to [MongoDB](https://docs.abp.io/en/abp/latest/MongoDB) later, you can't use some very **useful EF Core features**. Examples;
 
 * You can't assume [Change Tracking](https://docs.microsoft.com/en-us/ef/core/querying/tracking) since MongoDB provider can't do it. So, you always need to explicitly update the changed entities.
 * You can't use [Navigation Properties](https://docs.microsoft.com/en-us/ef/core/modeling/relationships) (or Collections) to other Aggregates in your entities since this is not possible for a Document Database. See the "Rule: Reference Other Aggregates Only By Id" section for more info.
 
-If you think such features are **important** for you and you **will never stray** from the EF Core, we believe that it is worth **stretching this principle**. We still suggest to use the repository pattern to hide the infrastructure details. But you can assume that you are using EF Core while designing your entity relations and writing your application code. You can even reference to the EF Core NuGet Package from your application layer to be able to directly use the asynchronous LINQ extension methods, like `ToListAsync()` (see the *IQueryable & Async Operations* section in the [Repositories](Repositories.md) document for more info).
+If you think such features are **important** for you and you **will never stray** from the EF Core, we believe that it is worth **stretching this principle**. We still suggest to use the repository pattern to hide the infrastructure details. But you can assume that you are using EF Core while designing your entity relations and writing your application code. You can even reference to the EF Core NuGet Package from your application layer to be able to directly use the asynchronous LINQ extension methods, like `ToListAsync()` (see the *IQueryable & Async Operations* section in the [Repositories](https://docs.abp.io/en/abp/latest/Repositories) document for more info).
 
 #### Presentation Technology Agnostic
 
@@ -113,4 +113,4 @@ DDD focuses on how the domain objects **changes and interactions**; How to creat
 
 DDD **ignores reporting** and mass querying. That doesn't mean they are not important. If your application doesn't have fancy dashboards and reports, who would use it? However, reporting is another topic. You typically want to use the full power of the SQL Server or even use a separate data source (like ElasticSearch) for reporting purpose. You will write optimized queries, create indexes and even stored procedures(!). You are free to do all these things as long as you don't infect them into your business logic.
 
-[Previous](../part2/part2-What-Is-Domain-Driven-Design.md) | [Part 3: Implementation - The Building Blocks](../part3/part3-Implementation-The-Building-Blocks.md)
+[Home](../../README.md) | [Part 3: Implementation - The Building Blocks](../part3/part3-Implementation-The-Building-Blocks.md)

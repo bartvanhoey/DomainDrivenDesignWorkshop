@@ -9,7 +9,7 @@
         "NewIssue": "New issue",
         "IssueDeletionConfirmationMessage": "Are you sure to delete the issue '{0}'?",
         "IssueTitle": "Title",
-        "IssueText": "Description",
+        "IssueText": "Text",
         "IssueCloseReason": "Reason closed",
         "IssueIsClosed": "Is closed?",  "Enum:BookType:0": "Undefined",
         "Enum:IssueCloseReason:0": "Due date passed",

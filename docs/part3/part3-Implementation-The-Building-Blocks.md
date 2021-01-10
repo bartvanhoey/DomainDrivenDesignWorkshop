@@ -14,7 +14,7 @@ The examples will use some concepts those are used by GitHub, like `Issue`, `Rep
 
 ### Aggregates
 
-As said before, an [Aggregate](Entities.md) is a cluster of objects (entities and value objects) bound together by an Aggregate Root object. This section will introduce the principles and rules related to the Aggregates.
+As said before, an [Aggregate](https://docs.abp.io/en/abp/latest/Entities) is a cluster of objects (entities and value objects) bound together by an Aggregate Root object. This section will introduce the principles and rules related to the Aggregates.
 
 > We refer the term *Entity* both for *Aggregate Root* and *sub-collection entities* unless we explicitly write *Aggregate Root* or *sub-collection entity*.
 
@@ -66,7 +66,7 @@ public class IssueAppService : ApplicationService, IIssueAppService
 
 `_issueRepository.GetAsync` method retrieves the `Issue` with all details (sub-collections) as a single unit by default. While this works out of the box for MongoDB, you need to configure your aggregate details for the EF Core. But, once you configure, repositories automatically handle it. `_issueRepository.GetAsync` method gets an optional parameter, `includeDetails`, that you can pass `false` to disable this behavior when you need it.
 
-> See the *Loading Related Entities* section of the [EF Core document](Entity-Framework-Core.md) for the configuration and alternative scenarios.
+> See the *Loading Related Entities* section of the [EF Core document](https://docs.abp.io/en/abp/latest/Entity-Framework-Core) for the configuration and alternative scenarios.
 
 `Issue.AddComment` gets a `userId` and comment `text`, implements the necessary business rules and adds the comment to the Comments collection of the `Issue`.
 
@@ -80,7 +80,7 @@ Finally, we use `_issueRepository.UpdateAsync` to save changes to the database.
 
 An aggregate is generally considered as a transaction boundary. If a use case works with a single aggregate, reads and saves it as a single unit, all the changes made to the aggregate objects are saved together as an atomic operation and you don't need to an explicit database transaction.
 
-However, in real life, you may need to change **more than one aggregate instances** in a single use case and you need to use database transactions to ensure **atomic update** and **data consistency**. Because of that, ABP Framework uses an explicit database transaction for a use case (an application service method boundary). See the [Unit Of Work](Unit-Of-Work.md) documentation for more info.
+However, in real life, you may need to change **more than one aggregate instances** in a single use case and you need to use database transactions to ensure **atomic update** and **data consistency**. Because of that, ABP Framework uses an explicit database transaction for a use case (an application service method boundary). See the [Unit Of Work](https://docs.abp.io/en/abp/latest/Unit-Of-Work) documentation for more info.
 
 ##### Serializability
 
@@ -142,7 +142,7 @@ In practical;
 
 ##### Primary Keys of the Aggregate Roots / Entities
 
-* An aggregate root typically has a single `Id` property for its identifier (Primary Key: PK). We prefer `Guid` as the PK of an aggregate root entity (see the [Guid Generation document](Guid-Generation.md) to learn why).
+* An aggregate root typically has a single `Id` property for its identifier (Primary Key: PK). We prefer `Guid` as the PK of an aggregate root entity (see the [Guid Generation document](https://docs.abp.io/en/abp/latest/Guid-Generation) to learn why).
 * An entity (that's not the aggregate root) in an aggregate can use a composite primary key.
 
 For example, see the Aggregate root and the Entity below:
@@ -211,10 +211,10 @@ namespace IssueTracking.Issues
 * `Issue` class properly **forces to create a valid entity** by getting minimum required properties in its constructor as parameters.
 * The constructor **validates** the inputs (`Check.NotNullOrWhiteSpace(...)` throws `ArgumentException` if the given value is empty).
 * It **initializes the sub-collections**, so you don't get a null reference exception when you try to use the `Labels` collection after creating the `Issue`.
-* The constructor also **takes the `id`** and passes to the `base` class. We don't generate `Guid`s inside the constructor to be able to delegate this responsibility to another service (see [Guid Generation](Guid-Generation.md)).
+* The constructor also **takes the `id`** and passes to the `base` class. We don't generate `Guid`s inside the constructor to be able to delegate this responsibility to another service (see [Guid Generation](https://docs.abp.io/en/abp/latest/Guid-Generation)).
 * Private **empty constructor** is necessary for ORMs. We made it `private` to prevent accidentally using it in our own code.
 
-> See the [Entities](Entities.md) document to learn more about creating entities with the ABP Framework.
+> See the [Entities](https://docs.abp.io/en/abp/latest/Entities) document to learn more about creating entities with the ABP Framework.
 
 ##### Entity Property Accessors & Methods
 
@@ -351,10 +351,10 @@ namespace IssueTracking.Issues
 
 There are two potential problems of throwing such exceptions;
 
-1. In case of such an exception, should the **end user** see the exception (error) message? If so, how do you **localize** the exception message? You can not use the [localization](Localization.md) system, because you can't inject and use `IStringLocalizer` in the entities.
+1. In case of such an exception, should the **end user** see the exception (error) message? If so, how do you **localize** the exception message? You can not use the [localization](https://docs.abp.io/en/abp/latest/Localization) system, because you can't inject and use `IStringLocalizer` in the entities.
 2. For a web application or HTTP API, what **HTTP Status Code** should return to the client?
 
-ABP's [Exception Handling](Exception-Handling.md) system solves these and similar problems.
+ABP's [Exception Handling](https://docs.abp.io/en/abp/latest/Exception-Handling) system solves these and similar problems.
 
 **Example: Throwing a business exception with code**
 
@@ -403,11 +403,11 @@ And add an entry to the localization resource like below:
 * When you throw the exception, ABP automatically uses this localized message (based on the current language) to show to the end user.
 * The exception code (`IssueTracking:CanNotOpenLockedIssue` here) is also sent to the client, so it may handle the error case programmatically.
 
-> For this example, you could directly throw `BusinessException` instead of defining a specialized `IssueStateException`. The result will be same. See the [exception handling document](Exception-Handling.md) for all the details.
+> For this example, you could directly throw `BusinessException` instead of defining a specialized `IssueStateException`. The result will be same. See the [exception handling document](https://docs.abp.io/en/abp/latest/Exception-Handling) for all the details.
 
 ##### Business Logic in Entities Requiring External Services
 
-It is simple to implement a business rule in an entity method when the business logic only uses the properties of that entity. What if the business logic requires to **query database** or **use any external services** that should be resolved from the [dependency injection](Dependency-Injection.md) system. Remember; **Entities can not inject services!**
+It is simple to implement a business rule in an entity method when the business logic only uses the properties of that entity. What if the business logic requires to **query database** or **use any external services** that should be resolved from the [dependency injection](https://docs.abp.io/en/abp/latest/Dependency-Injection) system. Remember; **Entities can not inject services!**
 
 There are two common ways of implementing such a business logic:
 
@@ -458,7 +458,7 @@ An alternative way of implementing this business logic is to introduce a **Domai
 
 ### Repositories
 
-A [Repository](Repositories.md) is a collection-like interface that is used by the Domain and Application Layers to access to the data persistence system (the database) to read and write the Business Objects, generally the Aggregates.
+A [Repository](https://docs.abp.io/en/abp/latest/Repositories) is a collection-like interface that is used by the Domain and Application Layers to access to the data persistence system (the database) to read and write the Business Objects, generally the Aggregates.
 
 Common Repository principles are;
 
@@ -553,7 +553,7 @@ namespace IssueTracking.Issues
 }
 ````
 
-(Used EF Core for the implementation. See the [EF Core integration document](Entity-Framework-Core.md) to learn how to create custom repositories with the EF Core.)
+(Used EF Core for the implementation. See the [EF Core integration document](https://docs.abp.io/en/abp/latest/Entity-Framework-Core) to learn how to create custom repositories with the EF Core.)
 
 When we check the `GetInActiveIssuesAsync` implementation, we see a **business rule that defines an in-active issue**: The issue should be **open**, **assigned to nobody**, **created 30+ days ago** and has **no comment in the last 30 days**.
 
@@ -597,7 +597,7 @@ A good solution to this problem is the *Specification Pattern*!
 
 ### Specifications
 
-A [specification](Specifications.md) is a **named**, **reusable**, **combinable** and **testable** class to filter the Domain Objects based on the business rules.
+A [specification](https://docs.abp.io/en/abp/latest/Specifications) is a **named**, **reusable**, **combinable** and **testable** class to filter the Domain Objects based on the business rules.
 
 ABP Framework provides necessary infrastructure to easily create specification classes and use them inside your application code. Let's implement the in-active issue filter as a specification class:
 
@@ -738,7 +738,7 @@ public class IssueAppService : ApplicationService, IIssueAppService
 }
 ````
 
-`AsyncExecuter` is a utility provided by the ABP Framework to use asynchronous LINQ extension methods (like `ToListAsync` here) without depending on the EF Core NuGet package. See the [Repositories document](Repositories.md) for more information.
+`AsyncExecuter` is a utility provided by the ABP Framework to use asynchronous LINQ extension methods (like `ToListAsync` here) without depending on the EF Core NuGet package. See the [Repositories document](https://docs.abp.io/en/abp/latest/Repositories) for more information.
 
 #### Combining the Specifications
 
@@ -789,7 +789,7 @@ public class IssueAppService : ApplicationService, IIssueAppService
 
 The example above uses the `And` extension method to combine the specifications. There are more combining methods are available, like `Or(...)` and `AndNot(...)`.
 
-> See the [Specifications document](Specifications.md) for more details about the specification infrastructure provided by the ABP Framework.
+> See the [Specifications document](https://docs.abp.io/en/abp/latest/Specifications) for more details about the specification infrastructure provided by the ABP Framework.
 
 ### Domain Services
 
@@ -887,7 +887,7 @@ While there is a tradeoff between two approaches, we prefer to create Domain Ser
 
 ### Application Services
 
-An [Application Service](Application-Services.md) is a stateless service that implements **use cases** of the application. An application service typically **gets and returns DTOs**. It is used by the Presentation Layer. It **uses and coordinates the domain objects** (entities, repositories, etc.) to implement the use cases.
+An [Application Service](https://docs.abp.io/en/abp/latest/Application-Services) is a stateless service that implements **use cases** of the application. An application service typically **gets and returns DTOs**. It is used by the Presentation Layer. It **uses and coordinates the domain objects** (entities, repositories, etc.) to implement the use cases.
 
 Common principles of an application service are;
 
@@ -961,7 +961,7 @@ namespace IssueTracking.Issues
 
 ### Data Transfer Objects
 
-A [DTO](Data-Transfer-Objects.md) is a simple object that is used to transfer state (data) between the Application and Presentation Layers. So, Application Service methods gets and returns DTOs.
+A [DTO](https://docs.abp.io/en/abp/latest/Data-Transfer-Objects) is a simple object that is used to transfer state (data) between the Application and Presentation Layers. So, Application Service methods gets and returns DTOs.
 
 #### Common DTO Principles & Best Practices
 
@@ -1089,9 +1089,9 @@ namespace IssueTracking.Users
 
 ABP Framework automatically validates input DTOs, throws `AbpValidationException` and returns HTTP Status `400` to the client in case of an invalid input.
 
-> Some developers think it is better to separate the validation rules and DTO classes. We think the declarative (Data Annotation) approach is practical and useful and doesn't cause any design problem. However, ABP also supports [FluentValidation integration](FluentValidation.md) if you prefer the other approach.
+> Some developers think it is better to separate the validation rules and DTO classes. We think the declarative (Data Annotation) approach is practical and useful and doesn't cause any design problem. However, ABP also supports [FluentValidation integration](https://docs.abp.io/en/abp/latest/FluentValidation) if you prefer the other approach.
 >
-> See the [Validation document](Validation.md) for all validation options.
+> See the [Validation document](https://docs.abp.io/en/abp/latest/Validation) for all validation options.
 
 #### Output DTO Best Practices
 
@@ -1167,9 +1167,9 @@ In these cases, you may want to create **specialized output DTOs with minimal in
 
 #### Object to Object Mapping
 
-Automatic [object to object mapping](Object-To-Object-Mapping.md) is a useful approach to copy values from one object to another when two objects have same or similar properties.
+Automatic [object to object mapping](https://docs.abp.io/en/abp/latest/Object-To-Object-Mapping) is a useful approach to copy values from one object to another when two objects have same or similar properties.
 
-DTO and Entity classes generally have same/similar properties and you typically need to create DTO objects from Entities. ABP's [object to object mapping system](Object-To-Object-Mapping.md) with [AutoMapper](http://automapper.org/) integration makes these operations much easier comparing to manual mapping.
+DTO and Entity classes generally have same/similar properties and you typically need to create DTO objects from Entities. ABP's [object to object mapping system](https://docs.abp.io/en/abp/latest/Object-To-Object-Mapping) with [AutoMapper](http://automapper.org/) integration makes these operations much easier comparing to manual mapping.
 
 * **Use** auto object mapping only for **Entity to output DTO** mappings.
 * **Do not use** auto object mapping for **input DTO to Entity** mappings.

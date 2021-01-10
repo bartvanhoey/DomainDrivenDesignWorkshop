@@ -5,19 +5,19 @@ using IssueTracking.Domain.Shared.Issues;
 
 namespace IssueTracking.Domain
 {
-    public class IssueDataSeederContributorBase
+  public class IssueDataSeederContributorBase
+  {
+    public readonly List<SeederHelperIssue> DataSeederIssues = new List<SeederHelperIssue>();
+
+    public IssueDataSeederContributorBase()
     {
-        public readonly List<SeederHelperIssue> DataSeederIssues = new List<SeederHelperIssue>();
+      AddIssues();
+    }
 
-        public IssueDataSeederContributorBase()
-        {
-            AddIssues();
-        }
-
-        private void AddIssues()
-        {
-            DataSeederIssues.AddRange(new[]
-             {
+    private void AddIssues()
+    {
+      DataSeederIssues.AddRange(new[]
+       {
                 new SeederHelperIssue {Title = "Issue1", Text = "CMS Kit - Tag System Configuration Changes abp-module-cms-kit effort-3 in-progress", IsClosed = true, CloseReason = IssueCloseReason.DueDatePassed},
                 new SeederHelperIssue {Title = "Issue2", Text = "Intellisense for Bootstrap Components is not working in the Module Project", IsClosed = false},
                 new SeederHelperIssue {Title = "Issue3", Text = "How to add a identityUser foreign key to an entity", IsClosed = false},
@@ -36,14 +36,14 @@ namespace IssueTracking.Domain
                 new SeederHelperIssue {Title = "Issue16", Text = "How to create a project using the preview 4.2 with cms-kit included ?", IsClosed = true, CloseReason = IssueCloseReason.Solved}
 
             });
-        }
     }
+  }
 
-    public class SeederHelperIssue
-    {
-        public string Title { get; set; }
-        public string Text { get; set; }
-        public bool IsClosed { get; set; }
-        public IssueCloseReason CloseReason { get; set; }
-    }
+  public class SeederHelperIssue
+  {
+    public string Title { get; set; }
+    public string Text { get; set; }
+    public bool IsClosed { get; set; }
+    public IssueCloseReason? CloseReason { get; set; }
+  }
 }
