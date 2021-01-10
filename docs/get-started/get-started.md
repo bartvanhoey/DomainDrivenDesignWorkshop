@@ -26,16 +26,22 @@ Open the cloned repository in VsCode and click on the **Restore** button to rest
 
 - Select *DbMigratorDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.DbMigrator* project. Running this project will apply the migrations and seed the initial data.
   
-## Run the ABP application
+## Run application
+
+### API
 
 - Select *ApiDevelopment* in the *debug dropdown* and **hit F5** to start the *IssueTracking.HttpApi.Host* project.
 
     ![SwaggerUI window](images/SwaggerUI.jpg)
 
+### Blazor UI
+
 - Open a command prompt in the *IssueTracking.Blazor* folder and enter `dotnet watch run` below to run the Blazor UI project.
 
     ![Abp Welcome window](images/DomainDrivenDesignWelcomeWindow.jpg)
 
-- Stop both the API (by pressing SHIFT+F5) and the Blazor project (by pressing `CTRL+C`).
+## Stop application
+
+- Stop both the API (by pressing SHIFT+F5) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
 [Home](../../README.md) | [Part 1: What Is Domain Driven Design](../part1/part1-What-Is-Domain-Driven-Design.md)
