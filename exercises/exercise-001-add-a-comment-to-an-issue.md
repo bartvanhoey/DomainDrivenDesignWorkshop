@@ -6,6 +6,8 @@ Entities are responsible to implement the business rules related to the properti
 
 An aggregate should maintain its self **integrity** and **validity** by implementing domain rules and constraints. That means, unlike the DTOs, Entities have **methods to implement some business logic**. Actually, we should try to implement business rules in the entities wherever possible.
 
+To achieve this, add a AddCommentAsync method to the Issue class.
+
 1. Add a **CreateCommentAsync** method to interface **IIssueAppService** in the **Issues** folder of the  **Application.Contracts** project
 
     ```csharp
@@ -53,7 +55,7 @@ An aggregate should maintain its self **integrity** and **validity** by implemen
     } 
     ```
 
-4. Update **AddCommentAsync** method of file **Issues.razor.cs** in the **Pages** folder of the **Blazor** project
+4. In **Issues.razor.cs** update method **AddCommentAsync** in the **Pages** folder of the **Blazor** project
 
     ```csharp
     protected async Task AddCommentAsync()
