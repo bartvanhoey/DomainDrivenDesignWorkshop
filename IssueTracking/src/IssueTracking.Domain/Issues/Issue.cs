@@ -15,6 +15,6 @@ namespace IssueTracking.Domain.Issues
     public bool IsClosed { get; set; } = false;
     public IssueCloseReason? CloseReason { get; set; }
     public ICollection<IssueLabel> Labels { get; set; }
-    public ICollection<Comment> Comments { get; set; }
+    public ICollection<Comment> Comments { get; private set; }
   }
 }
