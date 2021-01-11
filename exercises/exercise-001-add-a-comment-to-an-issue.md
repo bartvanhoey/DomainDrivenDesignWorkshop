@@ -80,12 +80,16 @@ git checkout exercise_001
 
 ### Run application and Test the AddComment method
 
-- Start the HttpApi.Host project by hitting `F5`.
+- Start the **HttpApi.Host** project by hitting `F5`.
 
-- Open a command prompt in the Blazor project and enter `dotnet watch run`
+- Open a command prompt in the **Blazor** project and enter `dotnet watch run`
 
-- Make sure you are logged in. Goto the Issues list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
+- Make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
 - Enter a comment and check if it gets added to the issue.
+
+### Stop application
+
+- Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#Aggregate-/-Aggregate-Root-Principles)
