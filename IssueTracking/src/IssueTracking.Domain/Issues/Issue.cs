@@ -16,10 +16,5 @@ namespace IssueTracking.Domain.Issues
     public IssueCloseReason? CloseReason { get; set; }
     public ICollection<IssueLabel> Labels { get; set; }
     public ICollection<Comment> Comments { get; set; }
-    public Issue()
-    {
-      Comments = new Collection<Comment>();
-    }
-
   }
 }
