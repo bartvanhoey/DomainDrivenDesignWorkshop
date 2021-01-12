@@ -218,7 +218,7 @@ namespace IssueTracking.Issues
 
 > See the [Entities](https://docs.abp.io/en/abp/latest/Entities) document to learn more about creating entities with the ABP Framework.
 
-##### Entity Property Accessors & Methods
+##### <a name="theory_exercise_003"></a>  Entity Property Accessors & Methods
 
 The example above may seem strange to you! For example, we force to pass a non-null `Title` in the constructor. However, the developer may then set the `Title` property to `null` without any control. This is because the example code above just focuses on the constructor.
 
@@ -228,6 +228,7 @@ If we declare all the properties with **public setters** (like the example `Issu
 * Define public methods to manipulate such properties.
 
 **Example: Methods to change the properties in a controlled way**
+[Exercise 003](../../exercises/exercise-003-entity-accessors-and-methods.md)
 
 ````csharp
 using System;

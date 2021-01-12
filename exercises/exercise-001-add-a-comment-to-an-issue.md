@@ -33,7 +33,7 @@ git checkout exercise_001
     ```csharp
     public interface IIssueAppService : IApplicationService
     {
-      /// Other methods here ...
+      ///.....
       Task CreateCommentAsync(CreateCommentDto input);
     }
     ```
@@ -54,7 +54,7 @@ git checkout exercise_001
             _issueRepository = issueRepository;
         }
 
-        /// Other methods here ...
+        ///.....
     
         [Authorize]
         public async Task CreateCommentAsync(CreateCommentDto input)

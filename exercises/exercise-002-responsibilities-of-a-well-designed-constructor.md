@@ -74,7 +74,7 @@ git checkout exercise_002
             return ObjectMapper.Map<Issue, IssueDto>(issue);
         }
 
-        // Other methods here ...
+        //.....
     }
     ```
 
@@ -96,7 +96,7 @@ git checkout exercise_002
 
 * Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
 
-* Select **ApiDevelopment** in the **dropdown** of the **Debug Window** and start the **HttpApi.Host** project.
+* Select **ApiDevelopment** in the **dropdown** of the **Debug Window** and run the **HttpApi.Host** project.
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
