@@ -24,6 +24,22 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 [Click here](docs/get-started/get-started.md) to get started with the **free Domain Driven Design Workshop**. Enjoy and have fun!
 
+### Table of contents
+
+* [Get Started](docs/get-started/get-started.md) to get started with the **free Domain Driven Design Workshop**. Enjoy and have fun!
+
+* [Part 1: What Is Domain Driven Design](docs/part1/part1-What-Is-Domain-Driven-Design.md)
+
+* [Part 2: Implementation - The Big Picture](docs/part2/part2-Implementation-The-Big-Picture.md)
+  
+* [Part 3: Implementation - The Building Blocks](docs/part3/part3-Implementation-The-Building-Blocks.md)
+
+### Exercises
+
+* [Exercise 001: Add a comment to an issue](exercises/exercise-001-add-a-comment-to-an-issue.md)
+
+* [Exercise 002: Responsibilities of a well designed constructor](exercises/exercise-002-responsibilities-of-a-well-designed-constructor.md)
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).
