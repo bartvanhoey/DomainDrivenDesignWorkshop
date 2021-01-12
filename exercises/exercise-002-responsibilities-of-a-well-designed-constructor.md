@@ -1,8 +1,8 @@
 # Exercise 002: Responsibilities of a well-designed constructor
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#Constructors-of-the-Aggregate-Roots-/-Entities)
+[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-entities)
 
-## Responsibilities
+## Responsibilities constructor
 
 * Gets the required entity properties as parameters to create a valid entity. Should force to pass only for the required parameters and may get non-required properties as optional parameters.
 * Checks validity of the parameters.
@@ -26,7 +26,6 @@ git checkout exercise_002
 
     // import usings
     // using Volo.Abp;
-    // using System.Collections.ObjectModel;
     
     public Issue(
             Guid id,
@@ -49,7 +48,7 @@ git checkout exercise_002
     private Issue() { /* for deserialization & ORMs */ }
     ```
 
-2. Update method **CreateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project, because it's **no longer possible to initialize an object with an object initializer**. To initialize an object **you must use a constructor**.
+2. Update method **CreateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project. You must use a **constructor** because it's **no longer possible to initialize an object with an object initializer**. You also need to add a **IGuidGenerator** field and have it injected in the constructor.
 
     ```csharp
     // import usings
@@ -74,10 +73,12 @@ git checkout exercise_002
             await _issueRepository.InsertAsync(issue);
             return ObjectMapper.Map<Issue, IssueDto>(issue);
         }
+
+        // Other methods here ...
     }
     ```
 
-3. Update the **IssueDataSeederContributor** class in  **Domain** project. Here also you need to use a **constructor** instead of a **object initializer**
+3. Update the **SeedAsync** method of the **IssueDataSeederContributor** class in the **Domain** project. You also need to use a **constructor** instead of a **object initializer** here.
 
     ```csharp
     foreach (var issue in DataSeederIssues)
@@ -91,9 +92,13 @@ git checkout exercise_002
 
 ### Run application and Test the AddComment method
 
+* Delete **database IssueTracking** in **SQL Server** to have a clean start.
+
+* Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
+
 * Start the **HttpApi.Host** project by hitting `F5`.
 
-* Open a command prompt in the **Blazor** project and enter `dotnet watch run`
+* Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
 * Make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
@@ -103,4 +108,4 @@ git checkout exercise_002
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#Constructors-of-the-Aggregate-Roots-/-Entities)
+[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-entities)
