@@ -98,7 +98,7 @@ git checkout exercise_002
 
 * Start the **HttpApi.Host** project by hitting `F5`.
 
-* Open a command prompt in the **Blazor** project and enter `dotnet run`
+* Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
 * Make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
