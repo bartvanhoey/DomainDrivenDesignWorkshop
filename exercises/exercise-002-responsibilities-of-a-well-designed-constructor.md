@@ -1,6 +1,6 @@
 # Exercise 002: Responsibilities of a well-designed constructor
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_002
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_002)
 
 ## Responsibilities constructor
 
