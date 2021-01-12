@@ -103,4 +103,4 @@ git checkout exercise_002
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
-[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-/-entities)
+[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-entities)
