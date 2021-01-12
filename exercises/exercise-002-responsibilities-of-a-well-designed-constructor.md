@@ -1,8 +1,8 @@
 # Exercise 002: Responsibilities of a well-designed constructor
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#Constructors-of-the-Aggregate-Roots-/-Entities)
+[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-entities)
 
-## Responsibilities
+## Responsibilities constructor
 
 * Gets the required entity properties as parameters to create a valid entity. Should force to pass only for the required parameters and may get non-required properties as optional parameters.
 * Checks validity of the parameters.
@@ -49,7 +49,7 @@ git checkout exercise_002
     private Issue() { /* for deserialization & ORMs */ }
     ```
 
-2. Update method **CreateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project, because it's **no longer possible to initialize an object with an object initializer**. To initialize an object **you must use a constructor**.
+2. Update method **CreateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project. You must use a **constructor** because it's **no longer possible to initialize an object with an object initializer**.
 
     ```csharp
     // import usings
@@ -77,7 +77,7 @@ git checkout exercise_002
     }
     ```
 
-3. Update the **IssueDataSeederContributor** class in  **Domain** project. Here also you need to use a **constructor** instead of a **object initializer**
+3. Update the **IssueDataSeederContributor** class in the **Domain** project. Here also you need to use a **constructor** instead of a **object initializer**
 
     ```csharp
     foreach (var issue in DataSeederIssues)
@@ -103,4 +103,4 @@ git checkout exercise_002
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#Constructors-of-the-Aggregate-Roots-/-Entities)
+[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-/-entities)
