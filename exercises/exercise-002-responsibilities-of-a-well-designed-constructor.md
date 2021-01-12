@@ -1,6 +1,6 @@
 # Exercise 002: Responsibilities of a well-designed constructor
 
-[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-/-entities)
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_002
 
 ## Responsibilities constructor
 
@@ -108,4 +108,4 @@ git checkout exercise_002
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).
 
-[< back to theory](../docs/part3/part3-implementation-the-building-blocks.md#constructors-of-the-aggregate-roots-/-entities)
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_002)

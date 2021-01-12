@@ -157,7 +157,7 @@ That doesn't mean sub-collection entities should always have composite PKs. They
 
 > Composite PKs are actually a concept of relational databases since the sub-collection entities have their own tables and needs to a PK. On the other hand, for example, in MongoDB you don't need to define PK for the sub-collection entities at all since they are stored as a part of the aggregate root.
 
-##### Constructors of the Aggregate Roots / Entities
+##### <a name="theory_exercise_002"></a> Constructors of the Aggregate Roots / Entities
 
 The constructor is located where the lifecycle of an entity begins. There are a some responsibilities of a well designed constructor:
 
