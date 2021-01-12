@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using IssueTracking.Application.Contracts.Issues;
 using IssueTracking.Domain.Issues;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Users;
 
 namespace IssueTracking.Application.Issues
 {
@@ -63,6 +65,14 @@ namespace IssueTracking.Application.Issues
       issue.Text = input.Text;
       issue.AssignedUserId = input.AssignedUserId;
 
+      await _issueRepository.UpdateAsync(issue);
+    }
+
+    [Authorize]
+    public async Task CreateCommentAsync(CreateCommentDto input)
+    {
+      var issue = await _issueRepository.GetAsync(input.IssueId);
+      issue.AddComment(CurrentUser.GetId(), input.Text);
       await _issueRepository.UpdateAsync(issue);
     }
   }

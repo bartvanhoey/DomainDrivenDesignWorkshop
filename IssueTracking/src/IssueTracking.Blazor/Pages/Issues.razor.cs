@@ -82,7 +82,10 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task AddCommentAsync()
     {
-      await Task.CompletedTask;
+      CreateCommentEntity.IssueId = CreateCommentIssueId;
+      await IssueAppService.CreateCommentAsync(CreateCommentEntity);
+      await GetIssuesAsync();
+      AddCommentModal.Hide();
     }
 
     protected void OpenAddCommentModalAsync(IssueDto issue)

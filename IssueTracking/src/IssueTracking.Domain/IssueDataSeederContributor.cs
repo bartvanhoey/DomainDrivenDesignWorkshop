@@ -22,16 +22,16 @@ namespace IssueTracking.Domain
       if (await _issueRepository.GetCountAsync() <= 0)
       {
         var random = new Random();
-        foreach (var dataSeederIssue in DataSeederIssues)
+        foreach (var issue in DataSeederIssues)
         {
-          var issue = await _issueRepository.InsertAsync(
+          var insertedIssue = await _issueRepository.InsertAsync(
              new Issue
              {
-               Title = dataSeederIssue.Title,
-               Text = dataSeederIssue.Text,
+               Title = issue.Title,
+               Text = issue.Text,
                RepositoryId = Guid.NewGuid(),
-               IsClosed = dataSeederIssue.IsClosed,
-               CloseReason = dataSeederIssue.CloseReason
+               IsClosed = issue.IsClosed,
+               CloseReason = issue.CloseReason
              },
              autoSave: true
          );
@@ -40,7 +40,7 @@ namespace IssueTracking.Domain
           for (int i = 1; i <= numberOfComments; i++)
           {
             await _commentRepository.InsertAsync(
-                new Comment { IssueId = issue.Id, Text = $"Sample comment {i}" },
+                new Comment { IssueId = insertedIssue.Id, Text = $"Sample comment {i}" },
                 autoSave: true);
           }
         }

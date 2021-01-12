@@ -166,6 +166,7 @@ The constructor is located where the lifecycle of an entity begins. There are a 
 * Initializes **sub-collections**.
 
 **Example: `Issue` (Aggregate Root) constructor**
+[Exercise 002](../../exercises/exercise-002-responsibilities-of-a-well-designed-constructor.md)
 
 ````csharp
 using System;
