@@ -26,7 +26,7 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 ### Table of contents
 
-* [Get Started](docs/get-started/get-started.md) to get started with the **free Domain Driven Design Workshop**. Enjoy and have fun!
+* [Get Started](docs/get-started/get-started.md)
 
 * [Part 1: What Is Domain Driven Design](docs/part1/part1-What-Is-Domain-Driven-Design.md)
 
