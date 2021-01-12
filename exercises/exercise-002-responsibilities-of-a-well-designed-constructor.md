@@ -96,7 +96,7 @@ git checkout exercise_002
 
 * Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
 
-* Start the **HttpApi.Host** project by hitting `F5`.
+* Select **ApiDevelopment** in the **dropdown** of the **Debug Window** and start the **HttpApi.Host** project.
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 

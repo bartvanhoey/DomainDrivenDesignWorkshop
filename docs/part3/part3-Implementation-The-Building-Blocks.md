@@ -18,7 +18,7 @@ As said before, an [Aggregate](https://docs.abp.io/en/abp/latest/Entities) is a 
 
 > We refer the term *Entity* both for *Aggregate Root* and *sub-collection entities* unless we explicitly write *Aggregate Root* or *sub-collection entity*.
 
-#### Aggregate / Aggregate Root Principles
+#### <a name="theory_exercise_002"></a> Aggregate / Aggregate Root Principles
 
 ##### Business Rules
 
