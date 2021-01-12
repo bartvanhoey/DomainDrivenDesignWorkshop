@@ -18,26 +18,6 @@ namespace IssueTracking.Domain.Issues
     public ICollection<IssueLabel> Labels { get; set; }
     public ICollection<Comment> Comments { get; private set; }
 
-    public Issue(
-            Guid id,
-            Guid repositoryId,
-            string title,
-            string text = null,
-            Guid? assignedUserId = null
-            ) : base(id)
-    {
-      RepositoryId = repositoryId;
-      Title = Check.NotNullOrWhiteSpace(title, nameof(title));
-
-      Text = text;
-      AssignedUserId = assignedUserId;
-
-      Labels = new Collection<IssueLabel>();
-      Comments = new Collection<Comment>();
-    }
-
-    private Issue() { /* for deserialization & ORMs */ }
-
     public void AddComment(Guid userId, string text)
     {
       Comments ??= new Collection<Comment>();

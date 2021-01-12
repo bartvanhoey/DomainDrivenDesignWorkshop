@@ -25,8 +25,8 @@ namespace IssueTracking.Application.Issues
     private readonly IGuidGenerator _;
     public async Task<IssueDto> CreateAsync(CreateIssueDto input)
     {
-      var issue = new Issue(_guidGenerator.Create(), input.RepositoryId, input.Title, input.Text);
-
+      var issue =new Issue {RepositoryId = input.RepositoryId, Title = input.Title, Text = input.Text};
+      
       await _issueRepository.InsertAsync(issue);
       return ObjectMapper.Map<Issue, IssueDto>(issue);
     }

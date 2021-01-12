@@ -24,8 +24,12 @@ namespace IssueTracking.Domain
         var random = new Random();
         foreach (var issue in DataSeederIssues)
         {
-          var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), issue.Title, issue.Text);
-          var insertedIssue = await _issueRepository.InsertAsync(issueToInsert, autoSave: true);
+          var insertedIssue = await _issueRepository.InsertAsync(new Issue {
+            Title = issue.Title,
+            Text = issue.Text,
+            IsClosed = issue.IsClosed,
+            CloseReason = issue.CloseReason
+          }, autoSave: true);
 
           var numberOfComments = random.Next(4);
           for (int i = 1; i <= numberOfComments; i++)
