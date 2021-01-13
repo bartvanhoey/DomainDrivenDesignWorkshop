@@ -22,8 +22,7 @@ git checkout exercise_003
 1. Update class **Issue** in the **Issues** folder of the **Domain** project.
 
     ```csharp
-
-     public Guid RepositoryId { get; private set; } //Never changes
+        public Guid RepositoryId { get; private set; } //Never changes
         public string Title { get; private set; } //Needs validation
         public string Text { get; set; } //No validation
         public Guid? AssignedUserId { get; set; } //No validation
