@@ -1,5 +1,6 @@
 @page "/issues"
 @using IssueTracking.Application.Contracts.Issues
+@using IssueTracking.Domain.Shared.Issues;
 @inherits IssueTrackingComponentBase
 @inject IIssueAppService IssueAppService
 
@@ -48,8 +49,20 @@
                                 }
                                 @if (CanUpdateIssue)
                                     {
-                                <DropdownItem Clicked="() => OpenAddCommentModalAsync(context)">
+                                <DropdownItem Clicked="() => OpenAddCommentModal(context)">
                                     @L["AddComment"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => LockIssueAsync(context)">
+                                    @L["LockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => UnlockIssueAsync(context)">
+                                    @L["UnlockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => OpenCloseIssueModal(context)">
+                                    @L["CloseIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => ReOpenIssueAsync(context)">
+                                    @L["ReOpenIssue"]
                                 </DropdownItem>
                                 }
                             </DropdownMenu>
@@ -70,6 +83,7 @@
                 </DataGridColumn>
                 <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]">
                 </DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]"></DataGridCheckColumn>
             </DataGridColumns>
             <DetailRowTemplate>
                 @{
@@ -153,6 +167,37 @@
         <ModalFooter>
             <Button Color="Color.Secondary" Clicked="CloseAddCommentModalAsync">@L["Cancel"]</Button>
             <Button Color="Color.Primary" Clicked="AddCommentAsync">@L["Save"]</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="CloseIssueModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true" Size="ModalSize.Default">
+        <ModalHeader>
+            <ModalTitle>@L["AddComment"]</ModalTitle>
+            <CloseButton Clicked="CloseCloseIssueModalAsync" />
+        </ModalHeader>
+        <ModalBody>
+            <Row>
+                <Column ColumnSize="ColumnSize.Is12">
+                    <Field>
+                      <FieldLabel>@L["IssueCloseReason"]</FieldLabel>
+                      <Select TValue="IssueCloseReason" @bind-SelectedValue="@CloseIssueEntity.CloseReason">
+                        @foreach (int value in Enum.GetValues(typeof(IssueCloseReason)))
+                        {
+                          <SelectItem TValue="IssueCloseReason" Value="@((IssueCloseReason)value)">
+                              @L[$"Enum:IssueCloseReason:{value}"]
+                          </SelectItem>
+                        }
+                      </Select>
+                    </Field>
+                </Column>
+            </Row>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseCloseIssueModalAsync">@L["Cancel"]</Button>
+            <Button Color="Color.Primary" Clicked="CloseIssueAsync">@L["Save"]</Button>
         </ModalFooter>
     </ModalContent>
 </Modal>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Blazorise;
 using Blazorise.DataGrid;
 using IssueTracking.Application.Contracts.Issues;
+using IssueTracking.Domain.Shared.Issues;
 using Volo.Abp.Application.Dtos;
 
 namespace IssueTracking.Blazor.Pages
@@ -25,13 +26,16 @@ namespace IssueTracking.Blazor.Pages
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
     protected CreateCommentDto CreateCommentEntity { get; set; } = new CreateCommentDto();
+    protected CloseIssueDto CloseIssueEntity { get; set; } = new CloseIssueDto();
 
     protected Guid EditingIssueId { get; set; }
     protected Guid CreateCommentIssueId { get; set; }
+    protected Guid CloseIssueId { get; set; }
 
     protected Modal CreateModal { get; set; }
     protected Modal EditModal { get; set; }
     protected Modal AddCommentModal { get; set; }
+    protected Modal CloseIssueModal { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -88,12 +92,20 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
-    protected void OpenAddCommentModalAsync(IssueDto issue)
+    protected void OpenAddCommentModal(IssueDto issue)
     {
       CreateCommentIssueId = issue.Id;
       CreateCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
       AddCommentModal.Show();
     }
+
+    protected void OpenCloseIssueModal(IssueDto issue)
+    {
+      CloseIssueId = issue.Id;
+      CreateCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
+      CloseIssueModal.Show();
+    }
+
 
     protected async Task GetIssuesAsync()
     {
@@ -133,6 +145,11 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
+     protected void CloseCloseIssueModalAsync()
+    {
+      AddCommentModal.Hide();
+    }
+
     protected async Task CreateEntityAsync()
     {
       await IssueAppService.CreateAsync(NewEntity);
@@ -155,6 +172,25 @@ namespace IssueTracking.Blazor.Pages
         ShowComments = true;
     }
 
+    protected async Task LockIssueAsync(IssueDto issue)
+    {
+      await Task.CompletedTask;
+    }
+
+    protected async Task UnlockIssueAsync(IssueDto issue)
+    {
+      await Task.CompletedTask;
+    }
+
+    protected async Task CloseIssueAsync()
+    {
+      await Task.CompletedTask;
+    }
+
+    protected async Task ReOpenIssueAsync(IssueDto issue)
+    {
+      await Task.CompletedTask;
+    }
 
   }
 }
