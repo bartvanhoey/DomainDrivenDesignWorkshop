@@ -40,7 +40,7 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 002: Responsibilities of a well designed constructor](exercises/exercise-002-responsibilities-of-a-well-designed-constructor.md)
 
-* [Exercise 003: Entity Accessors and Method](exercises/exercise-003-entity-accessors-and-methods.md`)
+* [Exercise 003: Entity Accessors and Method](exercises/exercise-003-entity-accessors-and-methods.md)
 
 
 ### Source Code
