@@ -28,6 +28,8 @@ git checkout exercise_003
         public Guid? AssignedUserId { get; set; } //No validation
         public bool IsClosed { get; private set; } //Should be changed with CloseReason
         public IssueCloseReason? CloseReason { get; private set; } //Should be changed with IsClosed
+        public ICollection<IssueLabel> Labels { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
     
         //...
 
@@ -49,7 +51,7 @@ git checkout exercise_003
         }
     ```
 
-2. Update method **UpdateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project. You must use the **SetTitle** method as the Title property has no public setter anymore.
+2. Update method **UpdateAsync** of **IssueAppService** class in the **Issues** folder of the  **Application** project. You must use the **SetTitle** method here as the Title property has no public setter anymore.
 
     ```csharp
     // import usings
@@ -67,12 +69,15 @@ git checkout exercise_003
             _guidGenerator = guidGenerator;
         }
         
-        public async Task<IssueDto> CreateAsync(CreateIssueDto input)
+        public async Task UpdateAsync(Guid id, UpdateIssueDto input)
         {
-            var issue = new Issue(_guidGenerator.Create(), input.RepositoryId, input.Title, input.Text);
+            var issue = await _issueRepository.GetAsync(id);
 
-            await _issueRepository.InsertAsync(issue);
-            return ObjectMapper.Map<Issue, IssueDto>(issue);
+            issue.SetTitle(input.Text);
+            issue.Text = input.Text;
+            issue.AssignedUserId = input.AssignedUserId;
+
+            await _issueRepository.UpdateAsync(issue);
         }
 
         //.....
@@ -89,7 +94,7 @@ git checkout exercise_003
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
+* Register as a new user and make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
 * Enter a comment and check if it gets added to the issue.
 
