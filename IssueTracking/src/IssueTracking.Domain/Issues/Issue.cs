@@ -14,6 +14,7 @@ namespace IssueTracking.Domain.Issues
     public string Text { get; set; }
     public Guid? AssignedUserId { get; set; }
     public bool IsClosed { get; private set; } = false;
+    public bool IsLocked { get; private set; }
     public IssueCloseReason? CloseReason { get; private set; }
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }

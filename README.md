@@ -42,6 +42,7 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 003: Entity Accessors and Method](exercises/exercise-003-entity-accessors-and-methods.md)
 
+* [Exercise 004: Business Logic & Exceptions in the Entities](exercises/exercise-004-business-logic-and-exceptions-in-the-entities.md)
 
 ### Source Code
 
