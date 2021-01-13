@@ -22,7 +22,7 @@ namespace IssueTracking.Application.Issues
       _guidGenerator = guidGenerator;
       _issueRepository = issueRepository;
     }
-    private readonly IGuidGenerator _;
+
     public async Task<IssueDto> CreateAsync(CreateIssueDto input)
     {
       var issue = new Issue(_guidGenerator.Create(), input.RepositoryId, input.Title, input.Text);
@@ -74,5 +74,7 @@ namespace IssueTracking.Application.Issues
       issue.AddComment(CurrentUser.GetId(), input.Text);
       await _issueRepository.UpdateAsync(issue);
     }
+
+
   }
 }
