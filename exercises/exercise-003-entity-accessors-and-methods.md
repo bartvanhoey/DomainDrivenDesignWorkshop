@@ -1,12 +1,12 @@
-# Exercise 003: Responsibilities of a well-designed constructor
+# Exercise 003: Entity Property Accessors & Methods
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_003)
 
-## Responsibilities constructor
+## Accessors and Methods
 
 If we declare all the properties with **public setters** (like in the `Issue` class), we can't force **validity** and **integrity** of the entity in its lifecycle. So;
 
-* Use **private setter** for a property when you need to perform any **logic** while setting that property.
+* Use a **private setter** for a property when you need to perform any **logic** while setting that property.
 * Define public methods to manipulate such properties.
 
 ## Put it into practice
