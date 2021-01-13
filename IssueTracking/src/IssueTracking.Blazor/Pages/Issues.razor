@@ -51,6 +51,18 @@
                                 <DropdownItem Clicked="() => OpenAddCommentModalAsync(context)">
                                     @L["AddComment"]
                                 </DropdownItem>
+                                <DropdownItem Clicked="() => LockIssueAsync(context)">
+                                    @L["LockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => UnlockIssueAsync(context)">
+                                    @L["UnlockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => CloseIssueAsync(context)">
+                                    @L["CloseIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => ReOpenIssueAsync(context)">
+                                    @L["ReOpenIssue"]
+                                </DropdownItem>
                                 }
                             </DropdownMenu>
                         </Dropdown>
