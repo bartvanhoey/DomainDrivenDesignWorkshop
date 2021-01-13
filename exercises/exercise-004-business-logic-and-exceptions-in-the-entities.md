@@ -172,7 +172,7 @@ git checkout exercise_004
     }
    ```
 
-### Run application and Test the AddComment method
+### Run application and Test the Close/Reopen and Lock/Unlock methods
 
 * Delete **database IssueTracking** in **SQL Server** to have a clean start.
 
