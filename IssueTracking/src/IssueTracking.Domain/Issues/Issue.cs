@@ -45,21 +45,47 @@ namespace IssueTracking.Domain.Issues
       Comments.Add(new Comment { IssueId = this.Id, Text = text, UserId = userId });
     }
 
-        public void SetTitle(string title)
+    public void SetTitle(string title)
     {
-        Title = Check.NotNullOrWhiteSpace(title, nameof(title));
+      Title = Check.NotNullOrWhiteSpace(title, nameof(title));
     }
 
     public void Close(IssueCloseReason reason)
     {
-        IsClosed = true;
-        CloseReason = reason;
+      IsClosed = true;
+      CloseReason = reason;
     }
 
     public void ReOpen()
     {
-        IsClosed = false;
-        CloseReason = null;
+      if (IsLocked)
+      {
+        // business rule 1: A locked issue can not be re-opened.
+        throw new IssueStateException(
+            "Can not open a locked issue! Unlock it first."
+        );
+      }
+
+      IsClosed = false;
+      CloseReason = null;
+    }
+
+    public void Lock()
+    {
+      if (!IsClosed)
+      {
+        // business rule 2: You can not lock an open issue.
+        throw new IssueStateException(
+            "Can not lock an open issue! Close it first."
+        );
+      }
+
+      IsLocked = true;
+    }
+
+    public void Unlock()
+    {
+      IsLocked = false;
     }
   }
 }

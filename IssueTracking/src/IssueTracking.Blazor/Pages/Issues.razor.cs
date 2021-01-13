@@ -145,7 +145,7 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
-     protected void CloseCloseIssueModalAsync()
+    protected void CloseCloseIssueModalAsync()
     {
       AddCommentModal.Hide();
     }
@@ -174,22 +174,33 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task LockIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueLockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.LockAsync(issue.Id);
+      await GetIssuesAsync();
     }
 
     protected async Task UnlockIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueUnlockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.UnlockAsync(issue.Id);
+      await GetIssuesAsync();
     }
 
     protected async Task CloseIssueAsync()
     {
-      await Task.CompletedTask;
+      await IssueAppService.CloseAsync(CloseIssueId, CloseIssueEntity);
+      await GetIssuesAsync();
+      CloseIssueModal.Hide();
     }
 
     protected async Task ReOpenIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueReopenConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.ReOpenAsync(issue.Id);
+      await GetIssuesAsync();
     }
 
   }
