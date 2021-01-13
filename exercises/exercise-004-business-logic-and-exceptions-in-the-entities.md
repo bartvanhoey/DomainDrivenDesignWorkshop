@@ -172,7 +172,7 @@ git checkout exercise_004
     }
    ```
 
-### Run application and Test the Close/Reopen and Lock/Unlock methods
+### Run application and Test the Close/Reopen and Lock/Unlock methods to see if Business Rules are applied
 
 * Delete **database IssueTracking** in **SQL Server** to have a clean start.
 
@@ -182,7 +182,7 @@ git checkout exercise_004
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Register as a new user and make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
+* Register as a new user and make sure you are logged in. Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
 
 * Enter a comment and check if it gets added to the issue.
 
