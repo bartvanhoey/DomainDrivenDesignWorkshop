@@ -62,7 +62,7 @@ namespace IssueTracking.Application.Issues
 
       issue.SetTitle(input.Text);
       issue.Text = input.Text;
-      issue.AssignedUserId = input.AssignedUserId;
+      issue.SetAssignedUserId(input.AssignedUserId);
 
       await _issueRepository.UpdateAsync(issue);
     }
