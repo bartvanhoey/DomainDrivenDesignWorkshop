@@ -184,8 +184,6 @@ git checkout exercise_004
 
 * Register as a new user and make sure you are logged in. Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
 
-* Enter a comment and check if it gets added to the issue.
-
 ### Stop application
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt).

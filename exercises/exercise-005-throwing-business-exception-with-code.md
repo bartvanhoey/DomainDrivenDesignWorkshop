@@ -31,13 +31,13 @@ git checkout exercise_005
 
     namespace IssueTracking.Domain.Issues
     {
-        public class IssueStateException : Exception
-        {
-            public IssueStateException(string message) : base(message)
-            {
-                
-            }
-        }
+      public class IssueStateException : Exception
+      {
+          public IssueStateException(string code) : base(code)
+          {
+              
+          }
+      }
     }
     ```
 
@@ -56,20 +56,20 @@ git checkout exercise_005
     }
     ```
 
-3. Add a **constant** that specifies a unique error code in **IssueTrackingDomainErrorCodes** class in the **Domain.Shared** project.
+3. Add a **constant** that specifies a **unique error code** in **IssueTrackingDomainErrorCodes** class in the **Domain.Shared** project.
 
     ```csharp
     public static class IssueTrackingDomainErrorCodes
     {
-        public const string YouCannotReOpenALockedIssue = "IssueTracking:00001";
+      public const string YouCannotReOpenALockedIssue = "IssueTracking:00001";
     }
     ````
 
 4. Add an entry in file **en.json** file in the **Localization/IssueTracking** folder of the **Domain.Shared** project.
 
-  ```json
-  "IssueTracking:00001": "Can not open a locked issue! Unlock it first."
-  ```
+   ```json
+    "IssueTracking:00001": "Can not open a locked issue! Unlock it first."
+   ```
 
 ### Run application and Test the Reopen method for an Issue that has been locked
 
