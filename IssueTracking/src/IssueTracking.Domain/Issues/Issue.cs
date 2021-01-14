@@ -19,13 +19,7 @@ namespace IssueTracking.Domain.Issues
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }
 
-    public Issue(
-            Guid id,
-            Guid repositoryId,
-            string title,
-            string text = null,
-            Guid? assignedUserId = null
-            ) : base(id)
+    public Issue(Guid id, Guid repositoryId, string title, string text = null, Guid? assignedUserId = null) : base(id)
     {
       RepositoryId = repositoryId;
       Title = Check.NotNullOrWhiteSpace(title, nameof(title));
@@ -61,11 +55,8 @@ namespace IssueTracking.Domain.Issues
       if (IsLocked)
       {
         // business rule 1: A locked issue can not be re-opened.
-        throw new IssueStateException(
-            "Can not open a locked issue! Unlock it first."
-        );
+        throw new IssueStateException("Can not open a locked issue! Unlock it first.");
       }
-
       IsClosed = false;
       CloseReason = null;
     }

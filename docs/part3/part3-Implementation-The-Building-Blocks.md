@@ -360,7 +360,8 @@ There are two potential problems of throwing such exceptions;
 
 ABP's [Exception Handling](https://docs.abp.io/en/abp/latest/Exception-Handling) system solves these and similar problems.
 
-**Example: Throwing a business exception with code**
+**<a name="theory_exercise_005"></a>Example: Throwing a business exception with code**
+[Exercise 005](../../exercises/exercise-005-throwing-business-exception-with-code.md)
 
 ````csharp
 using Volo.Abp;
