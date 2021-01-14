@@ -41,7 +41,7 @@ git checkout exercise_005
     }
     ```
 
-2. Change the ReOpen method in the **Issues** folder of the **Domain** project.
+2. Change the** ReOpen** method in the **Issues** folder of the **Domain** project.
 
     ```csharp
     public void ReOpen()
@@ -82,6 +82,8 @@ git checkout exercise_005
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
 * Register as a new user and make sure you are logged in. Goto the **Issues** list. Reopening a locked issue should throw a **localized business exception**.
+
+![Localized error message](images/error_message_localized_business_exception.png "Localized error message thrown by the system")
 
 ### Stop application
 
