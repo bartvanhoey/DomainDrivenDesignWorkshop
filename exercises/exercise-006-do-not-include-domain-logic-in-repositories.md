@@ -19,58 +19,114 @@ git checkout exercise_006
 1. Add a **GetInActiveIssueAsync** method to the **IIssueRepository** interface in the **Issues** folder of the **Domain** project.
 
     ```csharp
-    public interface IIssueRepository : IRepository<Issue, Guid>
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Volo.Abp.Domain.Repositories;
+
+    namespace IssueTracking.Domain.Issues
     {
-      Task<List<Issue>> GetInActiveIssuesAsync();
+        public interface IIssueRepository :  IRepository<Issue, Guid>
+        {
+            Task<List<Issue>> GetInActiveIssuesAsync();
+        }
     }
     ```
 
-2. Change the **ReOpen** method in the **Issues** folder of the **Domain** project.
+    `IIssueRepository` extends the standard `IRepository<...>` interface by adding a `GetInActiveIssuesAsync` method. This repository works with such an `Issue` class:
+
+2. Implement interface **IIssueRepository** in class **EfCoreIssueRepository** in the **EntityFrameworkCore** project.
+
+    The rule says the repository shouldn't know the business rules. The question here is "**What is an inactive issue**? Is it a business rule definition?"
+
+    Let's see the implementation to understand it:
 
     ```csharp
-    public void ReOpen()
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using IssueTracking.Domain.Issues;
+    using Microsoft.EntityFrameworkCore;
+    using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+    using Volo.Abp.EntityFrameworkCore;
+
+    namespace IssueTracking.EntityFrameworkCore.Issues
     {
-      if (IsLocked)
+      public class EfCoreIssueRepository : EfCoreRepository<IssueTrackingDbContext, Issue, Guid>, IIssueRepository
       {
-        // business rule 1: A locked issue can not be re-opened.
-        throw new IssueStateException("IssueTrackingDomainErrorCodes.YouCannotReOpenALockedIssue");
-      }
-      IsClosed = false;
-      CloseReason = null;
+        public EfCoreIssueRepository(IDbContextProvider<IssueTrackingDbContext> dbContextProvider) 
+        : base(dbContextProvider)
+        {
+        }
+
+        public async Task<List<Issue>> GetInActiveIssuesAsync()
+        {
+
+          var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+
+          return await DbSet.Where(i =>
+
+              //Open
+              !i.IsClosed &&
+
+              //Assigned to nobody
+              i.AssignedUserId == null &&
+
+              //Created 30+ days ago
+              i.CreationTime < daysAgo30 &&
+
+              //No comment or the last comment was 30+ days ago
+              (i.LastCommentTime == null || i.LastCommentTime < daysAgo30)
+
+          ).ToListAsync();
+        }
+
+        //...
+
     }
     ```
 
-3. Implement IIssueRepository in that specifies a **unique error code** in **IssueTrackingDomainErrorCodes** class in the **Domain.Shared** project.
+    When we check the `GetInActiveIssuesAsync` implementation, we see a **business rule that defines an in-active issue**: The issue should be **open**, **assigned to nobody**, **created 30+ days ago** and has **no comment in the last 30 days**.
 
-    ```csharp
-    public static class IssueTrackingDomainErrorCodes
+    This is an implicit definition of a business rule that is hidden inside a repository method. The problem occurs when we need to reuse this business logic.
+
+    For example, let's say that we want to add an `bool IsInActive()` method on the `Issue` entity. In this way, we can check activeness when we have an issue entity.
+
+3. Add an **IsInActive** method in the **Issue** class in the  **issues** folder of the **Domain** project.
+
+   ```csharp
+    public class Issue : AggregateRoot<Guid>, IHasCreationTime
     {
-      public const string YouCannotReOpenALockedIssue = "IssueTracking:00001";
+        public bool IsClosed { get; private set; }
+        public Guid? AssignedUserId { get; private set; }
+        public DateTime CreationTime { get; private set; }
+        public DateTime? LastCommentTime { get; private set; }
+        //...
+
+        public bool IsInActive()
+        {
+            var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+            return
+                //Open
+                !IsClosed &&
+
+                //Assigned to nobody
+                AssignedUserId == null &&
+
+                //Created 30+ days ago
+                CreationTime < daysAgo30 &&
+
+                //No comment or the last comment was 30+ days ago
+                (LastCommentTime == null || LastCommentTime < daysAgo30);
+        }
     }
-    ````
-
-4. Add an entry in file **en.json** file in the **Localization/IssueTracking** folder of the **Domain.Shared** project.
-
-   ```json
-    "IssueTracking:00001": "Can not open a locked issue! Unlock it first."
    ```
 
-### Run application and Test the Reopen method for an Issue that has been locked
+### Do you see the problem?
 
-* Delete **database IssueTracking** in **SQL Server** to have a clean start.
+We had to copy/paste/modify the code. What if the definition of the activeness changes? We should not forget to update both places. This is a duplication of a business logic, which is pretty dangerous.
 
-* Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
-
-* Select **ApiDevelopment** in the **dropdown** of the **Debug Window** and run the **HttpApi.Host** project.
-
-* Open a command prompt in the **Blazor** project and enter `dotnet run`.
-
-* Register as a new user and make sure you are logged in. Goto the **Issues** list. Reopening a locked issue should throw a **localized business exception**.
-
-![Localized error message](images/error_message_localized_business_exception.png "Localized error message thrown by the system")
-
-### Stop application
-
-* Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt)
+A good solution to this problem is the *Specification Pattern*!
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_006)
