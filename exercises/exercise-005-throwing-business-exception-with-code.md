@@ -1,4 +1,4 @@
-# Exercise 005: Business Logic & Exceptions in the Entities
+# Exercise 005: Throwing a business exception with code
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_005)
 
