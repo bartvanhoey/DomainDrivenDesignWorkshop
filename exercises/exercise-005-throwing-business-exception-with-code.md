@@ -41,7 +41,7 @@ git checkout exercise_005
     }
     ```
 
-2. Change the** ReOpen** method in the **Issues** folder of the **Domain** project.
+2. Change the **ReOpen** method in the **Issues** folder of the **Domain** project.
 
     ```csharp
     public void ReOpen()
