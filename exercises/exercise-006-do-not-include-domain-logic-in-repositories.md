@@ -127,6 +127,6 @@ git checkout exercise_006
 
 We had to copy/paste/modify the code. What if the definition of the activeness changes? We should not forget to update both places. This is a duplication of a business logic, which is pretty dangerous.
 
-A good solution to this problem is the *Specification Pattern*!
+A good solution to this problem is the *Specification Pattern*! We will see it in action in exercise 007.
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_006)
