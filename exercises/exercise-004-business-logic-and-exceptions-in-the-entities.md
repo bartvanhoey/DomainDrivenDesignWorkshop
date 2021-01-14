@@ -104,7 +104,7 @@ git checkout exercise_004
         Task UnlockAsync(Guid id);
     ```
 
-4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application.project**.
+4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application** project.
 
     ```csharp
         // import usings
