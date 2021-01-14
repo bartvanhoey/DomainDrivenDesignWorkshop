@@ -47,9 +47,9 @@ git checkout exercise_001
 
     public class IssueAppService : ApplicationService, IIssueAppService
     {
-        private readonly IssueRepository _issueRepository;
+        private readonly EfCoreIssueRepository _issueRepository;
 
-        public IssueAppService(IssueRepository issueRepository)
+        public IssueAppService(EfCoreIssueRepository issueRepository)
         {
             _issueRepository = issueRepository;
         }

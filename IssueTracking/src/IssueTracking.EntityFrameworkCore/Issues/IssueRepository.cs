@@ -6,9 +6,9 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace IssueTracking.EntityFrameworkCore.Issues
 {
-  public class IssueRepository : EfCoreRepository<IssueTrackingDbContext, Issue, Guid>, IIssueRepository
+  public class EfCoreIssueRepository : EfCoreRepository<IssueTrackingDbContext, Issue, Guid>, IIssueRepository
   {
-    public IssueRepository(IDbContextProvider<IssueTrackingDbContext> dbContextProvider) : base(dbContextProvider)
+    public EfCoreIssueRepository(IDbContextProvider<IssueTrackingDbContext> dbContextProvider) : base(dbContextProvider)
     {
     }
     
