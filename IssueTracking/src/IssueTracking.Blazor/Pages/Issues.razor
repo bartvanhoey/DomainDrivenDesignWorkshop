@@ -23,7 +23,7 @@
 
     <CardBody>
         <DataGrid TItem="IssueDto" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
-            ShowPager="true" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto"
+            ShowPager="true" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto" Filterable="true"
             DetailRowTrigger="@((item)=>item.Comments?.Count > 0 && item.Id == selectedIssueDto?.Id && ShowComments)"
             RowDoubleClicked="e => ToggleSelectedIssueDto(e.Item)">
             <DataGridColumns>
@@ -82,8 +82,23 @@
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]">
+                       <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true"  />
+                    </DisplayTemplate>
                 </DataGridCheckColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]"></DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]"  >
+                    <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsLocked" Disabled="true" ReadOnly="true"  />
+                    </DisplayTemplate>
+                </DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]" Filterable="true" >
+                    <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsActive" Disabled="true" ReadOnly="true" />
+                    </DisplayTemplate>
+                    <FilterTemplate>
+                        <Check TValue="bool" Checked="@IsActive" CheckedChanged="() => OnIsActiveChangedAsync()">No</Check>
+                    </FilterTemplate>
+                </DataGridCheckColumn>
             </DataGridColumns>
             <DetailRowTemplate>
                 @{

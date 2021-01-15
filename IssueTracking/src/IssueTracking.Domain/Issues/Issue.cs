@@ -31,8 +31,16 @@ namespace IssueTracking.Domain.Issues
       Text = text;
       AssignedUserId = assignedUserId;
 
+      // added for seeding
+      var random = new Random();
+      var days = random.Next(-60,0);
+      CreationTime = DateTime.Now.AddDays(days);
+
       Labels = new Collection<IssueLabel>();
       Comments = new Collection<Comment>();
+
+
+
     }
 
     private Issue() { /* for deserialization & ORMs */ }
@@ -86,6 +94,23 @@ namespace IssueTracking.Domain.Issues
     public void Unlock()
     {
       IsLocked = false;
+    }
+
+    public bool IsInActive()
+    {
+        var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+        return
+            //Open
+            !IsClosed &&
+
+            //Assigned to nobody
+            AssignedUserId == null &&
+
+            //Created 30+ days ago
+            CreationTime < daysAgo30 &&
+
+            //No comment or the last comment was 30+ days ago
+            (LastCommentTime == null || LastCommentTime < daysAgo30);
     }
   }
 }

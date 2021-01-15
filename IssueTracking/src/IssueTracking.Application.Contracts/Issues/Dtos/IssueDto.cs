@@ -11,12 +11,14 @@ namespace IssueTracking.Application.Contracts.Issues
     public string Title { get; set; }
     public string Text { get; set; }
     public bool IsClosed { get; set; }
+    public bool IsActive { get; set; }
     public Guid? AssignedUserId { get; set; }
     public bool IsLocked { get; set; }
     public IssueCloseReason? CloseReason { get; set; }
     public DateTime CreationTime { get; set; }
     public DateTime? LastCommentTime { get; set; }
     public Guid MileStoneId { get; set; }
+
     public ICollection<CommentDto> Comments { get; set; }
 
   }
