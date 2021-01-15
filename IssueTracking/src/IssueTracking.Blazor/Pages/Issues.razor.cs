@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazorise;
@@ -22,6 +23,7 @@ namespace IssueTracking.Blazor.Pages
     protected bool CanDeleteIssue = true;
     protected IssueDto selectedIssueDto;
     protected bool ShowComments = true;
+    protected bool IsActive = false;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
@@ -107,16 +109,16 @@ namespace IssueTracking.Blazor.Pages
     }
 
 
-    protected async Task GetIssuesAsync()
+    protected async Task GetIssuesAsync(bool? isActive = null)
     {
       var result = await IssueAppService.GetListAsync(
           new GetIssueListDto
           {
             MaxResultCount = PageSize,
             SkipCount = CurrentPage * PageSize,
-            Sorting = CurrentSorting
-          }
-          );
+            Sorting = CurrentSorting,
+            IsActive = isActive
+          });
 
       IssueList = result.Items;
       TotalCount = (int)result.TotalCount;
@@ -201,6 +203,12 @@ namespace IssueTracking.Blazor.Pages
       if (!await Message.Confirm(confirmMessage)) return;
       await IssueAppService.ReOpenAsync(issue.Id);
       await GetIssuesAsync();
+    }
+
+    protected async Task OnIsActiveChangedAsync()
+    {
+        IsActive  =! IsActive;
+        await GetIssuesAsync(IsActive);
     }
 
   }
