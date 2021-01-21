@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace IssueTracking.Domain.Issues
 {
-  public class Issue : AggregateRoot<Guid>,  IHasCreationTime
+  public class Issue : AggregateRoot<Guid>, IHasCreationTime
   {
     public Guid RepositoryId { get; private set; }
     public string Title { get; private set; }
