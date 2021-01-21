@@ -26,7 +26,7 @@ git checkout exercise_006
 
     namespace IssueTracking.Domain.Issues
     {
-        public interface IIssueRepository :  IRepository<Issue, Guid>
+        public interface IIssueRepository : IRepository<Issue, Guid>
         {
             Task<List<Issue>> GetInActiveIssuesAsync();
         }
@@ -93,7 +93,7 @@ git checkout exercise_006
 
     For example, let's say that we want to add an `bool IsInActive()` method on the `Issue` entity. In this way, we can check activeness when we have an issue entity.
 
-3. Add an **IsInActive** method in the **Issue** class in the  **issues** folder of the **Domain** project.
+3. For demo purposes, the **IsInActive** method is already added to the **Issue** class in the **Domain** project.
 
    ```csharp
     public class Issue : AggregateRoot<Guid>, IHasCreationTime
@@ -125,7 +125,7 @@ git checkout exercise_006
 
 ### Do you see the problem?
 
-We had to copy/paste/modify the code. What if the definition of the activeness changes? We should not forget to update both places. This is a duplication of a business logic, which is pretty dangerous.
+We had to copy/paste/modify the code. What if we want it be 45 days instead of 30 days for an inactive issue? We should not forget to update both places. This is a duplication of a business logic, which is pretty dangerous.
 
 A good solution to this problem is the *Specification Pattern*! We will see it in action in exercise 007.
 
