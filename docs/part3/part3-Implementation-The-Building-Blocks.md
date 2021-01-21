@@ -600,7 +600,7 @@ We had to copy/paste/modify the code. What if the definition of the activeness c
 
 A good solution to this problem is the *Specification Pattern*!
 
-### Specifications
+### <a name="theory_exercise_007"></a>Specifications [Exercise 007](../../exercises/exercise-007-implement-inactive-issue-filter-as-specification-class.md)
 
 A [specification](https://docs.abp.io/en/abp/latest/Specifications) is a **named**, **reusable**, **combinable** and **testable** class to filter the Domain Objects based on the business rules.
 
