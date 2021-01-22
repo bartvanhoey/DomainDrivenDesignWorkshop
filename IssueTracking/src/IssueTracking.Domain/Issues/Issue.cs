@@ -14,7 +14,6 @@ namespace IssueTracking.Domain.Issues
     public string Text { get; set; }
     public Guid? AssignedUserId { get; set; }
     public bool IsClosed { get; private set; }
-    public bool IsLocked { get; private set; }
     public IssueCloseReason? CloseReason { get; private set; }
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }
@@ -50,28 +49,8 @@ namespace IssueTracking.Domain.Issues
 
     public void ReOpen()
     {
-
-      if (IsLocked)
-      {
-          throw new IssueStateException("Can not open a locked issue! Unlock it first.");
-      }
       IsClosed = false;
       CloseReason = null;
     }
-
-    public void Lock()
-    {
-      if (!IsClosed)
-      {
-          throw new IssueStateException("Can not lock an open issue! Lock it first");
-      }
-      IsLocked = true;
-    }
-
-    public void Unlock()
-    {
-      IsLocked = false;
-    }
-
   }
 }
