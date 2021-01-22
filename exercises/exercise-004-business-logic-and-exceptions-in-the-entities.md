@@ -98,7 +98,7 @@ git checkout exercise_004
 
     ```csharp
         // import usings
-        //  using IssueTracking.Domain.Shared.Issues;
+        // using IssueTracking.Domain.Shared.Issues;
 
         //...
         Task CloseAsync(Guid id, CloseIssueDto input);
@@ -114,32 +114,31 @@ git checkout exercise_004
 
     ```csharp
         // import usings
-        //  using IssueTracking.Domain.Shared.Issues;
+        // using IssueTracking.Domain.Shared.Issues;
 
         //...
         public async Task CloseAsync(Guid id, CloseIssueDto input)
         {
-        var issue = await _issueRepository.GetAsync(id);
-        issue.Close(input.CloseReason);
+            var issue = await _issueRepository.GetAsync(id);
+            issue.Close(input.CloseReason);
         }
         
         public async Task ReOpenAsync(Guid id)
         {
-        var issue = await _issueRepository.GetAsync(id);
-        issue.ReOpen();      
+            var issue = await _issueRepository.GetAsync(id);
+            issue.ReOpen();      
         }
 
         public async Task LockAsync(Guid id)
         {
-        var issue = await _issueRepository.GetAsync(id);
-        issue.Lock();
-        
+            var issue = await _issueRepository.GetAsync(id);
+            issue.Lock();
         }
 
         public async Task UnlockAsync(Guid id)
         {
-        var issue = await _issueRepository.GetAsync(id);
-        issue.Unlock();
+            var issue = await _issueRepository.GetAsync(id);
+            issue.Unlock();
         }
     ```
 

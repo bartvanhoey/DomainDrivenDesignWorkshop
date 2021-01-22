@@ -170,5 +170,36 @@ namespace IssueTracking.Blazor.Pages
         ShowComments = true;
     }
 
+    protected async Task LockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueLockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.LockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task UnlockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueUnlockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.UnlockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task CloseIssueAsync()
+    {
+      await IssueAppService.CloseAsync(CloseIssueId, CloseIssueEntity);
+      await GetIssuesAsync();
+      CloseIssueModal.Hide();
+    }
+
+    protected async Task ReOpenIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueReopenConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.ReOpenAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
   }
 }
