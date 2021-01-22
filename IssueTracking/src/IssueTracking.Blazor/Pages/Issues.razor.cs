@@ -14,7 +14,7 @@ namespace IssueTracking.Blazor.Pages
   public partial class Issues
   {
     protected IReadOnlyList<IssueDto> IssueList { get; set; }
-    protected int PageSize { get; } = LimitedResultRequestDto.DefaultMaxResultCount;
+    protected int PageSize { get; } = 20;
     protected int CurrentPage { get; set; }
     protected string CurrentSorting { get; set; }
     protected int TotalCount { get; set; }
