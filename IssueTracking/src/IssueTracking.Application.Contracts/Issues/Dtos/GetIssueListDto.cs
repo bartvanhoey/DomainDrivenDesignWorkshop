@@ -5,6 +5,6 @@ namespace IssueTracking.Application.Contracts.Issues
   public class GetIssueListDto  : PagedAndSortedResultRequestDto
   {
     public string Filter { get; set; }
-    public bool? IsActive { get; set; }
+    public bool? ShowNotActiveIssues { get; set; }
   }
 }

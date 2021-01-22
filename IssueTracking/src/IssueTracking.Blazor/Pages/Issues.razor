@@ -96,7 +96,7 @@
                         <Check TValue="bool" Checked="context.IsActive" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
                     <FilterTemplate>
-                        <Check TValue="bool" Checked="@IsActive" CheckedChanged="() => OnIsActiveChangedAsync()">No</Check>
+                        <Check TValue="bool" Checked="@ShowInActiveIssues" CheckedChanged="() => OnIsActiveChangedAsync()">No</Check>
                     </FilterTemplate>
                 </DataGridCheckColumn>
             </DataGridColumns>
