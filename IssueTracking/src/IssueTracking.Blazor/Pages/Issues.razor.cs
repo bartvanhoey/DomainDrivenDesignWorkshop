@@ -23,7 +23,7 @@ namespace IssueTracking.Blazor.Pages
     protected bool CanDeleteIssue = true;
     protected IssueDto selectedIssueDto;
     protected bool ShowComments = true;
-    protected bool IsActive = false;
+    protected bool ShowInActiveIssues = false;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
@@ -109,7 +109,7 @@ namespace IssueTracking.Blazor.Pages
     }
 
 
-    protected async Task GetIssuesAsync(bool? isActive = null)
+    protected async Task GetIssuesAsync(bool? showNotActiveIssues = null)
     {
       var result = await IssueAppService.GetListAsync(
           new GetIssueListDto
@@ -117,7 +117,7 @@ namespace IssueTracking.Blazor.Pages
             MaxResultCount = PageSize,
             SkipCount = CurrentPage * PageSize,
             Sorting = CurrentSorting,
-            IsActive = isActive
+            ShowNotActiveIssues = showNotActiveIssues
           });
 
       IssueList = result.Items;
@@ -207,8 +207,8 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task OnIsActiveChangedAsync()
     {
-        IsActive  =! IsActive;
-        await GetIssuesAsync(IsActive);
+        ShowInActiveIssues  =! ShowInActiveIssues;
+        await GetIssuesAsync(ShowInActiveIssues);
     }
 
   }
