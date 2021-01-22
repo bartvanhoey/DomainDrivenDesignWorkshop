@@ -56,7 +56,7 @@ git checkout exercise_004
                 {
                     // business rule 2: You can not lock an open issue.
                     throw new IssueStateException(
-                        "Can not lock a closed issue! Open it first."
+                        "Can not lock an open issue! Close it first."
                     );
                 }
 
@@ -88,7 +88,91 @@ git checkout exercise_004
     }
     ```
 
-### Run application and Test the AddComment method
+3. Add extra methods in the **IIssueAppService** interface in folder **Issues** of the **Application.Contracts** project.
+
+    ```csharp
+        // import usings
+        //  using IssueTracking.Domain.Shared.Issues;
+
+        //...
+        Task CloseAsync(Guid id, CloseIssueDto input);
+        
+        Task ReOpenAsync(Guid id);
+
+        Task LockAsync(Guid id);
+
+        Task UnlockAsync(Guid id);
+    ```
+
+4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application** project.
+
+    ```csharp
+        // import usings
+        //  using IssueTracking.Domain.Shared.Issues;
+
+        //...
+        public async Task CloseAsync(Guid id, CloseIssueDto input)
+        {
+        var issue = await _issueRepository.GetAsync(id);
+        issue.Close(input.CloseReason);
+        }
+        
+        public async Task ReOpenAsync(Guid id)
+        {
+        var issue = await _issueRepository.GetAsync(id);
+        issue.ReOpen();      
+        }
+
+        public async Task LockAsync(Guid id)
+        {
+        var issue = await _issueRepository.GetAsync(id);
+        issue.Lock();
+        
+        }
+
+        public async Task UnlockAsync(Guid id)
+        {
+        var issue = await _issueRepository.GetAsync(id);
+        issue.Unlock();
+        }
+    ```
+
+5. Open file **Issues.razor.cs** in folder **Issues** of the **Blazor** project and update the methods below.
+
+   ```csharp
+    protected async Task LockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueLockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.LockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task UnlockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueUnlockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.UnlockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task CloseIssueAsync()
+    {
+      await IssueAppService.CloseAsync(CloseIssueId, CloseIssueEntity);
+      await GetIssuesAsync();
+      CloseIssueModal.Hide();
+    }
+
+    protected async Task ReOpenIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueReopenConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.ReOpenAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+   ```
+
+### Run application and Test the Close/Reopen and Lock/Unlock methods to see if Business Rules are applied
 
 * Delete **database IssueTracking** in **SQL Server** to have a clean start.
 
@@ -98,9 +182,7 @@ git checkout exercise_004
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Register as a new user and make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
-
-* Enter a comment and check if it gets added to the issue.
+* Register as a new user and make sure you are logged in. Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
 
 ### Stop application
 
