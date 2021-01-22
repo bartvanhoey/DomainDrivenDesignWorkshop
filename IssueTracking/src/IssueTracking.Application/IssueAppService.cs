@@ -74,30 +74,5 @@ namespace IssueTracking.Application
       issue.AddComment(CurrentUser.GetId(), input.Text);
       await _issueRepository.UpdateAsync(issue, autoSave: false);
     }
-
-    public async Task CloseAsync(Guid id, CloseIssueDto input)
-    {
-      var issue = await _issueRepository.GetAsync(id);
-      issue.Close(input.CloseReason);
-    }
-
-    public async Task ReOpenAsync(Guid id)
-    {
-      var issue = await _issueRepository.GetAsync(id);
-      issue.ReOpen();
-    }
-
-    public async Task LockAsync(Guid id)
-    {
-      var issue = await _issueRepository.GetAsync(id);
-      issue.Lock();
-
-    }
-
-    public async Task UnlockAsync(Guid id)
-    {
-      var issue = await _issueRepository.GetAsync(id);
-      issue.Unlock();
-    }
   }
 }
