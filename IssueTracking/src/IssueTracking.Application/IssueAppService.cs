@@ -60,7 +60,7 @@ namespace IssueTracking.Application
     {
       var issue = await _issueRepository.GetAsync(id);
 
-      issue.Title = input.Text;
+      issue.SetTitle(input.Text);
       issue.Text = input.Text;
       issue.AssignedUserId = input.AssignedUserId;
 

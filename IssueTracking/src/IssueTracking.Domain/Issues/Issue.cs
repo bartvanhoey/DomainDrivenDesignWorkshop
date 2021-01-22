@@ -9,14 +9,14 @@ namespace IssueTracking.Domain.Issues
 {
   public class Issue : AggregateRoot<Guid>
   {
-    public Guid RepositoryId { get; set; }
-    public string Title { get; set; }
+    public Guid RepositoryId { get; private set; }
+    public string Title { get; private set; }
     public string Text { get; set; }
     public Guid? AssignedUserId { get; set; }
-    public bool IsClosed { get; set; }
-    public IssueCloseReason? CloseReason { get; set; }
-    public ICollection<IssueLabel> Labels { get; set; }
-    public ICollection<Comment> Comments { get; set; }
+    public bool IsClosed { get; private set; }
+    public IssueCloseReason? CloseReason { get; private set; }
+    public ICollection<IssueLabel> Labels { get; private set; }
+    public ICollection<Comment> Comments { get; private set; }
 
     public void AddComment(Guid userId, string text)
     {
@@ -35,6 +35,23 @@ namespace IssueTracking.Domain.Issues
     }
 
     private Issue(){}
+
+    public void SetTitle(string title)
+    {
+      Title = Check.NotNullOrWhiteSpace(title, nameof(title));
+    }
+
+    public void Close(IssueCloseReason reason)
+    {
+      IsClosed = true;
+      CloseReason = reason;
+    }
+
+    public void ReOpen()
+    {
+      IsClosed = false;
+      CloseReason = null;
+    }
 
   }
 }
