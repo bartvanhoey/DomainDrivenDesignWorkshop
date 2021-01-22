@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using IssueTracking.Domain.Shared.Issues;
-using Volo.Abp;
-using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
 namespace IssueTracking.Domain.Issues
@@ -23,27 +21,8 @@ namespace IssueTracking.Domain.Issues
     public DateTime CreationTime { get; private set; }
     public DateTime? LastCommentTime { get; private set; }
 
-    public Issue(Guid id, Guid repositoryId, string title, string text = null, Guid? assignedUserId = null) : base(id)
-    {
-      RepositoryId = repositoryId;
-      Title = Check.NotNullOrWhiteSpace(title, nameof(title));
-
-      Text = text;
-      AssignedUserId = assignedUserId;
-
-      // added for seeding
-      var random = new Random();
-      var days = random.Next(-60,0);
-      CreationTime = DateTime.Now.AddDays(days);
-
-      Labels = new Collection<IssueLabel>();
-      Comments = new Collection<Comment>();
 
 
-
-    }
-
-    private Issue() { /* for deserialization & ORMs */ }
 
     public void AddComment(Guid userId, string text)
     {
