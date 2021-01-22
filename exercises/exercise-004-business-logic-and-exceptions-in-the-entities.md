@@ -70,13 +70,7 @@ git checkout exercise_004
         }
     ```
 
-2. Open a **command prompt** in the **EntityFrameworkCore.DbMigrations** project and add a migration
-
-    ```bash
-    dotnet ef migrations add IsLockedPropAdded
-    ```
-
-3. Add a  **IssueStateException** class in the **Issues** folder of the  **Domain** project with the code below.
+2. Add a  **IssueStateException** class in the **Issues** folder of the  **Domain** project with the code below.
 
     ```csharp
     using System;
@@ -92,6 +86,12 @@ git checkout exercise_004
             }
         }
     }
+    ```
+
+3. Open a **command prompt** in the **EntityFrameworkCore.DbMigrations** project and add a migration
+
+    ```bash
+    dotnet ef migrations add IsLockedPropAdded
     ```
 
 4. Add extra methods in the **IIssueAppService** interface in folder **Issues** of the **Application.Contracts** project.
