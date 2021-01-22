@@ -7,7 +7,6 @@ using IssueTracking.Domain.Issues;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Guids;
 using Volo.Abp.Users;
 
 namespace IssueTracking.Application.Issues
@@ -15,17 +14,15 @@ namespace IssueTracking.Application.Issues
   public class IssueAppService : ApplicationService, IIssueAppService
   {
     private readonly IIssueRepository _issueRepository;
-    private readonly IGuidGenerator _guidGenerator;
 
-    public IssueAppService(IIssueRepository issueRepository, IGuidGenerator guidGenerator)
+    public IssueAppService(IIssueRepository issueRepository)
     {
-      _guidGenerator = guidGenerator;
       _issueRepository = issueRepository;
     }
 
     public async Task<IssueDto> CreateAsync(CreateIssueDto input)
     {
-      var issue = new Issue(_guidGenerator.Create(), input.RepositoryId, input.Title, input.Text);
+      var issue = new Issue { RepositoryId = input.RepositoryId, Title = input.Title, Text = input.Text };
 
       await _issueRepository.InsertAsync(issue);
       return ObjectMapper.Map<Issue, IssueDto>(issue);
@@ -36,6 +33,7 @@ namespace IssueTracking.Application.Issues
       var issue = await _issueRepository.GetAsync(id);
       return ObjectMapper.Map<Issue, IssueDto>(issue);
     }
+    
     public async Task<PagedResultDto<IssueDto>> GetListAsync(GetIssueListDto input)
     {
       if (input.Sorting.IsNullOrWhiteSpace())
@@ -51,6 +49,30 @@ namespace IssueTracking.Application.Issues
       return new PagedResultDto<IssueDto>(totalCount, items);
     }
 
+    // public async Task<PagedResultDto<IssueDto>> GetListAsync(GetIssueListDto input)
+    // {
+    //   if (input.Sorting.IsNullOrWhiteSpace())
+    //   {
+    //     input.Sorting = nameof(Issue.Title);
+    //   }
+
+    //   var issues = new List<Issue>();
+    //   if (input.IsActive == true)
+    //   {
+    //     issues = await _issueRepository.GetInActiveIssuesAsync();
+    //   }
+    //   else
+    //   {
+    //     issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+    //   }
+    //   var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
+
+    //   List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);
+
+    //   return new PagedResultDto<IssueDto>(totalCount, items);
+    // }
+
+
     public async Task DeleteAsync(Guid id)
     {
       await _issueRepository.DeleteAsync(id);
@@ -62,7 +84,7 @@ namespace IssueTracking.Application.Issues
 
       issue.SetTitle(input.Text);
       issue.Text = input.Text;
-      issue.AssignedUserId = input.AssignedUserId;
+      issue.SetAssignedUserId(input.AssignedUserId);
 
       await _issueRepository.UpdateAsync(issue);
     }

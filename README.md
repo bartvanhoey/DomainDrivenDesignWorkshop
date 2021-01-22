@@ -46,6 +46,10 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 005: Throwing Business Exceptions with Code](exercises/exercise-005-throwing-business-exception-with-code.md)
 
+* [Exercise 006: Do Not Include Domain Logic in Repositories](exercises/exercise-006-do-not-include-domain-logic-in-repositories.md)
+
+* [Exercise 007: Implement Inactive Issue Filter as a Specification class](exercises/exercise-007-implement-inactive-issue-filter-as-specification-class.md)
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).

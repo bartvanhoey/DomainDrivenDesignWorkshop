@@ -472,7 +472,7 @@ Common Repository principles are;
 * Repository interface should be **database provider / ORM independent**. For example, do not return a `DbSet` from a repository method. `DbSet` is an object provided by the EF Core.
 * **Create repositories for aggregate roots**, not for all entities. Because, sub-collection entities (of an aggregate) should be accessed over the aggregate root.
 
-#### Do Not Include Domain Logic in Repositories
+#### <a name="theory_exercise_006"></a> Do Not Include Domain Logic in Repositories [Exercise 006](../../exercises/exercise-006-do-not-include-domain-logic-in-repositories.md)
 
 While this rule seems obvious at the beginning, it is easy to leak business logic into repositories.
 
@@ -600,7 +600,7 @@ We had to copy/paste/modify the code. What if the definition of the activeness c
 
 A good solution to this problem is the *Specification Pattern*!
 
-### Specifications
+### <a name="theory_exercise_007"></a>Specifications [Exercise 007](../../exercises/exercise-007-implement-inactive-issue-filter-as-specification-class.md)
 
 A [specification](https://docs.abp.io/en/abp/latest/Specifications) is a **named**, **reusable**, **combinable** and **testable** class to filter the Domain Objects based on the business rules.
 

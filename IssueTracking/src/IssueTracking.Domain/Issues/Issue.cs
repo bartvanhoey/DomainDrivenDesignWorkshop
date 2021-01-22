@@ -2,36 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using IssueTracking.Domain.Shared.Issues;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
 namespace IssueTracking.Domain.Issues
 {
-  public class Issue : AggregateRoot<Guid>
+  public class Issue : AggregateRoot<Guid>, IHasCreationTime
   {
     public Guid RepositoryId { get; private set; }
     public string Title { get; private set; }
     public string Text { get; set; }
-    public Guid? AssignedUserId { get; set; }
-    public bool IsClosed { get; private set; } = false;
     public bool IsLocked { get; private set; }
     public IssueCloseReason? CloseReason { get; private set; }
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }
+    
+    public bool IsClosed { get; private set; }
+    public Guid? AssignedUserId { get; private set; }
+    public DateTime CreationTime { get; private set; }
+    public DateTime? LastCommentTime { get; private set; }
 
-    public Issue(Guid id, Guid repositoryId, string title, string text = null, Guid? assignedUserId = null) : base(id)
-    {
-      RepositoryId = repositoryId;
-      Title = Check.NotNullOrWhiteSpace(title, nameof(title));
 
-      Text = text;
-      AssignedUserId = assignedUserId;
 
-      Labels = new Collection<IssueLabel>();
-      Comments = new Collection<Comment>();
-    }
-
-    private Issue() { /* for deserialization & ORMs */ }
 
     public void AddComment(Guid userId, string text)
     {
@@ -42,6 +33,11 @@ namespace IssueTracking.Domain.Issues
     public void SetTitle(string title)
     {
       Title = Check.NotNullOrWhiteSpace(title, nameof(title));
+    }
+
+    public void SetAssignedUserId(Guid? assignedUserId)
+    {
+      AssignedUserId = assignedUserId;
     }
 
     public void Close(IssueCloseReason reason)
@@ -77,6 +73,23 @@ namespace IssueTracking.Domain.Issues
     public void Unlock()
     {
       IsLocked = false;
+    }
+
+    public bool IsInActive()
+    {
+        var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+        return
+            //Open
+            !IsClosed &&
+
+            //Assigned to nobody
+            AssignedUserId == null &&
+
+            //Created 30+ days ago
+            CreationTime < daysAgo30 &&
+
+            //No comment or the last comment was 30+ days ago
+            (LastCommentTime == null || LastCommentTime < daysAgo30);
     }
   }
 }

@@ -18,6 +18,7 @@
         "IssueCloseReason": "Reason closed",
         "IssueIsClosed": "Is closed?",  
         "IssueIsLocked": "Is locked?",  
+        "IssueIsActive": "Is active",
         "Enum:BookType:0": "Undefined",
         "Enum:IssueCloseReason:0": "Due date passed",
         "Enum:IssueCloseReason:1": "Irrelevant",
