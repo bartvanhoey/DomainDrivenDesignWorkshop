@@ -63,4 +63,21 @@ git checkout exercise_007
     }
     ```
 
-3. 
+3. Add a method to the **IIssueRepository** interface in the **Application.Contracts** project.
+
+    ```csharp
+    public interface IIssueRepository : IRepository<Issue, Guid>
+    {
+        Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec);
+    }
+    ```
+
+4. Implement the GetIssueAsync method in the EfCoreIssueRepository class
+
+    ```csharp
+    public async Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec)
+    {
+      return await DbSet.Where(spec.ToExpression()).ToListAsync();
+    }
+    ```
+
