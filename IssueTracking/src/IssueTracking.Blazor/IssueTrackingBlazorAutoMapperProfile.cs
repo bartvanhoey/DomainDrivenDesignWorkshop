@@ -12,6 +12,8 @@ namespace IssueTracking.Blazor
       CreateMap<IssueDto, CreateCommentDto>()
       .ForMember(x => x.IssueId, x => x.MapFrom(src => src.Id))
       .ForAllMembers(opt => opt.Ignore());
+
+      CreateMap<IssueDto, CloseIssueDto>();
     }
   }
 }
