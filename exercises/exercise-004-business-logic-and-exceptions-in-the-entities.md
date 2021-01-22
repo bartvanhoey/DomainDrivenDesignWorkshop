@@ -70,7 +70,13 @@ git checkout exercise_004
         }
     ```
 
-2. Add a  **IssueStateException** class in the **Issues** folder of the  **Domain** project with the code below.
+2. Open a **command prompt** in the **EntityFrameworkCore.DbMigrations** project and add a migration
+
+    ```bash
+    dotnet ef migrations add IsLockedPropAdded
+    ```
+
+3. Add a  **IssueStateException** class in the **Issues** folder of the  **Domain** project with the code below.
 
     ```csharp
     using System;
@@ -88,7 +94,7 @@ git checkout exercise_004
     }
     ```
 
-3. Add extra methods in the **IIssueAppService** interface in folder **Issues** of the **Application.Contracts** project.
+4. Add extra methods in the **IIssueAppService** interface in folder **Issues** of the **Application.Contracts** project.
 
     ```csharp
         // import usings
@@ -104,7 +110,7 @@ git checkout exercise_004
         Task UnlockAsync(Guid id);
     ```
 
-4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application** project.
+5. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application** project.
 
     ```csharp
         // import usings
@@ -137,7 +143,7 @@ git checkout exercise_004
         }
     ```
 
-5. Open file **Issues.razor.cs** in folder **Issues** of the **Blazor** project and update the methods below.
+6. Open file **Issues.razor.cs** in folder **Issues** of the **Blazor** project and update the methods below.
 
    ```csharp
     protected async Task LockIssueAsync(IssueDto issue)
@@ -182,7 +188,7 @@ git checkout exercise_004
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Login with username `admin` and password `1q2w3E*`. 
+* Login with username `admin` and password `1q2w3E*`.
 
 * Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
 
