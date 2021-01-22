@@ -23,7 +23,8 @@
 
     <CardBody>
         <DataGrid TItem="IssueDto" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
-            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto"
+            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto" Filterable="true"
+
             DetailRowTrigger="@((item)=>item.Comments?.Count > 0 && item.Id == selectedIssueDto?.Id && ShowComments)"
             RowDoubleClicked="e => ToggleSelectedIssueDto(e.Item)">
             <DataGridColumns>
