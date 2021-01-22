@@ -35,7 +35,7 @@ git checkout exercise_006
 
     `IIssueRepository` extends the standard `IRepository<...>` interface by adding a `GetInActiveIssuesAsync` method. This repository works with such an `Issue` class:
 
-2. Implement interface **IIssueRepository** in class **EfCoreIssueRepository** in the **EntityFrameworkCore** project.
+2. Implement interface **IIssueRepository** in class **IssueRepository** in the **EntityFrameworkCore** project.
 
     The rule says the repository shouldn't know the business rules. The question here is "**What is an inactive issue**? Is it a business rule definition?"
 
@@ -53,9 +53,9 @@ git checkout exercise_006
 
     namespace IssueTracking.EntityFrameworkCore.Issues
     {
-      public class EfCoreIssueRepository : EfCoreRepository<IssueTrackingDbContext, Issue, Guid>, IIssueRepository
+      public class IssueRepository : EfCoreRepository<IssueTrackingDbContext, Issue, Guid>, IIssueRepository
       {
-        public EfCoreIssueRepository(IDbContextProvider<IssueTrackingDbContext> dbContextProvider) 
+        public IssueRepository(IDbContextProvider<IssueTrackingDbContext> dbContextProvider) 
         : base(dbContextProvider)
         {
         }
