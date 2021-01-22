@@ -740,11 +740,11 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace IssueTracking.Issues
 {
-    public class EfCoreIssueRepository : 
+    public class IssueRepository : 
         EfCoreRepository<IssueTrackingDbContext, Issue, Guid>,
         IIssueRepository
     {
-        public EfCoreIssueRepository(
+        public IssueRepository(
             IDbContextProvider<IssueTrackingDbContext> dbContextProvider) 
             : base(dbContextProvider)
         {
@@ -854,7 +854,7 @@ namespace IssueTracking.Issues
 
 `Specification<T>` base class simplifies to create a specification class by defining an expression. Just moved the expression here, from the repository.
 
-Now, we can re-use the `InActiveIssueSpecification` in the `Issue` entity and `EfCoreIssueRepository` classes.
+Now, we can re-use the `InActiveIssueSpecification` in the `Issue` entity and `IssueRepository` classes.
 
 #### Using within the Entity
 
@@ -894,11 +894,11 @@ Renamed `GetInActiveIssuesAsync` to simple `GetIssuesAsync` by taking a specific
 Updated implementation of the repository can be like that:
 
 ````csharp
-public class EfCoreIssueRepository :
+public class IssueRepository :
     EfCoreRepository<IssueTrackingDbContext, Issue, Guid>,
     IIssueRepository
 {
-    public EfCoreIssueRepository(
+    public IssueRepository(
         IDbContextProvider<IssueTrackingDbContext> dbContextProvider)
         : base(dbContextProvider)
     {

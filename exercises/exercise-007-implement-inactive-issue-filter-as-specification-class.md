@@ -72,7 +72,7 @@ git checkout exercise_007
     }
     ```
 
-4. Implement the GetIssueAsync method in the EfCoreIssueRepository class
+4. Implement the GetIssueAsync method in the IssueRepository class
 
     ```csharp
     public async Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec)
