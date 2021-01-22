@@ -28,6 +28,8 @@ namespace IssueTracking.Blazor.Pages
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
     protected CreateCommentDto CreateCommentEntity { get; set; } = new CreateCommentDto();
+    protected CloseIssueDto CloseIssueEntity { get; set; } = new CloseIssueDto();
+
 
     protected Guid EditingIssueId { get; set; }
     protected Guid CreateCommentIssueId { get; set; }
@@ -167,5 +169,6 @@ namespace IssueTracking.Blazor.Pages
       else
         ShowComments = true;
     }
+
   }
 }

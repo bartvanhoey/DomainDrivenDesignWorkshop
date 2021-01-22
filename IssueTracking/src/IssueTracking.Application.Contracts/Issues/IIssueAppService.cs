@@ -19,5 +19,12 @@ namespace IssueTracking.Application.Contracts.Issues
 
     Task CreateCommentAsync(CreateCommentDto input);
 
+    Task CloseAsync(Guid id, CloseIssueDto input);
+    
+    Task ReOpenAsync(Guid id);
+
+    Task LockAsync(Guid id);
+
+    Task UnlockAsync(Guid id);
   }
 }
