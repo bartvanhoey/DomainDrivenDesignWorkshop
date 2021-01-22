@@ -84,9 +84,11 @@ git checkout exercise_001
 
 * Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
 
-* Open a command prompt in the **Blazor** project and enter `dotnet watch run`
+* Start the **IssueTracking.HttpApi.Host** by pressing `F5`.
 
-* Make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
+* Open a command prompt in the **Blazor** project and enter `dotnet watch run`.
+
+* Log in and navigate to the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
 * Enter a comment and check if it gets added to the issue.
 
