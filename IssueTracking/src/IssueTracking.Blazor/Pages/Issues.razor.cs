@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazorise;
@@ -13,7 +14,7 @@ namespace IssueTracking.Blazor.Pages
   public partial class Issues
   {
     protected IReadOnlyList<IssueDto> IssueList { get; set; }
-    protected int PageSize { get; } = 30;
+    protected int PageSize { get; } = 20;
     protected int CurrentPage { get; set; }
     protected string CurrentSorting { get; set; }
     protected int TotalCount { get; set; }
@@ -22,6 +23,7 @@ namespace IssueTracking.Blazor.Pages
     protected bool CanDeleteIssue = true;
     protected IssueDto selectedIssueDto;
     protected bool ShowComments = true;
+    protected bool ShowInActiveIssues = false;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
@@ -107,16 +109,16 @@ namespace IssueTracking.Blazor.Pages
     }
 
 
-    protected async Task GetIssuesAsync()
+    protected async Task GetIssuesAsync(bool? showNotActiveIssues = null)
     {
       var result = await IssueAppService.GetListAsync(
           new GetIssueListDto
           {
             MaxResultCount = PageSize,
             SkipCount = CurrentPage * PageSize,
-            Sorting = CurrentSorting
-          }
-          );
+            Sorting = CurrentSorting,
+            ShowNotActiveIssues = showNotActiveIssues
+          });
 
       IssueList = result.Items;
       TotalCount = (int)result.TotalCount;
@@ -145,7 +147,7 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
-     protected void CloseCloseIssueModalAsync()
+    protected void CloseCloseIssueModalAsync()
     {
       AddCommentModal.Hide();
     }
@@ -174,22 +176,39 @@ namespace IssueTracking.Blazor.Pages
 
     protected async Task LockIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueLockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.LockAsync(issue.Id);
+      await GetIssuesAsync();
     }
 
     protected async Task UnlockIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueUnlockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.UnlockAsync(issue.Id);
+      await GetIssuesAsync();
     }
 
     protected async Task CloseIssueAsync()
     {
-      await Task.CompletedTask;
+      await IssueAppService.CloseAsync(CloseIssueId, CloseIssueEntity);
+      await GetIssuesAsync();
+      CloseIssueModal.Hide();
     }
 
     protected async Task ReOpenIssueAsync(IssueDto issue)
     {
-      await Task.CompletedTask;
+      var confirmMessage = L["IssueReopenConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.ReOpenAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task OnIsActiveChangedAsync()
+    {
+        ShowInActiveIssues  =! ShowInActiveIssues;
+        await GetIssuesAsync(ShowInActiveIssues);
     }
 
   }

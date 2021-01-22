@@ -104,7 +104,7 @@ git checkout exercise_004
         Task UnlockAsync(Guid id);
     ```
 
-4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application.project**.
+4. Implement these extra methods in **IssueAppService** class in folder **Issues** of the **Application** project.
 
     ```csharp
         // import usings
@@ -183,8 +183,6 @@ git checkout exercise_004
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
 * Register as a new user and make sure you are logged in. Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
-
-* Enter a comment and check if it gets added to the issue.
 
 ### Stop application
 
