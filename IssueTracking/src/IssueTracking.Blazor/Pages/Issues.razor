@@ -51,6 +51,18 @@
                                 <DropdownItem Clicked="() => OpenAddCommentModal(context)">
                                     @L["AddComment"]
                                 </DropdownItem>
+                                <DropdownItem Clicked="() => LockIssueAsync(context)">
+                                    @L["LockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => UnlockIssueAsync(context)">
+                                    @L["UnlockIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => OpenCloseIssueModal(context)">
+                                    @L["CloseIssue"]
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => ReOpenIssueAsync(context)">
+                                    @L["ReOpenIssue"]
+                                </DropdownItem>
                                 }
                             </DropdownMenu>
                         </Dropdown>
@@ -69,16 +81,17 @@
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]">
-                       <DisplayTemplate>
-                        <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true"  />
-                    </DisplayTemplate>
-                </DataGridCheckColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]"  >
                     <DisplayTemplate>
-                        <Check TValue="bool" Checked="context.IsLocked" Disabled="true" ReadOnly="true"  />
+                        <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
                 </DataGridCheckColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]" Filterable="true" >
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]">
+                    <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsLocked" Disabled="true" ReadOnly="true" />
+                    </DisplayTemplate>
+                </DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]"
+                    Filterable="true">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsActive" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
@@ -169,4 +182,3 @@
         </ModalFooter>
     </ModalContent>
 </Modal>
-
