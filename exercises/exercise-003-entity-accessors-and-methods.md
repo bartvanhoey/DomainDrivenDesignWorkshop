@@ -94,7 +94,9 @@ git checkout exercise_003
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Register as a new user and make sure you are logged in. Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
+* Login with username `admin` and password `1q2w3E*`.
+
+* Goto the **Issues** list and double-click on an issue to have its comments displayed and click on the **AddComment** button in the **Actions** dropdown.
 
 * Enter a comment and check if it gets added to the issue.
 

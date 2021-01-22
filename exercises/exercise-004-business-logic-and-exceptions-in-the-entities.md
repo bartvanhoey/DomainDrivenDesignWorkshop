@@ -182,7 +182,9 @@ git checkout exercise_004
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Register as a new user and make sure you are logged in. Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
+* Login with username `admin` and password `1q2w3E*`. 
+
+* Goto the **Issues** list and click on the **Actions** dropdown to test the different methods.
 
 ### Stop application
 

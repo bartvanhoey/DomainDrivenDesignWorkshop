@@ -7,6 +7,7 @@ using IssueTracking.Domain.Issues;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Guids;
 using Volo.Abp.Users;
 
 namespace IssueTracking.Application
@@ -14,16 +15,17 @@ namespace IssueTracking.Application
   public class IssueAppService : ApplicationService, IIssueAppService
   {
     private readonly IIssueRepository _issueRepository;
+    private readonly IGuidGenerator _guidGenerator;
 
-    public IssueAppService(IIssueRepository issueRepository)
+    public IssueAppService(IIssueRepository issueRepository, IGuidGenerator guidGenerator)
     {
       _issueRepository = issueRepository;
+      _guidGenerator = guidGenerator;
     }
 
     public async Task<IssueDto> CreateAsync(CreateIssueDto input)
     {
-      var issue = new Issue { RepositoryId = input.RepositoryId, Title = input.Title, Text = input.Text };
-
+      var issue = new Issue(_guidGenerator.Create(), input.RepositoryId, input.Title, input.Text);
       await _issueRepository.InsertAsync(issue);
       return ObjectMapper.Map<Issue, IssueDto>(issue);
     }

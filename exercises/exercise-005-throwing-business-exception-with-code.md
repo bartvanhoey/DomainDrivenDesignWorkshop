@@ -81,7 +81,9 @@ git checkout exercise_005
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Register as a new user and make sure you are logged in. Goto the **Issues** list. Reopening a locked issue should throw a **localized business exception**.
+* Login with username `admin` and password `1q2w3E*`.
+
+* Goto the **Issues** list. Reopening a locked issue should throw a **localized business exception**.
 
 ![Localized error message](images/error_message_localized_business_exception.png "Localized error message thrown by the system")
 
