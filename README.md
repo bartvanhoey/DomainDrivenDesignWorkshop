@@ -40,6 +40,16 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 002: Responsibilities of a well designed constructor](exercises/exercise-002-responsibilities-of-a-well-designed-constructor.md)
 
+* [Exercise 003: Entity Accessors and Method](exercises/exercise-003-entity-accessors-and-methods.md)
+
+* [Exercise 004: Business Logic & Exceptions in the Entities](exercises/exercise-004-business-logic-and-exceptions-in-the-entities.md)
+
+* [Exercise 005: Throwing Business Exceptions with Code](exercises/exercise-005-throwing-business-exception-with-code.md)
+
+* [Exercise 006: Do Not Include Domain Logic in Repositories](exercises/exercise-006-do-not-include-domain-logic-in-repositories.md)
+
+* [Exercise 007: Implement Inactive Issue Filter as a Specification class](exercises/exercise-007-implement-inactive-issue-filter-as-specification-class.md)
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).

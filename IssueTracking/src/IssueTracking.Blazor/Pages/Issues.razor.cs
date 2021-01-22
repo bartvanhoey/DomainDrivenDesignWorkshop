@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazorise;
 using Blazorise.DataGrid;
 using IssueTracking.Application.Contracts.Issues;
+using IssueTracking.Domain.Shared.Issues;
 using Volo.Abp.Application.Dtos;
 
 namespace IssueTracking.Blazor.Pages
@@ -21,17 +23,21 @@ namespace IssueTracking.Blazor.Pages
     protected bool CanDeleteIssue = true;
     protected IssueDto selectedIssueDto;
     protected bool ShowComments = true;
+    protected bool ShowInActiveIssues = false;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
     protected CreateCommentDto CreateCommentEntity { get; set; } = new CreateCommentDto();
+    protected CloseIssueDto CloseIssueEntity { get; set; } = new CloseIssueDto();
 
     protected Guid EditingIssueId { get; set; }
     protected Guid CreateCommentIssueId { get; set; }
+    protected Guid CloseIssueId { get; set; }
 
     protected Modal CreateModal { get; set; }
     protected Modal EditModal { get; set; }
     protected Modal AddCommentModal { get; set; }
+    protected Modal CloseIssueModal { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -88,23 +94,31 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
-    protected void OpenAddCommentModalAsync(IssueDto issue)
+    protected void OpenAddCommentModal(IssueDto issue)
     {
       CreateCommentIssueId = issue.Id;
       CreateCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
       AddCommentModal.Show();
     }
 
-    protected async Task GetIssuesAsync()
+    protected void OpenCloseIssueModal(IssueDto issue)
+    {
+      CloseIssueId = issue.Id;
+      CreateCommentEntity = ObjectMapper.Map<IssueDto, CreateCommentDto>(issue);
+      CloseIssueModal.Show();
+    }
+
+
+    protected async Task GetIssuesAsync(bool? showNotActiveIssues = null)
     {
       var result = await IssueAppService.GetListAsync(
           new GetIssueListDto
           {
             MaxResultCount = PageSize,
             SkipCount = CurrentPage * PageSize,
-            Sorting = CurrentSorting
-          }
-          );
+            Sorting = CurrentSorting,
+            ShowNotActiveIssues = showNotActiveIssues
+          });
 
       IssueList = result.Items;
       TotalCount = (int)result.TotalCount;
@@ -133,6 +147,11 @@ namespace IssueTracking.Blazor.Pages
       AddCommentModal.Hide();
     }
 
+    protected void CloseCloseIssueModalAsync()
+    {
+      AddCommentModal.Hide();
+    }
+
     protected async Task CreateEntityAsync()
     {
       await IssueAppService.CreateAsync(NewEntity);
@@ -155,6 +174,42 @@ namespace IssueTracking.Blazor.Pages
         ShowComments = true;
     }
 
+    protected async Task LockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueLockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.LockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task UnlockIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueUnlockConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.UnlockAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task CloseIssueAsync()
+    {
+      await IssueAppService.CloseAsync(CloseIssueId, CloseIssueEntity);
+      await GetIssuesAsync();
+      CloseIssueModal.Hide();
+    }
+
+    protected async Task ReOpenIssueAsync(IssueDto issue)
+    {
+      var confirmMessage = L["IssueReopenConfirmationMessage", issue.Title];
+      if (!await Message.Confirm(confirmMessage)) return;
+      await IssueAppService.ReOpenAsync(issue.Id);
+      await GetIssuesAsync();
+    }
+
+    protected async Task OnIsActiveChangedAsync()
+    {
+        ShowInActiveIssues  =! ShowInActiveIssues;
+        await GetIssuesAsync(ShowInActiveIssues);
+    }
 
   }
 }

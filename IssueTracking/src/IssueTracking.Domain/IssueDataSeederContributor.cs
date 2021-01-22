@@ -22,6 +22,7 @@ namespace IssueTracking.Domain
       if (await _issueRepository.GetCountAsync() <= 0)
       {
         var random = new Random();
+        int counter = 0;
         foreach (var issue in DataSeederIssues)
         {
           var insertedIssue = await _issueRepository.InsertAsync(new Issue {
@@ -31,6 +32,7 @@ namespace IssueTracking.Domain
             CloseReason = issue.CloseReason
           }, autoSave: true);
 
+
           var numberOfComments = random.Next(4);
           for (int i = 1; i <= numberOfComments; i++)
           {
@@ -38,6 +40,7 @@ namespace IssueTracking.Domain
                 new Comment { IssueId = insertedIssue.Id, Text = $"Sample comment {i}" },
                 autoSave: true);
           }
+          counter++;
         }
       }
     }
