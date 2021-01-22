@@ -273,7 +273,7 @@ namespace IssueTracking.Issues
 * `Text` and `AssignedUserId` has public setters since there is no restriction on them. They can be null or any other value. We think it is unnecessary to define separate methods to set them. If we need later, we can add methods and make the setters private. Breaking changes are not problem in the domain layer since the domain layer is an internal project, it is not exposed to clients.
 * `IsClosed` and `IssueCloseReason` are pair properties. Defined `Close` and `ReOpen` methods to change them together. In this way, we prevent to close an issue without any reason.
 
-##### Business Logic & Exceptions in the Entities
+##### <a name="theory_exercise_004"></a> Business Logic & Exceptions in the Entities
 
 When you implement validation and business logic in the entities, you frequently need to manage the exceptional cases. In these cases;
 
@@ -281,6 +281,7 @@ When you implement validation and business logic in the entities, you frequently
 * **Throw these exceptions** in the entity methods when necessary.
 
 **Example**
+[Exercise 004](../../exercises/exercise-004-business-logic-and-exceptions-in-the-entities.md)
 
 ````csharp
 public class Issue : AggregateRoot<Guid>

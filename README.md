@@ -40,6 +40,10 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 002: Responsibilities of a well designed constructor](exercises/exercise-002-responsibilities-of-a-well-designed-constructor.md)
 
+* [Exercise 003: Entity Accessors and Method](exercises/exercise-003-entity-accessors-and-methods.md)
+
+* [Exercise 004: Business Logic & Exceptions in the Entities](exercises/exercise-004-business-logic-and-exceptions-in-the-entities.md)
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).
