@@ -1,8 +1,34 @@
 {
   "culture": "en",
   "texts": {
-    "Menu:Home": "Home",
-    "Welcome": "Welcome",
-    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io."
+      "Menu:Home": "Home",
+      "Welcome": "Welcome",
+      "LongWelcomeMessage": "Welcome to the free domain driven design workshop. This project is based on the ABP framework. For more information, ",
+      "Menu:IssueTracking": "Start Tracking",
+      "Login": "Login or Register",
+      "Menu:Issues": "Issues",
+      "NewIssue": "New issue",
+      "IssueDeletionConfirmationMessage": "Are you sure to delete the issue '{0}'?",
+      "IssueLockConfirmationMessage": "Are you sure to lock the issue '{0}'?",
+      "IssueUnlockConfirmationMessage": "Are you sure to unlock the issue '{0}'?",
+      "IssueCloseConfirmationMessage": "Are you sure to close the issue '{0}'?",
+      "IssueReopenConfirmationMessage": "Are you sure to reopen the issue '{0}'?",
+      "IssueTitle": "Title",
+      "IssueText": "Text",
+      "IssueCloseReason": "Reason closed",
+      "IssueIsClosed": "Is closed?",  
+      "IssueIsLocked": "Is locked?",  
+      "IssueIsActive": "Is active",
+      "Enum:BookType:0": "Undefined",
+      "Enum:IssueCloseReason:0": "Due date passed",
+      "Enum:IssueCloseReason:1": "Irrelevant",
+      "Enum:IssueCloseReason:2": "Solved",
+      "Enum:IssueCloseReason:3": "Out of scope",
+      "Enum:IssueCloseReason:4": "No bandwith",
+      "AddComment":"Add comment",
+      "LockIssue": "Lock issue",
+      "UnlockIssue": "Unlock issue",
+      "CloseIssue": "Close issue",
+      "ReOpenIssue": "Reopen issue"
   }
 }

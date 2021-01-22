@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IssueTracking.Domain.Issues;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace IssueTracking.EntityFrameworkCore
 {
@@ -9,14 +11,25 @@ namespace IssueTracking.EntityFrameworkCore
         {
             Check.NotNull(builder, nameof(builder));
 
-            /* Configure your own tables/entities inside here */
+         builder.Entity<Issue>(b =>
+            {
+                b.ToTable(IssueTrackingConsts.DbTablePrefix + "Issues", IssueTrackingConsts.DbSchema);
+                b.ConfigureByConvention();
+                b.HasMany(x => x.Comments).WithOne(x => x.Issue).HasForeignKey(x => x.IssueId).IsRequired();
+            });
 
-            //builder.Entity<YourEntity>(b =>
-            //{
-            //    b.ToTable(IssueTrackingConsts.DbTablePrefix + "YourEntities", IssueTrackingConsts.DbSchema);
-            //    b.ConfigureByConvention(); //auto configure for the base class props
-            //    //...
-            //});
+            builder.Entity<IssueLabel>(b =>
+            {
+                b.HasKey(e => new { e.LabelId, e.IssueId }).IsClustered(false);
+                b.ToTable(IssueTrackingConsts.DbTablePrefix + "IssueLabels", IssueTrackingConsts.DbSchema);
+                b.ConfigureByConvention();
+            });
+
+            builder.Entity<Comment>(b =>
+            {
+                b.ToTable(IssueTrackingConsts.DbTablePrefix + "Comments", IssueTrackingConsts.DbSchema);
+                b.ConfigureByConvention();
+            });
         }
     }
 }

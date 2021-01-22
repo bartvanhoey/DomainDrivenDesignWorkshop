@@ -1,0 +1,172 @@
+@page "/issues"
+@using IssueTracking.Application.Contracts.Issues
+@inherits IssueTrackingComponentBase
+@inject IIssueAppService IssueAppService
+
+<Card>
+    <CardHeader>
+        <Row>
+            <Column ColumnSize="ColumnSize.Is6">
+                <h2>@L["Issues"]</h2>
+            </Column>
+            <Column ColumnSize="ColumnSize.Is6">
+                <Paragraph Alignment="TextAlignment.Right">
+                    @if (CanCreateIssue)
+                    {
+                        <Button Color="Color.Primary" Clicked="OpenCreateModal">@L["NewIssue"]</Button>
+                    }
+                </Paragraph>
+            </Column>
+        </Row>
+    </CardHeader>
+
+    <CardBody>
+        <DataGrid TItem="IssueDto" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
+            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto"
+            DetailRowTrigger="@((item)=>item.Comments?.Count > 0 && item.Id == selectedIssueDto?.Id && ShowComments)"
+            RowDoubleClicked="e => ToggleSelectedIssueDto(e.Item)">
+            <DataGridColumns>
+                <DataGridColumn Width="150px" TItem="IssueDto" Field="@nameof(IssueDto.Id)" Sortable="true"
+                    Caption="@L["Actions"]">
+                    <DisplayTemplate>
+                        <Dropdown>
+                            <DropdownToggle Color="Color.Primary">
+                                @L["Actions"]
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                @if (CanUpdateIssue)
+                                    {
+                                <DropdownItem Clicked="() => OpenEditModal(context)">
+                                    @L["Edit"]
+                                </DropdownItem>
+                                }
+                                @if (CanDeleteIssue)
+                                    {
+                                <DropdownItem Clicked="() => DeleteIssueAsync(context)">
+                                    @L["Delete"]
+                                </DropdownItem>
+                                }
+                                @if (CanUpdateIssue)
+                                    {
+                                <DropdownItem Clicked="() => OpenAddCommentModal(context)">
+                                    @L["AddComment"]
+                                </DropdownItem>
+                                }
+                            </DropdownMenu>
+                        </Dropdown>
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Title)" Caption="@L["IssueTitle"]">
+                </DataGridColumn>
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]">
+                </DataGridColumn>
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]">
+                    <DisplayTemplate>
+                        @if (context.CloseReason != null)
+                            {
+                        @L[$"Enum:IssueCloseReason:{(int)context.CloseReason}"]
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]">
+                       <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true"  />
+                    </DisplayTemplate>
+                </DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]"  >
+                    <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsLocked" Disabled="true" ReadOnly="true"  />
+                    </DisplayTemplate>
+                </DataGridCheckColumn>
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]" Filterable="true" >
+                    <DisplayTemplate>
+                        <Check TValue="bool" Checked="context.IsActive" Disabled="true" ReadOnly="true" />
+                    </DisplayTemplate>
+                </DataGridCheckColumn>
+            </DataGridColumns>
+            <DetailRowTemplate>
+                @{
+                    var comments = (context as IssueDto).Comments;
+                    <DataGrid TItem="CommentDto" Data="comments" Sortable="false" ShowCaptions="false">
+                        <DataGridCommandColumn TItem="CommentDto" />
+                        <DataGridColumn TItem="CommentDto" Field="@nameof(CommentDto.Text)" Caption="Text" />
+                    </DataGrid>
+                }
+            </DetailRowTemplate>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+<Modal @ref="CreateModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true" Size="ModalSize.Default">
+        <ModalHeader>
+            <ModalTitle>@L["NewIssue"]</ModalTitle>
+            <CloseButton Clicked="CloseCreateModalAsync" />
+        </ModalHeader>
+        <ModalBody>
+            <Row>
+                <Column ColumnSize="ColumnSize.Is12">
+                    <Field>
+                        <FieldLabel>@L["IssueName"]</FieldLabel>
+                        <TextEdit @bind-text="@NewEntity.Title" />
+                    </Field>
+                </Column>
+            </Row>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
+            <Button Color="Color.Primary" Clicked="CreateEntityAsync">@L["Save"]</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+<Modal @ref="EditModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true" Size="ModalSize.Default">
+        <ModalHeader>
+            <ModalTitle>@EditingEntity.Title</ModalTitle>
+            <CloseButton Clicked="CloseEditModalAsync" />
+        </ModalHeader>
+        <ModalBody>
+            <Row>
+                <Column ColumnSize="ColumnSize.Is12">
+                    <Field>
+                        <FieldLabel>@L["IssueIssue"]</FieldLabel>
+                        <TextEdit @bind-text="@EditingEntity.Title" />
+                    </Field>
+                </Column>
+            </Row>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseEditModalAsync">@L["Cancel"]</Button>
+            <Button Color="Color.Primary" Clicked="UpdateEntityAsync">@L["Save"]</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="AddCommentModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true" Size="ModalSize.Default">
+        <ModalHeader>
+            <ModalTitle>@L["AddComment"]</ModalTitle>
+            <CloseButton Clicked="CloseAddCommentModalAsync" />
+        </ModalHeader>
+        <ModalBody>
+            <Row>
+                <Column ColumnSize="ColumnSize.Is12">
+                    <Field>
+                        <FieldLabel>@L["IssueComment"]</FieldLabel>
+                        <MemoEdit @bind-text="@CreateCommentEntity.Text" />
+                    </Field>
+                </Column>
+            </Row>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="CloseAddCommentModalAsync">@L["Cancel"]</Button>
+            <Button Color="Color.Primary" Clicked="AddCommentAsync">@L["Save"]</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
