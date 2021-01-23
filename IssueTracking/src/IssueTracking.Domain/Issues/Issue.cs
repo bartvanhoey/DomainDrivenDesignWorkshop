@@ -35,6 +35,11 @@ namespace IssueTracking.Domain.Issues
       Comments = new Collection<Comment>();
     }
 
+    public void SetAssignedUserId(Guid assignedUserId)
+    {
+      AssignedUserId = assignedUserId;
+    }
+
     private Issue(){}
 
     public void SetTitle(string title)

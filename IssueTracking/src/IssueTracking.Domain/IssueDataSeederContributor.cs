@@ -23,11 +23,19 @@ namespace IssueTracking.Domain
       {
         var random = new Random();
         int counter = 0;
-        foreach (var issue in DataSeederIssues)
+        foreach (var dataSeederIssue in DataSeederIssues)
         {
-          var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), issue.Title, issue.Text);
-          var insertedIssue = await _issueRepository.InsertAsync(issueToInsert, autoSave: true);
+          var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), dataSeederIssue.Title, dataSeederIssue.Text);
+          if (dataSeederIssue.IsClosed == true && dataSeederIssue.CloseReason.HasValue)
+            issueToInsert.Close(dataSeederIssue.CloseReason.Value);
+          
+          if (counter % 2 == 0)
+          {
+            issueToInsert.SetAssignedUserId(Guid.NewGuid());
+            if (issueToInsert.IsClosed) issueToInsert.Lock();
+          }
 
+          var insertedIssue = await _issueRepository.InsertAsync(issueToInsert, autoSave: true);
           var numberOfComments = random.Next(4);
           for (int i = 1; i <= numberOfComments; i++)
           {
