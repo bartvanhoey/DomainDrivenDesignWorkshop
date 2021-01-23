@@ -4,15 +4,17 @@ using IssueTracking.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace IssueTracking.Migrations
 {
     [DbContext(typeof(IssueTrackingMigrationsDbContext))]
-    partial class IssueTrackingMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210123210234_CreationTimeAdded")]
+    partial class CreationTimeAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using IssueTracking.Domain.Shared.Issues;
 using Volo.Abp;
+using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 
 namespace IssueTracking.Domain.Issues
 {
-  public class Issue : AggregateRoot<Guid>
+  public class Issue : AggregateRoot<Guid>,  IHasCreationTime
   {
     public Guid RepositoryId { get; private set; }
     public string Title { get; private set; }
@@ -18,6 +19,8 @@ namespace IssueTracking.Domain.Issues
     public IssueCloseReason? CloseReason { get; private set; }
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }
+    public DateTime CreationTime { get; private set; }
+    public DateTime? LastCommentTime { get; private set; }
 
     public void AddComment(Guid userId, string text)
     {
