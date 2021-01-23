@@ -40,7 +40,7 @@ namespace IssueTracking.Domain.Issues
       AssignedUserId = assignedUserId;
     }
 
-    private Issue(){}
+    private Issue() { }
 
     public void SetTitle(string title)
     {
@@ -53,36 +53,34 @@ namespace IssueTracking.Domain.Issues
       CloseReason = reason;
     }
 
- public void ReOpen()
-        {
-            if (IsLocked)
-            {
-                // business rule 1: A locked issue can not be re-opened.
-                throw new IssueStateException(
-                    "Can not open a locked issue! Unlock it first."
-                );
-            }
+    public void ReOpen()
+    {
+      if (IsLocked)
+      {
+        // business rule 1: A locked issue can not be re-opened.
+        throw new IssueStateException(IssueTrackingDomainErrorCodes.YouCannotReOpenALockedIssue);
+      }
 
-            IsClosed = false;
-            CloseReason = null;
-        }
+      IsClosed = false;
+      CloseReason = null;
+    }
 
-        public void Lock()
-        {
-            if (!IsClosed)
-            {
-                // business rule 2: You can not lock an open issue.
-                throw new IssueStateException(
-                    "Can not lock an open issue! Close it first."
-                );
-            }
+    public void Lock()
+    {
+      if (!IsClosed)
+      {
+        // business rule 2: You can not lock an open issue.
+        throw new IssueStateException(
+            "Can not lock an open issue! Close it first."
+        );
+      }
 
-            IsLocked = true;
-        }
+      IsLocked = true;
+    }
 
-        public void Unlock()
-        {
-            IsLocked = false;
-        }
+    public void Unlock()
+    {
+      IsLocked = false;
+    }
   }
 }
