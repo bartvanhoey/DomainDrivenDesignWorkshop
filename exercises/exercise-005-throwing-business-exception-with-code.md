@@ -47,7 +47,7 @@ git checkout exercise_005
       if (IsLocked)
       {
         // business rule 1: A locked issue can not be re-opened.
-        throw new IssueStateException("IssueTrackingDomainErrorCodes.YouCannotReOpenALockedIssue");
+        throw new IssueStateException(IssueTrackingDomainErrorCodes.YouCannotReOpenALockedIssue);
       }
       IsClosed = false;
       CloseReason = null;
