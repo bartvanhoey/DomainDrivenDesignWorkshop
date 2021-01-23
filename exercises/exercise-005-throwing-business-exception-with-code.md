@@ -21,7 +21,7 @@ git checkout exercise_005
 
 ### Let's make it work by adding some code
 
-1. Make class **IssueStateException** inherit from **Business Exception**.
+1. Make class **IssueStateException** inherit from class **BusinessException**.
 
     ```csharp
     using Volo.Abp;
@@ -29,7 +29,7 @@ git checkout exercise_005
 
     namespace IssueTracking.Domain.Issues
     {
-      public class IssueStateException : Exception
+      public class IssueStateException : BusinessException
       {
           public IssueStateException(string code) : base(code)
           {
