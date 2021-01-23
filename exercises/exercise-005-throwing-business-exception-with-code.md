@@ -2,8 +2,6 @@
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_005)
 
-## potential problems of throwing exceptions derived from the Exception class
-
 ![Standard error message](images/error_message_standard_exception.png "Standard error message thrown by the system")
 
 Above you see the **standard error message** (from exercise 4) thrown by the ABP Framework, 2 potential problems arise:
