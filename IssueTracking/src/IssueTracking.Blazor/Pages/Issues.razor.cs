@@ -201,5 +201,11 @@ namespace IssueTracking.Blazor.Pages
       await GetIssuesAsync();
     }
 
+    protected async Task OnShowInActiveIssuesChangedAsync()
+    {
+      ShowInActiveIssues = !ShowInActiveIssues;
+      await GetIssuesAsync(ShowInActiveIssues);
+    }
+
   }
 }

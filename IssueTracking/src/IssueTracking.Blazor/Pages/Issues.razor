@@ -23,11 +23,11 @@
 
     <CardBody>
         <DataGrid TItem="IssueDto" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
-            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto"
+            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto" Filterable="true"
             DetailRowTrigger="@((item)=>item.Comments?.Count > 0 && item.Id == selectedIssueDto?.Id && ShowComments)"
             RowDoubleClicked="e => ToggleSelectedIssueDto(e.Item)">
             <DataGridColumns>
-                <DataGridColumn Width="150px" TItem="IssueDto" Field="@nameof(IssueDto.Id)" Sortable="true"
+                <DataGridColumn Width="150px" TItem="IssueDto" Field="@nameof(IssueDto.Id)" Sortable="true" Filterable="false"
                     Caption="@L["Actions"]">
                     <DisplayTemplate>
                         <Dropdown>
@@ -69,11 +69,11 @@
                         </Dropdown>
                     </DisplayTemplate>
                 </DataGridColumn>
-                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Title)" Caption="@L["IssueTitle"]">
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Title)" Caption="@L["IssueTitle"]"  Filterable="false">
                 </DataGridColumn>
-                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]">
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]" Filterable="false">
                 </DataGridColumn>
-                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]">
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]" Filterable="false">
                     <DisplayTemplate>
                         @if (context.CloseReason != null)
                             {
@@ -81,21 +81,23 @@
                         }
                     </DisplayTemplate>
                 </DataGridColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]">
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]" Filterable="false">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
                 </DataGridCheckColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]">
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsLocked)" Caption="@L["IssueIsLocked"]" Filterable="false">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsLocked" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
                 </DataGridCheckColumn>
-                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]"
-                    Filterable="true">
+                <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsActive)" Caption="@L["IssueIsActive"]" Filterable="true">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsActive" Disabled="true" ReadOnly="true" />
                     </DisplayTemplate>
+                    <FilterTemplate>
+                        <Check TValue="bool" Checked="@ShowInActiveIssues" CheckedChanged="() => OnShowInActiveIssuesChangedAsync()">No</Check>
+                    </FilterTemplate>
                 </DataGridCheckColumn>
             </DataGridColumns>
             <DetailRowTemplate>
