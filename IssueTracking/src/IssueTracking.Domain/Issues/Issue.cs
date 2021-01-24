@@ -36,7 +36,7 @@ namespace IssueTracking.Domain.Issues
       AssignedUserId = assignedUserId;
       Labels = new Collection<IssueLabel>();
       Comments = new Collection<Comment>();
-      CreationTime = creationTime.HasValue  ? creationTime.Value : DateTime.Now;
+      CreationTime = creationTime.HasValue ? creationTime.Value : DateTime.Now;
     }
 
     public void SetAssignedUserId(Guid assignedUserId)
@@ -85,6 +85,23 @@ namespace IssueTracking.Domain.Issues
     public void Unlock()
     {
       IsLocked = false;
+    }
+
+    public bool IsInActive()
+    {
+      var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+      return
+          //Open
+          !IsClosed &&
+
+          //Assigned to nobody
+          AssignedUserId == null &&
+
+          //Created 30+ days ago
+          CreationTime < daysAgo30 &&
+
+          //No comment or the last comment was 30+ days ago
+          (LastCommentTime == null || LastCommentTime < daysAgo30);
     }
   }
 }
