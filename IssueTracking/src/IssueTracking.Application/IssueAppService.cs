@@ -36,6 +36,39 @@ namespace IssueTracking.Application
       return ObjectMapper.Map<Issue, IssueDto>(issue);
     }
 
+    // public async Task<PagedResultDto<IssueDto>> GetListAsync(GetIssueListDto input)
+    // {
+    //   if (input.Sorting.IsNullOrWhiteSpace())
+    //   {
+    //     input.Sorting = nameof(Issue.Title);
+    //   }
+
+    //   var issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+    //   var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
+
+    //   List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);
+
+    //   return new PagedResultDto<IssueDto>(totalCount, items);
+    // }
+
+
+// TODO Comment this method out in exercise 006
+    // public async Task<PagedResultDto<IssueDto>> GetListAsync(GetIssueListDto input)
+    // {
+    //   if (input.Sorting.IsNullOrWhiteSpace())
+    //   {
+    //     input.Sorting = nameof(Issue.Title);
+    //   }
+
+    //   var issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+    //   var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
+
+    //   List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);
+
+    //   return new PagedResultDto<IssueDto>(totalCount, items);
+    // }
+
+    // TODO Uncomment this method in exercise 006
     public async Task<PagedResultDto<IssueDto>> GetListAsync(GetIssueListDto input)
     {
       if (input.Sorting.IsNullOrWhiteSpace())
@@ -43,7 +76,15 @@ namespace IssueTracking.Application
         input.Sorting = nameof(Issue.Title);
       }
 
-      var issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+      var issues = new List<Issue>();
+      if ( input.ShowNotActiveIssues.HasValue && input.ShowNotActiveIssues == true)
+      {
+         // issues = await _issueRepository.GetInActiveIssuesAsync();
+      }
+      else
+      {
+        issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+      }
       var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
 
       List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);

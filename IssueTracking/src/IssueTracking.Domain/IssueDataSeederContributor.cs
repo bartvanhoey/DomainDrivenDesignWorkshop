@@ -30,7 +30,7 @@ namespace IssueTracking.Domain
           if (dataSeederIssue.IsClosed == true && dataSeederIssue.CloseReason.HasValue)
             issueToInsert.Close(dataSeederIssue.CloseReason.Value);
           
-          if (counter % 2 == 0)
+          if (counter % 4 == 0)
           {
             issueToInsert.SetAssignedUserId(Guid.NewGuid());
             if (issueToInsert.IsClosed) issueToInsert.Lock();
