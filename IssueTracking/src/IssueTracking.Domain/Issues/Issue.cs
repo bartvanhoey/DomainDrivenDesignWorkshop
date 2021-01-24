@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace IssueTracking.Domain.Issues
 {
-  public class Issue : AggregateRoot<Guid>,  IHasCreationTime
+  public class Issue : AggregateRoot<Guid>, IHasCreationTime
   {
     public Guid RepositoryId { get; private set; }
     public string Title { get; private set; }
@@ -28,7 +28,7 @@ namespace IssueTracking.Domain.Issues
       Comments.Add(new Comment { IssueId = this.Id, Text = text, UserId = userId });
     }
 
-    public Issue(Guid id, Guid repositoryId, string title, string text = null, Guid? assignedUserId = null) : base(id)
+    public Issue(Guid id, Guid repositoryId, string title, string text = null, Guid? assignedUserId = null, DateTime? creationTime = null) : base(id)
     {
       RepositoryId = repositoryId;
       Title = Check.NotNullOrWhiteSpace(title, nameof(title));
@@ -36,6 +36,7 @@ namespace IssueTracking.Domain.Issues
       AssignedUserId = assignedUserId;
       Labels = new Collection<IssueLabel>();
       Comments = new Collection<Comment>();
+      CreationTime = creationTime.HasValue  ? creationTime.Value : DateTime.Now;
     }
 
     public void SetAssignedUserId(Guid assignedUserId)

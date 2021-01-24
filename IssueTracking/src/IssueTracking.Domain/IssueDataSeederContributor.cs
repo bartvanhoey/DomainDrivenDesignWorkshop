@@ -25,7 +25,8 @@ namespace IssueTracking.Domain
         int counter = 0;
         foreach (var dataSeederIssue in DataSeederIssues)
         {
-          var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), dataSeederIssue.Title, dataSeederIssue.Text);
+          var creationDate = DateTime.Now.AddDays(-random.Next(60));
+          var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), dataSeederIssue.Title, dataSeederIssue.Text, creationTime: creationDate);
           if (dataSeederIssue.IsClosed == true && dataSeederIssue.CloseReason.HasValue)
             issueToInsert.Close(dataSeederIssue.CloseReason.Value);
           
