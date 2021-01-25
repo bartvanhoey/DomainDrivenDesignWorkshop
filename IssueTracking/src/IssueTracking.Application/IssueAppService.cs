@@ -79,6 +79,7 @@ namespace IssueTracking.Application
       var issues = new List<Issue>();
       if ( input.ShowNotActiveIssues.HasValue && input.ShowNotActiveIssues == true)
       {
+         // you can comment out this line of code in exercise 006       
          // issues = await _issueRepository.GetInActiveIssuesAsync();
       }
       else
