@@ -89,19 +89,7 @@ namespace IssueTracking.Domain.Issues
 
     public bool IsInActive()
     {
-      var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
-      return
-          //Open
-          !IsClosed &&
-
-          //Assigned to nobody
-          AssignedUserId == null &&
-
-          //Created 30+ days ago
-          CreationTime < daysAgo30 &&
-
-          //No comment or the last comment was 30+ days ago
-          (LastCommentTime == null || LastCommentTime < daysAgo30);
+      return new InActiveIssueSpecification().IsSatisfiedBy(this);
     }
   }
 }

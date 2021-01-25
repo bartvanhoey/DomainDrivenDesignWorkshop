@@ -6,6 +6,7 @@ using IssueTracking.Domain.Issues;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Specifications;
 
 namespace IssueTracking.EntityFrameworkCore.Issues
 {
@@ -16,25 +17,9 @@ namespace IssueTracking.EntityFrameworkCore.Issues
     {
     }
 
-    public async Task<List<Issue>> GetInActiveIssuesAsync()
+    public async Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec)
     {
-      var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
-
-      return await DbSet.Where(i =>
-
-          //Open
-          !i.IsClosed &&
-
-          //Assigned to nobody
-          i.AssignedUserId == null &&
-
-          //Created 30+ days ago
-          i.CreationTime < daysAgo30 &&
-
-          //No comment or the last comment was 30+ days ago
-          (i.LastCommentTime == null || i.LastCommentTime < daysAgo30)
-
-      ).ToListAsync();
+      return await DbSet.Where(spec.ToExpression()).ToListAsync();
     }
 
     public override IQueryable<Issue> WithDetails()
