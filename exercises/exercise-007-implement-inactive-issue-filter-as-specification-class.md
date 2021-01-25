@@ -45,7 +45,7 @@ git checkout exercise_007
 
     ```
 
-2. Use **InActiveIssueSpecification** in the **IsInActive** method of the **Issue** class.
+2. Update the **IsInActive** method of the **Issue** class and use the **InActiveIssueSpecification** specification.
 
     ```csharp
     public class Issue : AggregateRoot<Guid>, IHasCreationTime
@@ -63,7 +63,7 @@ git checkout exercise_007
     }
     ```
 
-3. Add a method to the **IIssueRepository** interface in the **Application.Contracts** project.
+3. Rename method **GetInActiveIssuesAsync** to **GetIssuesAsync** and pass in a **ISpecification** parameter.
 
     ```csharp
     public interface IIssueRepository : IRepository<Issue, Guid>
@@ -81,3 +81,29 @@ git checkout exercise_007
     }
     ```
 
+5. Uncomment the line below in **IssueAppService** in the **Application** project
+
+    ```csharp
+    // issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());
+    
+    ```
+
+### Run application and Test the implementation of the InActiveIssueSpecification
+
+* Delete **database IssueTracking** in **SQL Server** to have a clean start.
+
+* Open a **command prompt** in the **DbMigrator** project and enter `dotnet run` to apply migrations and seed the data.
+
+* Select **ApiDevelopment** in the **dropdown** of the **Debug Window** and run the **HttpApi.Host** project.
+
+* Open a command prompt in the **Blazor** project and enter `dotnet run`.
+
+* Login with username `admin` and password `1q2w3E*`.
+
+* Goto the **Issues** list and check the **No** checkbox to see the inactive issues only.
+
+### Stop application
+
+* Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt)
+
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_007)
