@@ -17,8 +17,12 @@ namespace IssueTracking.Domain
       _issueRepository = issueRepository;
       _commentRepository = commentRepository;
     }
+
     public async Task SeedAsync(DataSeedContext context)
     {
+      var mileStoneId1 = Guid.NewGuid();
+      var mileStoneId2 = Guid.NewGuid();
+
       if (await _issueRepository.GetCountAsync() <= 0)
       {
         var random = new Random();
@@ -29,11 +33,19 @@ namespace IssueTracking.Domain
           var issueToInsert = new Issue(Guid.NewGuid(), Guid.NewGuid(), dataSeederIssue.Title, dataSeederIssue.Text, creationTime: creationDate);
           if (dataSeederIssue.IsClosed == true && dataSeederIssue.CloseReason.HasValue)
             issueToInsert.Close(dataSeederIssue.CloseReason.Value);
-          
+
           if (counter % 4 == 0)
           {
             issueToInsert.SetAssignedUserId(Guid.NewGuid());
             if (issueToInsert.IsClosed) issueToInsert.Lock();
+          }
+          else if (counter % 2 == 0)
+          {
+            issueToInsert.SetMileStoneId(mileStoneId2);
+          }
+          else
+          {
+            issueToInsert.SetMileStoneId(mileStoneId1);
           }
 
           var insertedIssue = await _issueRepository.InsertAsync(issueToInsert, autoSave: true);

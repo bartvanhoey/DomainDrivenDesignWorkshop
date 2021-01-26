@@ -16,6 +16,7 @@ namespace IssueTracking.Domain.Issues
     public Guid? AssignedUserId { get; set; }
     public bool IsClosed { get; private set; }
     public bool IsLocked { get; private set; }
+    public Guid MileStoneId { get; private set; }
     public IssueCloseReason? CloseReason { get; private set; }
     public ICollection<IssueLabel> Labels { get; private set; }
     public ICollection<Comment> Comments { get; private set; }
@@ -42,6 +43,11 @@ namespace IssueTracking.Domain.Issues
     public void SetAssignedUserId(Guid assignedUserId)
     {
       AssignedUserId = assignedUserId;
+    }
+
+    public void SetMileStoneId(Guid mileStoneId)
+    {
+      MileStoneId = mileStoneId;
     }
 
     private Issue() { }
