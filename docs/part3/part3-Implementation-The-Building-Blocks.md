@@ -745,7 +745,7 @@ public class IssueAppService : ApplicationService, IIssueAppService
 
 `AsyncExecuter` is a utility provided by the ABP Framework to use asynchronous LINQ extension methods (like `ToListAsync` here) without depending on the EF Core NuGet package. See the [Repositories document](https://docs.abp.io/en/abp/latest/Repositories) for more information.
 
-#### Combining the Specifications
+#### <a name="theory_exercise_008"></a> Combining the Specifications [Exercise 008](../../exercises/exercise-008-combining-specifications.md)
 
 One powerful side of the Specifications is they are combinable. Assume that we have another specification that returns `true` only if the `Issue` is in a Milestone:
 
