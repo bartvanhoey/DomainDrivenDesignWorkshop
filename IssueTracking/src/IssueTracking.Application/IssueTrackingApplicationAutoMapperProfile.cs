@@ -11,7 +11,6 @@ namespace IssueTracking
       /* You can configure your AutoMapper mapping configuration here.
        * Alternatively, you can split your mapping configurations
        * into multiple profile classes for a better organization. */
-
       CreateMap<Issue, IssueDto>()
         .ForMember(x => x.IsActive, x => x.MapFrom(x => !x.IsInActive()));
 
