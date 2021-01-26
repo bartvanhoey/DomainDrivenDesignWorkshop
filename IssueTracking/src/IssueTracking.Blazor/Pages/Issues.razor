@@ -22,11 +22,16 @@
     </CardHeader>
 
     <CardBody>
-        <DataGrid TItem="IssueDto" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
-            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto" Filterable="true"
+        <DataGrid TItem="IssueDto"  @ref="IssueDataGrid" Data="IssueList" ReadData="OnDataGridReadAsync" TotalItems="TotalCount"
+            ShowPager="false" PageSize="PageSize" @bind-SelectedRow="@selectedIssueDto" Filterable="true" Editable="true"
             DetailRowTrigger="@((item)=>item.Comments?.Count > 0 && item.Id == selectedIssueDto?.Id && ShowComments)"
             RowDoubleClicked="e => ToggleSelectedIssueDto(e.Item)">
             <DataGridColumns>
+                <DataGridCommandColumn TItem="IssueDto" Width="170px">
+                    <ClearFilterCommandTemplate>
+                        <Button Color="Color.Warning" Clicked="() => OnClearFilterAsync(context)">Clear Filter</Button>
+                    </ClearFilterCommandTemplate>
+                </DataGridCommandColumn>
                 <DataGridColumn Width="150px" TItem="IssueDto" Field="@nameof(IssueDto.Id)" Sortable="true" Filterable="false"
                     Caption="@L["Actions"]">
                     <DisplayTemplate>
@@ -73,15 +78,11 @@
                 </DataGridColumn>
                 <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]" Filterable="false">
                 </DataGridColumn>
-                @* <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]" Filterable="false">
-                    <DisplayTemplate>
-                        @if (context.CloseReason != null)
-                            {
-                        @L[$"Enum:IssueCloseReason:{(int)context.CloseReason}"]
-                        }
-                    </DisplayTemplate>
-                </DataGridColumn> *@
-                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.MileStoneId)" Caption="@L["IssueMileStoneId"]"></DataGridColumn>
+                 <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.MileStoneId)" Caption="@L["IssueMileStoneId"]">
+                        <FilterTemplate>
+                            <TextEdit Placeholder="Search milestone"  Text="@MileStoneId"  TextChanged="OnMileStoneIdChanged" />
+                        </FilterTemplate>
+                 </DataGridColumn>
                 <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]" Filterable="false">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true" />
