@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Guids;
+using Volo.Abp.Specifications;
 using Volo.Abp.Users;
 
 namespace IssueTracking.Application
@@ -44,9 +45,21 @@ namespace IssueTracking.Application
       }
 
       var issues = new List<Issue>();
-      if (input.ShowNotActiveIssues.HasValue && input.ShowNotActiveIssues == true)
+      if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true &&  input.MileStoneId != Guid.Empty)
       {
-        issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());
+        // issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+        //   new InActiveIssueSpecification()
+        //     .And(new MileStoneSpecification(input.MileStoneId)).ToExpression()));
+      }
+      else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == false &&  input.MileStoneId != Guid.Empty)
+      {
+        // issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+        //   new MileStoneSpecification(input.MileStoneId)));
+      }
+      else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true)
+      {
+        issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+          new InActiveIssueSpecification()));
       }
       else
       {

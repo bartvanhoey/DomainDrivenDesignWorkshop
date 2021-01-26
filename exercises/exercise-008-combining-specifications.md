@@ -12,76 +12,35 @@ In exercise 006 did you see how easy it is to leak business rules into repositor
 git checkout exercise_008
 ```
 
-1. Add a **InActiveIssueSpecification.cs** file to **Issues** folder of the **Domain Project**.
+1. Add a **MileStoneSpecification.cs** file to **Issues** folder of the **Domain Project**. This specification takes a parameter in its constructor.
 
     ```csharp
     using System;
     using System.Linq.Expressions;
     using Volo.Abp.Specifications;
 
-    namespace IssueTracking.Issues
+    namespace IssueTracking.Domain.Issues
     {
-        public class InActiveIssueSpecification : Specification<Issue>
+        public class MileStoneSpecification : Specification<Issue>
         {
+            public Guid MileStoneId { get; }
+
+            public MileStoneSpecification(Guid mileStoneId)
+            {
+            MileStoneId = mileStoneId;
+            }
+
             public override Expression<Func<Issue, bool>> ToExpression()
             {
-                var daysAgo30 = DateTime.Now.Subtract(TimeSpan.FromDays(30));
-                return i =>
-
-                    //Open
-                    !i.IsClosed &&
-
-                    //Assigned to nobody
-                    i.AssignedUserId == null &&
-
-                    //Created 30+ days ago
-                    i.CreationTime < daysAgo30 &&
-
-                    //No comment or the last comment was 30+ days ago
-                    (i.LastCommentTime == null || i.LastCommentTime < daysAgo30);
+            return i => i.MileStoneId == MileStoneId;
             }
         }
     }
-
     ```
 
-2. Update the **IsInActive** method of the **Issue** class and use the **InActiveIssueSpecification** specification.
 
-    ```csharp
-    public class Issue : AggregateRoot<Guid>, IHasCreationTime
-    {
-        public bool IsClosed { get; private set; }
-        public Guid? AssignedUserId { get; private set; }
-        public DateTime CreationTime { get; private set; }
-        public DateTime? LastCommentTime { get; private set; }
-        //...
 
-        public bool IsInActive()
-        {
-            return new InActiveIssueSpecification().IsSatisfiedBy(this);
-        }
-    }
-    ```
-
-3. Rename method **GetInActiveIssuesAsync** to **GetIssuesAsync** and pass in a **ISpecification** parameter.
-
-    ```csharp
-    public interface IIssueRepository : IRepository<Issue, Guid>
-    {
-        Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec);
-    }
-    ```
-
-4. Implement the **GetIssueAsync** method in the **IssueRepository** class
-
-    ```csharp
-    public async Task<List<Issue>> GetIssuesAsync(ISpecification<Issue> spec)
-    {
-      return await DbSet.Where(spec.ToExpression()).ToListAsync();
-    }
-    ```
-
-5. Uncomment the line below in **IssueAppService** in the **Application** project
+2. Uncomment the line below in **IssueAppService** in the **Application** project
 
     ```csharp
     // issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());

@@ -7,6 +7,7 @@ using Blazorise;
 using Blazorise.DataGrid;
 using IssueTracking.Application.Contracts.Issues;
 using IssueTracking.Domain.Shared.Issues;
+using Microsoft.AspNetCore.Components;
 using Volo.Abp.Application.Dtos;
 
 namespace IssueTracking.Blazor.Pages
@@ -24,6 +25,7 @@ namespace IssueTracking.Blazor.Pages
     protected IssueDto selectedIssueDto;
     protected bool ShowComments = true;
     protected bool ShowInActiveIssues = false;
+    protected string MileStoneId;
 
     protected CreateIssueDto NewEntity { get; set; } = new CreateIssueDto();
     protected UpdateIssueDto EditingEntity { get; set; } = new UpdateIssueDto();
@@ -39,12 +41,12 @@ namespace IssueTracking.Blazor.Pages
     protected Modal EditModal { get; set; }
     protected Modal AddCommentModal { get; set; }
     protected Modal CloseIssueModal { get; set; }
+    protected DataGrid<IssueDto> IssueDataGrid { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
       await SetPermissionsAsync();
       await GetIssuesAsync();
-
     }
 
     protected Task SetPermissionsAsync()
@@ -104,16 +106,19 @@ namespace IssueTracking.Blazor.Pages
       CloseIssueModal.Show();
     }
 
-
-    protected async Task GetIssuesAsync(bool? showNotActiveIssues = null)
+    protected async Task GetIssuesAsync()
     {
+      Guid mileStoneId;
+      bool isValid = Guid.TryParse(MileStoneId, out mileStoneId);
+
       var result = await IssueAppService.GetListAsync(
           new GetIssueListDto
           {
             MaxResultCount = PageSize,
             SkipCount = CurrentPage * PageSize,
             Sorting = CurrentSorting,
-            ShowNotActiveIssues = showNotActiveIssues
+            ShowInActiveIssues = ShowInActiveIssues,
+            MileStoneId = mileStoneId
           });
 
       IssueList = result.Items;
@@ -204,8 +209,28 @@ namespace IssueTracking.Blazor.Pages
     protected async Task OnShowInActiveIssuesChangedAsync()
     {
       ShowInActiveIssues = !ShowInActiveIssues;
-      await GetIssuesAsync(ShowInActiveIssues);
+      await GetIssuesAsync();
     }
+
+    protected async Task OnMileStoneIdChanged(string value)
+    {
+      MileStoneId = value;
+      await GetIssuesAsync();
+    }
+    protected async Task OnClearFilterAsync(CommandContext context)
+    {
+      ShowInActiveIssues = false;
+      MileStoneId = null;
+      await context.Clicked.InvokeAsync();
+
+    }
+
+
+
+
+
+
+
 
   }
 }
