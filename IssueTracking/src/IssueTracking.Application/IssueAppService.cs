@@ -44,9 +44,9 @@ namespace IssueTracking.Application
       }
 
       var issues = new List<Issue>();
-      if ( input.ShowNotActiveIssues.HasValue && input.ShowNotActiveIssues == true)
+      if (input.ShowNotActiveIssues.HasValue && input.ShowNotActiveIssues == true)
       {
-          // issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());
+        issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());
       }
       else
       {

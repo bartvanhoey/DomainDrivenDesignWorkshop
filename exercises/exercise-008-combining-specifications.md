@@ -1,15 +1,15 @@
-# Exercise 007: Implement Inactive Issue Filter as a Specification class
+# Exercise 008: Implement Inactive Issue Filter as a Specification class
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_007)
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_008)
 
 In exercise 006 did you see how easy it is to leak business rules into repositories and classes. In this exercise we will see how to solve this problem by using a **Specification**
 
 ## Put it into practice
 
-### Checkout branch exercise_007
+### Checkout branch exercise_008
 
 ```bash
-git checkout exercise_007
+git checkout exercise_008
 ```
 
 1. Add a **InActiveIssueSpecification.cs** file to **Issues** folder of the **Domain Project**.
@@ -106,4 +106,4 @@ git checkout exercise_007
 
 * Stop both the API (by pressing `SHIFT+F5`) and the Blazor project (by pressing `CTRL+C` in the command prompt)
 
-[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_007)
+[< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_008)

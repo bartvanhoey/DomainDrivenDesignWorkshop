@@ -8,6 +8,7 @@
         "Login": "Login or Register",
         "Menu:Issues": "Issues",
         "NewIssue": "New issue",
+        "IssueMileStoneId":  "MileStoneId",
         "IssueDeletionConfirmationMessage": "Are you sure to delete the issue '{0}'?",
         "IssueLockConfirmationMessage": "Are you sure to lock the issue '{0}'?",
         "IssueUnlockConfirmationMessage": "Are you sure to unlock the issue '{0}'?",

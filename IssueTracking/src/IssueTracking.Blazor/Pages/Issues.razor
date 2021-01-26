@@ -73,14 +73,15 @@
                 </DataGridColumn>
                 <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.Text)" Caption="@L["IssueText"]" Filterable="false">
                 </DataGridColumn>
-                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]" Filterable="false">
+                @* <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.CloseReason)" Caption="@L["IssueCloseReason"]" Filterable="false">
                     <DisplayTemplate>
                         @if (context.CloseReason != null)
                             {
                         @L[$"Enum:IssueCloseReason:{(int)context.CloseReason}"]
                         }
                     </DisplayTemplate>
-                </DataGridColumn>
+                </DataGridColumn> *@
+                <DataGridColumn TItem="IssueDto" Field="@nameof(IssueDto.MileStoneId)" Caption="@L["IssueMileStoneId"]"></DataGridColumn>
                 <DataGridCheckColumn TItem="IssueDto" Field="@nameof(IssueDto.IsClosed)" Caption="@L["IssueIsClosed"]" Filterable="false">
                     <DisplayTemplate>
                         <Check TValue="bool" Checked="context.IsClosed" Disabled="true" ReadOnly="true" />

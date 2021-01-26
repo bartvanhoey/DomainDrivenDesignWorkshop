@@ -50,6 +50,8 @@ You will have **a good understanding of Domain Driven Design** when you finish t
 
 * [Exercise 007: Implement Inactive Issue Filter as a Specification class](exercises/exercise-007-implement-inactive-issue-filter-as-specification-class.md)
 
+* [Exercise 008: Combining Specifications](exercises/exercise-008-combining-specifications.md) 
+
 ### Source Code
 
 The source code of the complete workshop is [available on GitHub](https://github.com/bartvanhoey/WorkshopDDD).
