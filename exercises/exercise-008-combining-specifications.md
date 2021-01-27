@@ -2,7 +2,8 @@
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_008)
 
-In exercise 006 did you see how easy it is to leak business rules into repositories and classes. In this exercise we will see how to solve this problem by using a **Specification**
+In exercise 007 we used the InActiveIssueSpecification to filter InActive issues. In this exercise we will see how you can combine specifications.
+Let's say, we want only see inactive issues and belong to a specific milestone.
 
 ## Put it into practice
 
@@ -12,7 +13,7 @@ In exercise 006 did you see how easy it is to leak business rules into repositor
 git checkout exercise_008
 ```
 
-1. Add a **MileStoneSpecification.cs** file to **Issues** folder of the **Domain Project**. This specification takes a parameter in its constructor.
+1. Add a **MileStoneSpecification.cs** file to **Issues** folder of the **Domain Project**. As you can see, this specification takes a parameter in its constructor.
 
     ```csharp
     using System;
@@ -27,24 +28,41 @@ git checkout exercise_008
 
             public MileStoneSpecification(Guid mileStoneId)
             {
-            MileStoneId = mileStoneId;
+                MileStoneId = mileStoneId;
             }
 
             public override Expression<Func<Issue, bool>> ToExpression()
             {
-            return i => i.MileStoneId == MileStoneId;
+                return i => i.MileStoneId == MileStoneId;
             }
         }
     }
     ```
 
-
-
-2. Uncomment the line below in **IssueAppService** in the **Application** project
+2. Update the **GetListAsync** method in **IssueAppService** class of the **Application** project.
 
     ```csharp
-    // issues = await _issueRepository.GetIssuesAsync(new InActiveIssueSpecification());
-    
+        var issues = new List<Issue>();
+        if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true &&  input.MileStoneId != Guid.Empty)
+        {
+            issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+                new InActiveIssueSpecification()
+                .And(new MileStoneSpecification(input.MileStoneId)).ToExpression()));
+        }
+        else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == false &&  input.MileStoneId != Guid.Empty)
+        {
+            issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+                new MileStoneSpecification(input.MileStoneId)));
+        }
+        else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true)
+        {
+            issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+                new InActiveIssueSpecification()));
+        }
+        else
+        {
+            issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
+        }
     ```
 
 ### Run application and Test the implementation of the InActiveIssueSpecification
@@ -57,9 +75,7 @@ git checkout exercise_008
 
 * Open a command prompt in the **Blazor** project and enter `dotnet run`.
 
-* Login with username `admin` and password `1q2w3E*`.
-
-* Goto the **Issues** list and check the **No** checkbox to see the inactive issues only.
+* Goto the **Issues** list and try out the newly implemented functionality to show only issues with a specific MileStoneId.
 
 ### Stop application
 
