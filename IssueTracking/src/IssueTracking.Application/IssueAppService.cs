@@ -45,13 +45,16 @@ namespace IssueTracking.Application
       }
 
       var issues = new List<Issue>();
-      if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true &&  input.MileStoneId != Guid.Empty)
+      if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true && input.MileStoneId != Guid.Empty)
       {
-        // exercise 008 - add code here 
+        issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+           new InActiveIssueSpecification()
+           .And(new MileStoneSpecification(input.MileStoneId)).ToExpression()));
       }
-      else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == false &&  input.MileStoneId != Guid.Empty)
+      else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == false && input.MileStoneId != Guid.Empty)
       {
-        // exercise 008 - add code here
+        issues = await AsyncExecuter.ToListAsync(_issueRepository.Where(
+            new MileStoneSpecification(input.MileStoneId)));
       }
       else if (input.ShowInActiveIssues.HasValue && input.ShowInActiveIssues == true)
       {
@@ -62,7 +65,7 @@ namespace IssueTracking.Application
       {
         issues = await _issueRepository.GetPagedListAsync(input.SkipCount, input.MaxResultCount, input.Sorting, includeDetails: true);
       }
-      
+
       var totalCount = await AsyncExecuter.CountAsync(_issueRepository.WhereIf(!input.Filter.IsNullOrWhiteSpace(), issue => issue.Title.Contains(input.Filter)));
 
       List<IssueDto> items = ObjectMapper.Map<List<Issue>, List<IssueDto>>(issues);
