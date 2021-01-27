@@ -1,9 +1,9 @@
-# Exercise 008: Implement Inactive Issue Filter as a Specification class
+# Exercise 008: Combining Specifications
 
 [< back to theory](../docs/part3/part3-Implementation-The-Building-Blocks.md#theory_exercise_008)
 
 In exercise 007 we used the InActiveIssueSpecification to filter InActive issues. In this exercise we will see how you can combine specifications.
-Let's say, we want only see inactive issues and belong to a specific milestone.
+Let's say, we want only see inactive issues that belong to a specific milestone.
 
 ## Put it into practice
 
