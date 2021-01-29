@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using IssueTracking.Application.Contracts.Issues;
 using IssueTracking.Domain.Issues;
+using IssueTracking.Users;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Guids;
 using Volo.Abp.Specifications;
 using Volo.Abp.Users;
@@ -17,11 +19,15 @@ namespace IssueTracking.Application
   {
     private readonly IIssueRepository _issueRepository;
     private readonly IGuidGenerator _guidGenerator;
+    private readonly IRepository<AppUser, Guid> _appUserRepository;
+    private readonly IUserIssueService _userIssueService;
 
-    public IssueAppService(IIssueRepository issueRepository, IGuidGenerator guidGenerator)
+    public IssueAppService(IIssueRepository issueRepository, IGuidGenerator guidGenerator, IRepository<AppUser, Guid> appUserRepository, IUserIssueService userIssueService )
     {
       _issueRepository = issueRepository;
       _guidGenerator = guidGenerator;
+      _appUserRepository = appUserRepository;
+      _userIssueService = userIssueService;
     }
 
     public async Task<IssueDto> CreateAsync(CreateIssueDto input)
@@ -122,5 +128,11 @@ namespace IssueTracking.Application
       issue.Unlock();
     }
 
+    public async Task AssingToAsync(Guid id, Guid userId)
+    {
+      var issue = await _issueRepository.GetAsync(id);
+      var appUser = await _appUserRepository.GetAsync(userId);
+      await issue.AssignToAsync(appUser, _userIssueService);
+    }
   }
 }

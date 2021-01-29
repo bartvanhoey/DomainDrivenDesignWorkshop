@@ -26,5 +26,7 @@ namespace IssueTracking.Application.Contracts.Issues
     Task LockAsync(Guid id);
 
     Task UnlockAsync(Guid id);
+
+    Task AssingToAsync(Guid id, Guid userId);
   }
 }

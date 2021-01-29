@@ -4,5 +4,10 @@
   {
     /* You can add your business exception error codes here, as constants */
     public const string YouCannotReOpenALockedIssue = "IssueTracking:00001";
+    public const string ConcurrentOpenIssueLimit = "IssueTracking:00002";
+
+    
+
   }
+
 }

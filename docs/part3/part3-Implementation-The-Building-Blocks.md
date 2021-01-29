@@ -410,13 +410,15 @@ And add an entry to the localization resource like below:
 
 > For this example, you could directly throw `BusinessException` instead of defining a specialized `IssueStateException`. The result will be same. See the [exception handling document](https://docs.abp.io/en/abp/latest/Exception-Handling) for all the details.
 
-##### Business Logic in Entities Requiring External Services
+##### <a name="theory_exercise_009"></a> Business Logic in Entities Requiring External Services
+
+### <a name="theory_exercise_009"></a> Domain Services
 
 It is simple to implement a business rule in an entity method when the business logic only uses the properties of that entity. What if the business logic requires to **query database** or **use any external services** that should be resolved from the [dependency injection](https://docs.abp.io/en/abp/latest/Dependency-Injection) system. Remember; **Entities can not inject services!**
 
 There are two common ways of implementing such a business logic:
 
-* Implement the business logic on an entity method and **get external dependencies as parameters** of the method.
+* Implement the business logic on an entity method and **get external dependencies as parameters** of the method. [Exercise 009](../../exercises/exercise-009-business-logic-on-entity-method-with-external-services-by-parameter.md)
 * Create a **Domain Service**.
 
 Domain Services will be explained later. But, now let's see how it can be implemented in the entity class.
@@ -796,7 +798,9 @@ The example above uses the `And` extension method to combine the specifications.
 
 > See the [Specifications document](https://docs.abp.io/en/abp/latest/Specifications) for more details about the specification infrastructure provided by the ABP Framework.
 
-### Domain Services
+### <a name="theory_exercise_009"></a>Domain Services 
+
+[Exercise 009](../../exercises/exercise-009-combining-specifications.md)
 
 Domain Services implement domain logic which;
 
