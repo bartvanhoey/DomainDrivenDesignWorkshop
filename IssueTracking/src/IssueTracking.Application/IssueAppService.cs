@@ -128,11 +128,6 @@ namespace IssueTracking.Application
       issue.Unlock();
     }
 
-    public async Task AssingToAsync(Guid id, Guid userId)
-    {
-      var issue = await _issueRepository.GetAsync(id);
-      var appUser = await _appUserRepository.GetAsync(userId);
-      await issue.AssignToAsync(appUser, _userIssueService);
-    }
+
   }
 }
